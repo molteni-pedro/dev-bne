@@ -1,0 +1,17 @@
+uuid: f60e3328-0223-481d-86e9-a2de8f4f01f3
+langcode: es
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Recursos
+type: resources
+description: ''
+help: ''
+new_revision: true
+preview_mode: 2
+display_submitted: false

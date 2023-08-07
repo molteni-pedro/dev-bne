@@ -1,0 +1,30 @@
+uuid: 2a007c25-cd6f-472e-bf56-88c479191f96
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.node.resources.body
+    - node.type.resources
+  module:
+    - text
+    - user
+id: node.resources.default
+targetEntityType: node
+bundle: resources
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true
