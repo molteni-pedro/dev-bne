@@ -1,0 +1,18 @@
+uuid: 6fc9f89b-e26e-42ef-ad9d-dc07cd4ef5f5
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.module_assessment
+id: node.module_assessment.gva_pagebuilder_content
+field_name: gva_pagebuilder_content
+entity_type: node
+bundle: module_assessment
+label: 'Page Builder'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

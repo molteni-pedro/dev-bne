@@ -1,0 +1,32 @@
+uuid: b48c9449-c2fc-4376-a0e3-0f19e396e44b
+langcode: es
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: _yl6dJXeTAuF9oBpPfUHn2kKzyah4fClNs-sApy3HY8
+id: paragraph.field_lesson_heading_size
+field_name: field_lesson_heading_size
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: h2
+      label: h2
+    -
+      value: h3
+      label: h3
+    -
+      value: h4
+      label: h4
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

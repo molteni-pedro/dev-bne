@@ -1,0 +1,25 @@
+uuid: 222440ff-9c5e-4c71-bcaa-2fdb4f719c6c
+langcode: es
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Iix6K7mWvZFru_0iP4xTz6P6OTH6FCMfQtKyPtOVzD0
+name: Tabla
+format: table
+weight: 0
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<a href hreflang> <em> <strong> <ul type> <ol start type> <li> <table> <tbody> <thead> <tfoot> <th> <td colspan rowspan> <tr> <u> <sup>'
+      filter_html_help: true
+      filter_html_nofollow: false
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: 10
+    settings: {  }

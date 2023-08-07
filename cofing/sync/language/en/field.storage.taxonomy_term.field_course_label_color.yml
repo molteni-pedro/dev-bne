@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: Yellow
+    -
+      label: Grey
+    -
+      label: Green
+    -
+      label: Purple
+    -
+      label: Blue
+    -
+      label: Red

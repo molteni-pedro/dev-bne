@@ -1,0 +1,22 @@
+uuid: 3fce7006-19b6-45a1-9bd2-cf85249fe3bc
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.lesson_divider
+id: paragraph.lesson_divider.status
+field_name: status
+entity_type: paragraph
+bundle: lesson_divider
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

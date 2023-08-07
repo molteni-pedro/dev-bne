@@ -1,0 +1,27 @@
+uuid: a1e17a8f-0e62-485b-9d01-d2a739ad9969
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.courses_landing_page.field_courses_page_categories
+    - field.field.node.courses_landing_page.field_courses_page_topics
+    - node.type.courses_landing_page
+  module:
+    - user
+_core:
+  default_config_hash: OVC3pKYhcwQBZ17XGsRDL2vbWeVgD0USBjBTneeDnUY
+id: node.courses_landing_page.teaser
+targetEntityType: node
+bundle: courses_landing_page
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_courses_page_categories: true
+  field_courses_page_topics: true
+  langcode: true

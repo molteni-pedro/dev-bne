@@ -1,0 +1,18 @@
+uuid: 77c9c4e1-05ef-43b6-b665-51e61c14ede6
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.lesson_image_wide
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.lesson_image_wide
+target_entity_type_id: paragraph
+target_bundle: lesson_image_wide
+default_langcode: site_default
+language_alterable: false

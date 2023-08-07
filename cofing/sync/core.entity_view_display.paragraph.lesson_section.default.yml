@@ -1,0 +1,27 @@
+uuid: 1179f4ac-b978-4cb5-b232-65266e4712c9
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.lesson_section.field_lesson_section_content
+    - paragraphs.paragraphs_type.lesson_section
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: RTPU1vKBq-zLnBc4ct4EYLVf2OmnRJtJ01INSFb3cpI
+id: paragraph.lesson_section.default
+targetEntityType: paragraph
+bundle: lesson_section
+mode: default
+content:
+  field_lesson_section_content:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

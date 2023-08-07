@@ -1,0 +1,22 @@
+uuid: 68d37f25-4d15-45a4-a114-402430bad9ca
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.checklist_item
+id: paragraph.checklist_item.status
+field_name: status
+entity_type: paragraph
+bundle: checklist_item
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

@@ -1,0 +1,25 @@
+uuid: eb379a07-f808-4453-922a-1d33e4050235
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.lesson_text.field_lesson_text_content
+    - paragraphs.paragraphs_type.lesson_text
+  module:
+    - text
+_core:
+  default_config_hash: dF-pvEb0eElHeu8dEAdMvVEniunD7JOdHdD61x4kQ2M
+id: paragraph.lesson_text.default
+targetEntityType: paragraph
+bundle: lesson_text
+mode: default
+content:
+  field_lesson_text_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

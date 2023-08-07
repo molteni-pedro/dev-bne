@@ -1,0 +1,13 @@
+tips:
+  search-api-index-fields-label:
+    label: Etiketa
+  search-api-index-fields-machine-name:
+    label: 'Makinaren izena'
+  search-api-index-fields-type:
+    label: Mota
+  search-api-index-fields-edit:
+    label: 'Editatu eremua'
+  search-api-index-fields-remove:
+    label: 'Ezabatu eremua'
+  search-api-index-fields-submit:
+    label: 'Aldaketak gorde'

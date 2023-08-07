@@ -1,0 +1,21 @@
+uuid: 7ab1bee1-0956-438d-8fba-282454a1185a
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_lesson_image_caption
+    - paragraphs.paragraphs_type.lesson_image
+_core:
+  default_config_hash: '-dRV-cVNVquxQFjPcoXDn1VGC_vVwqP7AhbBKK7LEdE'
+id: paragraph.lesson_image.field_lesson_image_caption
+field_name: field_lesson_image_caption
+entity_type: paragraph
+bundle: lesson_image
+label: Etiqueta
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

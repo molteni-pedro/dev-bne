@@ -1,0 +1,22 @@
+uuid: dd1e8bdd-dd4d-41ce-a40c-959dccb7e397
+langcode: es
+status: true
+dependencies:
+  config:
+    - anu_lms_assessments.assessment_question_type.single_choice
+id: assessment_question.single_choice.status
+field_name: status
+entity_type: assessment_question
+bundle: single_choice
+label: Publicado
+description: 'A boolean indicating whether the Question is published.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

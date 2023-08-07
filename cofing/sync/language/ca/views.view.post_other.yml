@@ -1,0 +1,168 @@
+display:
+  default:
+    display_title: Mestre
+    display_options:
+      fields:
+        field_image:
+          separator: ', '
+        title:
+          separator: ', '
+        field_post_category:
+          separator: ', '
+        created:
+          separator: ', '
+        comment_count:
+          format_plural_string: !!binary MSBjb21lbnRhcmkDQGNvdW50IGNvbWVudGFyaXM=
+      exposed_form:
+        options:
+          submit_button: Aplica
+          reset_button_label: Reinicialitza
+          exposed_sorts_label: 'Ordena per'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+  block_1:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        created:
+          separator: ', '
+        field_post_category:
+          separator: ', '
+        field_image:
+          separator: ', '
+  block_2:
+    display_options:
+      fields:
+        field_image:
+          separator: ', '
+        title:
+          separator: ', '
+        field_post_category:
+          separator: ', '
+        created:
+          separator: ', '
+        comment_count:
+          format_plural_string: !!binary MSBjb21lbnRhcmkDQGNvdW50IGNvbWVudGFyaXM=
+        body:
+          separator: ', '
+  block_3:
+    display_options:
+      fields:
+        field_image:
+          separator: ', '
+        title:
+          separator: ', '
+        field_post_category:
+          separator: ', '
+        created:
+          separator: ', '
+        body:
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: 'Següent ›'
+            previous: '‹ Anterior'
+            first: '« Primer'
+            last: 'Últim »'
+          expose:
+            items_per_page_label: 'Elements per pàgina'
+            items_per_page_options_all_label: '- Tot -'
+            offset_label: Desplaçament
+  block_4:
+    display_options:
+      fields:
+        field_image:
+          separator: ', '
+        title:
+          separator: ', '
+        field_post_category:
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: 'Següent ›'
+            previous: '‹ Anterior'
+          expose:
+            items_per_page_label: 'Elements per pàgina'
+            items_per_page_options_all_label: '- Tot -'
+            offset_label: Desplaçament
+  block_5:
+    display_options:
+      fields:
+        field_image:
+          separator: ', '
+        title:
+          separator: ', '
+        field_post_category:
+          separator: ', '
+        created:
+          separator: ', '
+        comment_count:
+          format_plural_string: !!binary MSBjb21lbnRhcmkDQGNvdW50IGNvbWVudGFyaXM=
+        body:
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: 'Següent ›'
+            previous: '‹ Anterior'
+            first: '« Primer'
+            last: 'Últim »'
+          expose:
+            items_per_page_label: 'Elements per pàgina'
+            items_per_page_options_all_label: '- Tot -'
+            offset_label: Desplaçament
+  block_8:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        created:
+          separator: ', '
+        field_post_category:
+          separator: ', '
+        field_image:
+          separator: ', '
+  blog_slideset:
+    display_options:
+      fields:
+        field_image:
+          separator: ', '
+        title:
+          separator: ', '
+        field_post_category:
+          separator: ', '
+        created:
+          separator: ', '
+        comment_count:
+          format_plural_string: !!binary MSBjb21lbnRhcmkDQGNvdW50IGNvbWVudGFyaXM=
+        body:
+          separator: ', '
+  page_1:
+    display_options:
+      fields:
+        field_image:
+          separator: ', '
+        title:
+          separator: ', '
+        field_post_category:
+          separator: ', '
+        created:
+          separator: ', '
+        comment_count:
+          format_plural_string: !!binary MSBjb21lbnRhcmkDQGNvdW50IGNvbWVudGFyaXM=
+        body:
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: 'Següent ›'
+            previous: '‹ Anterior'
+            first: '« Primer'
+            last: 'Últim »'
+          expose:
+            items_per_page_label: 'Elements per pàgina'
+            items_per_page_options_all_label: '- Tot -'
+            offset_label: Desplaçament

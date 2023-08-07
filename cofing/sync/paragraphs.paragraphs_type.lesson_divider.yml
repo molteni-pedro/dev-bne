@@ -1,0 +1,23 @@
+uuid: 116492f9-184c-4c5a-a303-57b84d7147f4
+langcode: es
+status: true
+dependencies:
+  module:
+    - paragraphs_browser
+    - paragraphs_selection
+third_party_settings:
+  paragraphs_selection:
+    fields:
+      -
+        id: paragraph.lesson_section.field_lesson_section_content
+        weight: -49
+  paragraphs_browser:
+    image_path: 'anu-lms://assets/divider.png'
+_core:
+  default_config_hash: Md6yI1reneDpERavwMnUtnYpo5A-5khJjZoCNokP-II
+id: lesson_divider
+label: 'Block: Divider (simple or numeric)'
+icon_uuid: null
+icon_default: null
+description: 'Block for visual separation of other content blocks.'
+behavior_plugins: {  }

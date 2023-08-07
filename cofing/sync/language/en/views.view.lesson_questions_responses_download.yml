@@ -1,0 +1,57 @@
+label: 'Lesson questions responses (download)'
+description: 'Downloads all question responses to a lesson.'
+display:
+  default:
+    display_title: Master
+    display_options:
+      fields:
+        aqid__target_id:
+          label: Question
+          separator: ', '
+        user_id:
+          label: 'Authored by'
+          separator: ', '
+        field_question_response:
+          label: Response
+          separator: ', '
+        field_question_response_long:
+          label: Response
+          separator: ', '
+        field_question_response_scale:
+          label: Response
+          separator: ', '
+        field_single_multi_choice:
+          label: Responses
+          separator: ', '
+        nothing:
+          label: Response
+          alter:
+            text: '{{ field_question_response }}{{ field_question_response_long }}{{ field_question_response_scale }}{{ field_single_multi_choice }}'
+        is_correct:
+          label: 'Is correct?'
+          separator: ', '
+        created:
+          label: 'Submitted on'
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      arguments:
+        nid:
+          exception:
+            title: All
+  lesson_questions_responses_download:
+    display_title: 'Data export'

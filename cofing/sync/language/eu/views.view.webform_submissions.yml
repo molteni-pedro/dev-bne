@@ -1,0 +1,137 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Ezarri
+          reset_button_label: Garbitu
+          sort_asc_label: Goraka
+          sort_desc_label: Beheraka
+      pager:
+        options:
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« Lehenengoa'
+            last: 'Azkena »'
+          expose:
+            items_per_page_label: 'Elementuak orriak'
+            items_per_page_options_all_label: '- Dena -'
+            offset_label: Desplazamendua
+      fields:
+        sid:
+          separator: ', '
+        in_draft:
+          separator: ', '
+        created:
+          label: Sortua
+          separator: ', '
+        remote_addr:
+          label: 'IP helbideak'
+          separator: ', '
+        view_webform_submission:
+          label: Eragiketak
+          text: ikusi
+      arguments:
+        in_draft:
+          exception:
+            title: Guztiak
+  embed_administer:
+    display_options:
+      fields:
+        webform_submission_bulk_form:
+          action_title: Ekintza
+        sid:
+          separator: ', '
+        in_draft:
+          separator: ', '
+        sticky:
+          label: Itsaskor
+          separator: ', '
+        locked:
+          label: Blokeatuta
+          separator: ', '
+        created:
+          label: Sortua
+          separator: ', '
+        completed:
+          separator: ', '
+        remote_addr:
+          label: 'IP helbideak'
+          separator: ', '
+        operations:
+          label: Eragiketak
+      filters:
+        sticky:
+          expose:
+            label: Itsaskor
+        locked:
+          expose:
+            label: Blokeatuta
+  embed_manage:
+    display_options:
+      fields:
+        webform_submission_bulk_form:
+          action_title: Ekintza
+        sid:
+          separator: ', '
+        in_draft:
+          separator: ', '
+        sticky:
+          label: Itsaskor
+          separator: ', '
+        locked:
+          label: Blokeatuta
+          separator: ', '
+        created:
+          label: Sortua
+          separator: ', '
+        completed:
+          separator: ', '
+        remote_addr:
+          label: 'IP helbideak'
+          separator: ', '
+        view_webform_submission:
+          label: Eragiketak
+          text: ikusi
+        edit_webform_submission:
+          label: Eragiketak
+          text: editatu
+      filters:
+        sticky:
+          expose:
+            label: Itsaskor
+        locked:
+          expose:
+            label: Blokeatuta
+  embed_review:
+    display_options:
+      fields:
+        sid:
+          separator: ', '
+        in_draft:
+          separator: ', '
+        sticky:
+          label: Itsaskor
+          separator: ', '
+        locked:
+          label: Blokeatuta
+          separator: ', '
+        created:
+          label: Sortua
+          separator: ', '
+        completed:
+          separator: ', '
+        remote_addr:
+          label: 'IP helbideak'
+          separator: ', '
+        view_webform_submission:
+          label: Eragiketak
+          text: ikusi
+      filters:
+        sticky:
+          expose:
+            label: Itsaskor
+        locked:
+          expose:
+            label: Blokeatuta

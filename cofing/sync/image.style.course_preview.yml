@@ -1,0 +1,17 @@
+uuid: 762df359-c565-4367-9bf9-49f463347416
+langcode: es
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: a6_bra7aGhvNYw-0kX_5jOEIwiQuXhT5VvPCC1ydnAo
+name: course_preview
+label: '[ANU LMS] Course preview'
+effects:
+  9e98152a-7b37-411b-aa94-fa81dc80649e:
+    uuid: 9e98152a-7b37-411b-aa94-fa81dc80649e
+    id: image_scale
+    weight: 1
+    data:
+      width: 400
+      height: 225
+      upscale: false

@@ -1,0 +1,9 @@
+content:
+  field_checklist_paragraph:
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+  field_checklist_selected_options:
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs

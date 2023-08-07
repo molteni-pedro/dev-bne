@@ -1,0 +1,34 @@
+display:
+  default:
+    display_options:
+      fields:
+        aqid__target_id:
+          label: Galdera
+          separator: ', '
+        user_id:
+          label: 'Honek egina:'
+          separator: ', '
+        field_question_response:
+          separator: ', '
+        field_question_response_long:
+          separator: ', '
+        field_question_response_scale:
+          separator: ', '
+        field_single_multi_choice:
+          separator: ', '
+        is_correct:
+          separator: ', '
+        created:
+          separator: ', '
+      exposed_form:
+        options:
+          submit_button: Ezarri
+          sort_asc_label: Goraka
+          sort_desc_label: Beheraka
+      arguments:
+        aqid__target_id:
+          exception:
+            title: Guztiak
+        'null':
+          exception:
+            title: Guztiak

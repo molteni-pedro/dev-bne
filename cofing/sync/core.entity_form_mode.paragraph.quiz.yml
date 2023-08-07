@@ -1,0 +1,12 @@
+uuid: fcd1602b-087a-4813-9dc3-18e8854995d1
+langcode: es
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: dBZnRSB0Ce_UuSemKiUsO2-kT_zz7T1CcuF7u9Eonk4
+id: paragraph.quiz
+label: Test
+targetEntityType: paragraph
+cache: true

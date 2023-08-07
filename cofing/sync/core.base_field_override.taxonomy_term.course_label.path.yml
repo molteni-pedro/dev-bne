@@ -1,0 +1,22 @@
+uuid: 0f951b9c-c021-4089-a460-61a54d20393e
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.course_label
+  module:
+    - path
+_core:
+  default_config_hash: QML9Ddf4N3RXDhGDao7DrsnoFX_InsSOezoKotpxcVs
+id: taxonomy_term.course_label.path
+field_name: path
+entity_type: taxonomy_term
+bundle: course_label
+label: 'Alias de URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

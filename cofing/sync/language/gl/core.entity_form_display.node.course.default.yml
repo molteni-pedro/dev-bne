@@ -1,0 +1,13 @@
+third_party_settings:
+  field_group:
+    group_course_info:
+      label: Información
+    group_course_modules:
+      label: Módulos
+    group_settings:
+      label: Axustes
+content:
+  field_course_module:
+    settings:
+      title: módulo
+      title_plural: módulos

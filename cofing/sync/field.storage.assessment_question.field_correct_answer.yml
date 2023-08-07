@@ -1,0 +1,23 @@
+uuid: a04297af-b9a8-4778-8e9d-9a5f3fac6c6b
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - anu_lms_assessments
+_core:
+  default_config_hash: mYP3-DsoMSWkfCTkTB_uV-jhNNliJLcz8R0E8sVXEKY
+id: assessment_question.field_correct_answer
+field_name: field_correct_answer
+entity_type: assessment_question
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,36 @@
+uuid: 066935a6-da13-4969-bd8b-9aa91fb9f44a
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.node.courses_landing_page.field_courses_page_categories
+    - field.field.node.courses_landing_page.field_courses_page_topics
+    - node.type.courses_landing_page
+  module:
+    - user
+_core:
+  default_config_hash: PYGYWqg6NZUeKjZnGJ0wYH3CXNiWjFw2DHKdTWyBXAc
+id: node.courses_landing_page.default
+targetEntityType: node
+bundle: courses_landing_page
+mode: default
+content:
+  field_courses_page_categories:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_courses_page_topics:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true
+  links: true

@@ -1,0 +1,5 @@
+content:
+  field_module_lesson_content:
+    settings:
+      title: page
+      title_plural: pages

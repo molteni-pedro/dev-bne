@@ -1,0 +1,27 @@
+uuid: bfc5c7df-f27f-4def-89a7-c593367df5ab
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_lesson_section_content
+    - paragraphs.paragraphs_type.lesson_section
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: CceQC-x4L7EnT1t6GSp9HC785CWt4DwoiNE89m2teps
+id: paragraph.lesson_section.field_lesson_section_content
+field_name: field_lesson_section_content
+entity_type: paragraph
+bundle: lesson_section
+label: Contenido
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: paragraph_reverse
+  handler_settings:
+    negate: 0
+    self_field_id: paragraph.lesson_section.field_lesson_section_content
+field_type: entity_reference_revisions

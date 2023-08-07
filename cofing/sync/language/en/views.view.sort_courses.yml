@@ -1,0 +1,29 @@
+label: 'Sort courses'
+description: 'List all category courses with ability to reorder them'
+display:
+  default:
+    display_title: Master
+    display_options:
+      title: 'Sort courses'
+      fields:
+        field_weight:
+          label: Sort
+        title:
+          label: Title
+          separator: ', '
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      arguments:
+        field_course_category_target_id:
+          exception:
+            title: All
+  sort_page:
+    display_title: Page
+    display_options:
+      menu:
+        title: 'Sort courses'

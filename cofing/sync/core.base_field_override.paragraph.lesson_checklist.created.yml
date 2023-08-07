@@ -1,0 +1,18 @@
+uuid: 1fefd213-fb11-47a9-9da1-cb2e704d3118
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.lesson_checklist
+id: paragraph.lesson_checklist.created
+field_name: created
+entity_type: paragraph
+bundle: lesson_checklist
+label: 'Fecha de autoría'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

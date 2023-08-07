@@ -1,0 +1,21 @@
+uuid: 5caf23ff-f242-4f8c-a9b8-541895d6236a
+langcode: en-gb
+status: true
+dependencies:
+  module:
+    - anu_lms_assessments
+    - range
+_core:
+  default_config_hash: ZdXF_P2euMTR-9ZUNAbz-CV80w-WDaMXJMfVFDlXme0
+id: assessment_question.field_scale
+field_name: field_scale
+entity_type: assessment_question
+type: range_integer
+settings: {  }
+module: range
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

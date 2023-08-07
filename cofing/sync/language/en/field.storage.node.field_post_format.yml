@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'Standard (Image)'
+    -
+      label: Gallery
+    -
+      label: Video
+    -
+      label: Audio

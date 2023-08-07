@@ -1,0 +1,13 @@
+uuid: 84132134-009c-4264-be7e-c5dc3084762b
+langcode: es
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: LT-NspRN2IVjT9At4XO_BOrJ2PrVbSzqGngeWyGlqfo
+name: Lección
+type: module_lesson
+description: 'A learning unit of the module with content addressing a specific bit of the course.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

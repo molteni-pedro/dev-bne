@@ -1,0 +1,114 @@
+display:
+  default:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_image:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '
+      exposed_form:
+        options:
+          submit_button: Ezarri
+          reset_button_label: Garbitu
+          sort_asc_label: Goraka
+          sort_desc_label: Beheraka
+  block_1:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '
+  block_2:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '
+  block_3:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '
+  block_4:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: 'Hurrengoak ›'
+            previous: '‹ Aurrekoak'
+          expose:
+            items_per_page_label: 'Elementuak orriak'
+            items_per_page_options_all_label: '- Dena -'
+            offset_label: Desplazamendua
+  block_5:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: 'Hurrengoak ›'
+            previous: '‹ Aurrekoak'
+          expose:
+            items_per_page_label: 'Elementuak orriak'
+            items_per_page_options_all_label: '- Dena -'
+            offset_label: Desplazamendua
+  block_6:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_images:
+          separator: ', '
+        body:
+          separator: ', '
+        view_node:
+          text: ikusi
+      arguments:
+        nid:
+          exception:
+            title: Guztiak
+  portfolio_carousel_filter:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '
+  portfolio_sildeset:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '

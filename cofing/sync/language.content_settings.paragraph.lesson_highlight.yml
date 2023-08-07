@@ -1,0 +1,18 @@
+uuid: 5851de09-81a7-4b23-bedd-3f14d1396eb5
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.lesson_highlight
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.lesson_highlight
+target_entity_type_id: paragraph
+target_bundle: lesson_highlight
+default_langcode: site_default
+language_alterable: false

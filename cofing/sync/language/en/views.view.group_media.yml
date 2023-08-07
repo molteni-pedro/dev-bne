@@ -1,0 +1,76 @@
+label: 'Group Media'
+display:
+  default:
+    display_title: Master
+    display_options:
+      title: 'Group Media'
+      fields:
+        name:
+          label: 'Media name'
+          separator: ', '
+        bundle:
+          label: Bundle
+          separator: ', '
+        status:
+          label: Status
+          separator: ', '
+        uid:
+          label: Publisher
+          separator: ', '
+        edit_media:
+          label: 'Edit media'
+          text: 'Edit media'
+        delete_media:
+          label: 'Delete Media'
+          text: 'Delete media'
+        edit_group_relationship:
+          label: 'Link to edit Group relationship'
+          text: 'Edit relationship'
+        delete_group_relationship:
+          label: 'Delete relationship'
+          text: 'Delete relationship'
+        view_group_relationship:
+          label: 'View relationship'
+          text: 'View relationship'
+        dropbutton:
+          label: Operations
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      arguments:
+        gid:
+          exception:
+            title: All
+          title: '{{ arguments.gid|placeholder }} media items'
+      filters:
+        status:
+          expose:
+            label: Status
+          group_info:
+            label: Status
+            group_items:
+              1:
+                title: Published
+              2:
+                title: Unpublished
+        bundle:
+          expose:
+            label: 'Media type'
+  page_1:
+    display_title: Page
+    display_options:
+      menu:
+        title: Media

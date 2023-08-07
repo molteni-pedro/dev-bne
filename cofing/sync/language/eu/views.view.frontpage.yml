@@ -1,0 +1,26 @@
+label: 'Azaleko orria'
+display:
+  default:
+    display_title: Lehenetsia
+    display_options:
+      pager:
+        options:
+          tags:
+            next: 'Hurrengoak ›'
+            previous: '‹ Aurrekoak'
+            first: '« Lehenengoa'
+            last: 'Azkena »'
+          expose:
+            items_per_page_label: 'Elementuak orriak'
+            items_per_page_options_all_label: '- Dena -'
+            offset_label: Desplazamendua
+      exposed_form:
+        options:
+          submit_button: Ezarri
+          reset_button_label: Garbitu
+          sort_asc_label: Goraka
+          sort_desc_label: Beheraka
+  feed_1:
+    display_title: Jarioa
+  page_1:
+    display_title: Orria

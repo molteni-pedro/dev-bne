@@ -1,0 +1,32 @@
+uuid: 65fbc84d-9b23-428f-bb2b-bd57561f84d4
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.course_topics
+_core:
+  default_config_hash: gBczx9_P-Y1-CWK8TShDygDkrFNwJga1fEsuXZs7L9M
+id: taxonomy_term.course_topics.default
+targetEntityType: taxonomy_term
+bundle: course_topics
+mode: default
+content:
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true
+  status: true

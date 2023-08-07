@@ -1,0 +1,33 @@
+uuid: 95ce9cf3-8ec1-418f-aac9-e2a7b75d2752
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.node.courses_page.field_courses_content
+    - node.type.courses_page
+  module:
+    - entity_reference_revisions
+    - user
+_core:
+  default_config_hash: CkC-iW5D_SlcCC8T-gyObOYD_2MukSrjxRKaGTuVxhQ
+id: node.courses_page.default
+targetEntityType: node
+bundle: courses_page
+mode: default
+content:
+  field_courses_content:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

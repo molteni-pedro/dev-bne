@@ -1,0 +1,52 @@
+uuid: 4d8c9f32-d522-4aad-84e2-d6d7287ccd1e
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser_4
+    - field.field.node.portfolio.body
+    - field.field.node.portfolio.field_portfolio_images
+    - field.field.node.portfolio.field_portfolio_tags
+    - image.style.medium
+    - node.type.portfolio
+  module:
+    - image
+    - text
+    - user
+_core:
+  default_config_hash: pITCBJNzma1BG_M8u27VJfKnJhpHimWN5d5_H4u_eBI
+id: node.portfolio.teaser_4
+targetEntityType: node
+bundle: portfolio
+mode: teaser_4
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 120
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_portfolio_images:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_portfolio_tags:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true
+  links: true

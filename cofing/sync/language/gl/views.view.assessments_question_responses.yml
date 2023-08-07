@@ -1,0 +1,95 @@
+display:
+  default:
+    display_title: Master
+    display_options:
+      fields:
+        user_id:
+          label: Usuario/a
+          separator: ', '
+        aqid__target_revision_id:
+          label: Pregunta
+          separator: ', '
+        is_correct:
+          separator: ', '
+        created:
+          label: Creado
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« Primeira'
+            last: 'Última »'
+          expose:
+            items_per_page_label: 'Elementos por páxina'
+            items_per_page_options_all_label: '- Todo -'
+            offset_label: Desprazamento
+      exposed_form:
+        options:
+          submit_button: Aplicar
+          reset_button_label: Reiniciar
+          exposed_sorts_label: 'Ordenar por'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+  assessment_results_download:
+    display_options:
+      fields:
+        user_id:
+          label: Usuario/a
+          separator: ', '
+        aqid__target_revision_id:
+          label: Pregunta
+          separator: ', '
+        is_correct:
+          separator: ', '
+        created:
+          label: Creado
+          separator: ', '
+      arguments:
+        aid:
+          exception:
+            title: Todo
+        arid:
+          exception:
+            title: Todo
+  assessment_results_embed:
+    display_options:
+      fields:
+        aid:
+          separator: ', '
+        arid:
+          separator: ', '
+        user_id:
+          label: Usuario/a
+          separator: ', '
+        aqid__target_revision_id:
+          label: Pregunta
+          separator: ', '
+        is_correct:
+          separator: ', '
+        created:
+          label: Creado
+          separator: ', '
+      arguments:
+        arid:
+          exception:
+            title: Todo
+  assessments_results_download:
+    display_options:
+      fields:
+        user_id:
+          label: Usuario/a
+          separator: ', '
+        aqid__target_revision_id:
+          label: Pregunta
+          separator: ', '
+        is_correct:
+          separator: ', '
+        created:
+          label: Creado
+          separator: ', '
+      arguments:
+        aid:
+          exception:
+            title: Todo

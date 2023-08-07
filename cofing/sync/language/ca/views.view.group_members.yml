@@ -1,0 +1,46 @@
+display:
+  default:
+    display_title: Mestre
+    display_options:
+      title: Membres
+      fields:
+        name:
+          label: Usuari
+          separator: ', '
+        group_roles:
+          label: Rols
+          separator: ', '
+        changed:
+          label: Actualitzat
+          separator: ', '
+        created:
+          separator: ', '
+        dropbutton:
+          label: Operacions
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« Primer'
+            last: 'Últim »'
+          expose:
+            items_per_page_label: 'Elements per pàgina'
+            items_per_page_options_all_label: '- Tot -'
+            offset_label: Desplaçament
+      exposed_form:
+        options:
+          submit_button: Aplica
+          reset_button_label: Reinicialitza
+          exposed_sorts_label: 'Ordena per'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      arguments:
+        gid:
+          exception:
+            title: Tot
+  page_1:
+    display_title: Pàgina
+    display_options:
+      menu:
+        title: Membres

@@ -1,0 +1,23 @@
+uuid: 6af80c84-4070-4c9d-a8ac-5780eaf23073
+langcode: es
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: oxKZVl_97WzPtrJ_FaeBFYOmiFAyR2H3ilVZ1ffBFTA
+id: paragraph.field_lesson_highlight_heading
+field_name: field_lesson_highlight_heading
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,25 @@
+uuid: 4ee7a49b-866d-4f23-b7dc-20ddb768529b
+langcode: es
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.full
+    - taxonomy.vocabulary.category
+  module:
+    - text
+_core:
+  default_config_hash: fADcafXJZNvxST_r4sAuUW26jIlUWlU84jZOnOssPs0
+id: taxonomy_term.category.full
+targetEntityType: taxonomy_term
+bundle: category
+mode: full
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

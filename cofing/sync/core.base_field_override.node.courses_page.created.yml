@@ -1,0 +1,18 @@
+uuid: fc15898a-5799-4a48-939a-44005b7db0de
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.courses_page
+id: node.courses_page.created
+field_name: created
+entity_type: node
+bundle: courses_page
+label: 'Fecha de autoría'
+description: 'La fecha en que el nodo fue creado.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

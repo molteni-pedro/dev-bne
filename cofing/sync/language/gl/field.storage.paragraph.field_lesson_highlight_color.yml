@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    0:
+      label: Amarelo
+    3:
+      label: Verde

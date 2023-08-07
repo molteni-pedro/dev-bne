@@ -1,0 +1,5 @@
+label: 'Hide correct answers'
+description: 'Select this option if users should not see correct answers when they submit the quiz.'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

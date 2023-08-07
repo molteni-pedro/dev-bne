@@ -1,0 +1,20 @@
+uuid: 62cd3b70-e535-4bc7-96eb-3545a049fc4e
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: z5zRp272cdwh9E10XEZuePab4kSO8rG8I8iY1m2P4zM
+id: node.field_no_multiple_submissions
+field_name: field_no_multiple_submissions
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

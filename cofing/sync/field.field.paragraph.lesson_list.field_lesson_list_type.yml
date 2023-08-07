@@ -1,0 +1,25 @@
+uuid: 0906fcbd-b047-4a55-aa32-e7eb95328dac
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_lesson_list_type
+    - paragraphs.paragraphs_type.lesson_list
+  module:
+    - options
+_core:
+  default_config_hash: vM9rDvY4v5J100laIsIu6aT8tMnbFjNUkojrqHlptyg
+id: paragraph.lesson_list.field_lesson_list_type
+field_name: field_lesson_list_type
+entity_type: paragraph
+bundle: lesson_list
+label: Tipo
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ul
+default_value_callback: ''
+settings: {  }
+field_type: list_string

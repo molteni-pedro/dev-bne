@@ -1,0 +1,10 @@
+uuid: cfda419c-1719-47b6-a2fd-18b6eaa8e470
+langcode: es
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: uDLL2VCMuXpaNZxfNgmlb7nrkmMc82tU43wJc8afXic
+name: 'Post Category'
+vid: category
+description: 'Category for article'
+weight: 0

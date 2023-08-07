@@ -1,0 +1,25 @@
+uuid: 470a8f71-b90a-4502-929f-3ae06bd30385
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_lesson_highlight_color
+    - paragraphs.paragraphs_type.lesson_highlight_marker
+  module:
+    - options
+_core:
+  default_config_hash: sg8uX9p8CdsFu3OES7l6JKqjWACm0HJTBvYi8CqehbM
+id: paragraph.lesson_highlight_marker.field_lesson_highlight_color
+field_name: field_lesson_highlight_color
+entity_type: paragraph
+bundle: lesson_highlight_marker
+label: Color
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: yellow
+default_value_callback: ''
+settings: {  }
+field_type: list_string

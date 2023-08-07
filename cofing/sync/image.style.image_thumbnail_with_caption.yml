@@ -1,0 +1,17 @@
+uuid: f608a821-da5b-494f-bb49-d631ecb7da09
+langcode: es
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: cp359qAD6ksJfr6twIR1VCJR73CoN8nN7MewK9l7oYg
+name: image_thumbnail_with_caption
+label: '[ANU LMS] Paragraph: Image with caption (thumbnail)'
+effects:
+  16389f39-3cc6-4638-82e9-23d09d6214eb:
+    uuid: 16389f39-3cc6-4638-82e9-23d09d6214eb
+    id: image_scale
+    weight: 1
+    data:
+      width: 500
+      height: null
+      upscale: false

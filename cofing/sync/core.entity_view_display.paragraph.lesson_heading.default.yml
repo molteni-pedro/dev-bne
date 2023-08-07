@@ -1,0 +1,26 @@
+uuid: 3d990d94-8791-4f93-9c52-540f89ecbe1b
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.lesson_heading.field_lesson_heading_size
+    - field.field.paragraph.lesson_heading.field_lesson_heading_value
+    - paragraphs.paragraphs_type.lesson_heading
+_core:
+  default_config_hash: bfHLoZ_65raE_qA9yWmQpzlm8AbUb-XbpRmaXc21vYA
+id: paragraph.lesson_heading.default
+targetEntityType: paragraph
+bundle: lesson_heading
+mode: default
+content:
+  field_lesson_heading_value:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_lesson_heading_size: true
+  search_api_excerpt: true

@@ -1,0 +1,27 @@
+uuid: 6145bb8a-4c59-4990-92bc-e63d01feaa37
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.lesson_checklist.field_checklist_items
+    - paragraphs.paragraphs_type.lesson_checklist
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: EkVMzu2zAa937uFuCM-BEZAgbGCF2cQtm26cDAt0Lyo
+id: paragraph.lesson_checklist.default
+targetEntityType: paragraph
+bundle: lesson_checklist
+mode: default
+content:
+  field_checklist_items:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

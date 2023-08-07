@@ -1,0 +1,23 @@
+uuid: 653debe5-17ff-4657-8071-4a7a03351489
+langcode: es
+status: true
+dependencies:
+  module:
+    - paragraphs_browser
+    - paragraphs_selection
+third_party_settings:
+  paragraphs_selection:
+    fields:
+      -
+        id: paragraph.lesson_section.field_lesson_section_content
+        weight: -55
+  paragraphs_browser:
+    image_path: 'anu-lms://assets/heading.png'
+_core:
+  default_config_hash: 9lTAISlbfL_kK1S1mu6v97zNQJOJ4EkS1lxO79TnUlw
+id: lesson_heading
+label: 'Block: Heading'
+icon_uuid: null
+icon_default: null
+description: 'Content heading of a various size (h2-h4).'
+behavior_plugins: {  }

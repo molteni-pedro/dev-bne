@@ -1,0 +1,18 @@
+uuid: abb6e275-6896-44a2-826e-9e384135f40d
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.lesson_table
+id: paragraph.lesson_table.created
+field_name: created
+entity_type: paragraph
+bundle: lesson_table
+label: 'Fecha de autoría'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

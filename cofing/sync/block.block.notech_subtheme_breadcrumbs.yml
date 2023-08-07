@@ -1,0 +1,22 @@
+uuid: d87723a0-07dc-401e-9db9-927f2e036926
+langcode: es
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - notech_subtheme
+_core:
+  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
+id: notech_subtheme_breadcrumbs
+theme: notech_subtheme
+region: breadcrumbs
+weight: -9
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: 'Enlaces de ayuda a la navegación'
+  label_display: '0'
+  provider: system
+visibility: {  }

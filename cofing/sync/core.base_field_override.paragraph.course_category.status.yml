@@ -1,0 +1,22 @@
+uuid: 0e3f594c-6fec-41a7-b5be-b6a1d6949ac2
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.course_category
+id: paragraph.course_category.status
+field_name: status
+entity_type: paragraph
+bundle: course_category
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

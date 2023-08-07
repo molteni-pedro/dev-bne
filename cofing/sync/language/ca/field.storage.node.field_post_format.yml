@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    2:
+      label: Vídeo
+    3:
+      label: Àudio

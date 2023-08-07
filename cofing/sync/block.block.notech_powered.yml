@@ -1,0 +1,22 @@
+uuid: 4f9a4256-eb69-44a8-bed2-7ed02621fc24
+langcode: es
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - notech
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: notech_powered
+theme: notech
+region: offcanvas
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Funciona con Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

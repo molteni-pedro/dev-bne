@@ -1,0 +1,29 @@
+uuid: 49069aae-fa65-415d-9768-ececc4d2c198
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.node.service.body
+    - field.field.node.service.comment
+    - node.type.service
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: WVeToXdlcMvCRivJfitH6zYeux8JQN099CAMWC9S9qE
+id: node.service.default
+targetEntityType: node
+bundle: service
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  comment: true
+  langcode: true
+  links: true

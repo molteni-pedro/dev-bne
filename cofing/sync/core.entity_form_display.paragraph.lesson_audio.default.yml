@@ -1,0 +1,35 @@
+uuid: ea8c1b25-b65e-41a8-9e46-2965bcf9e162
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.lesson_audio.field_audio_file
+    - field.field.paragraph.lesson_audio.field_audio_name
+    - paragraphs.paragraphs_type.lesson_audio
+  module:
+    - file
+_core:
+  default_config_hash: 6BijNB4qLlERGMWSYFPQxQx9Yhovr0SRu-xCcoj6ps0
+id: paragraph.lesson_audio.default
+targetEntityType: paragraph
+bundle: lesson_audio
+mode: default
+content:
+  field_audio_file:
+    type: file_generic
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_audio_name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 40
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

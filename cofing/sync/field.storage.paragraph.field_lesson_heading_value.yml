@@ -1,0 +1,23 @@
+uuid: 1956b1c7-59ca-4e0d-afc9-ff2255bb9872
+langcode: es
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: Abtn2D1dqu7AA3UGHyD4tyWo2H-DTuhKUEqhlqYGWF0
+id: paragraph.field_lesson_heading_value
+field_name: field_lesson_heading_value
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

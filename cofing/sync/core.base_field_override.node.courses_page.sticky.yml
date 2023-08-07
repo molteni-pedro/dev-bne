@@ -1,0 +1,22 @@
+uuid: f4edd545-22e2-4989-91ed-45714ac8cf29
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.courses_page
+id: node.courses_page.sticky
+field_name: sticky
+entity_type: node
+bundle: courses_page
+label: 'Fijo al comienzo de las listas'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

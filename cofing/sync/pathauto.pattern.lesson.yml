@@ -1,0 +1,24 @@
+uuid: 9d717fd9-671f-473f-81e3-4d942f7f8e71
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: EEioxEbMdBaS4T16J9KX9CEeubWFCM_QkzhJvrTWEQU
+id: lesson
+label: Lección
+type: 'canonical_entities:node'
+pattern: 'lesson/[node:title]'
+selection_criteria:
+  c1a51229-c029-43e3-8a85-05703a29b09a:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: c1a51229-c029-43e3-8a85-05703a29b09a
+    context_mapping:
+      node: node
+    bundles:
+      module_lesson: module_lesson
+selection_logic: and
+weight: -5
+relationships: {  }

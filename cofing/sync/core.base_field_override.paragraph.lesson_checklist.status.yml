@@ -1,0 +1,22 @@
+uuid: 927c2f7a-38bd-412f-8105-e6f12d40ea23
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.lesson_checklist
+id: paragraph.lesson_checklist.status
+field_name: status
+entity_type: paragraph
+bundle: lesson_checklist
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

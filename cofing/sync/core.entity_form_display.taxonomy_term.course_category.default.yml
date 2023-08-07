@@ -1,0 +1,35 @@
+uuid: a8b7e34f-8f1a-4361-863d-0c9c17add053
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.course_category.field_enable_course_sequence
+    - taxonomy.vocabulary.course_category
+_core:
+  default_config_hash: POr_VoeseyaW27GQ82mMdPVztuvQqB8i7qJdJs4RQ8c
+id: taxonomy_term.course_category.default
+targetEntityType: taxonomy_term
+bundle: course_category
+mode: default
+content:
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  field_enable_course_sequence: true
+  path: true
+  status: true
+  translation: true
