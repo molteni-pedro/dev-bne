@@ -1,0 +1,35 @@
+# Ignorar carpetas generadas por Drupal y herramientas de desarrollo
+/web/core/*
+/web/sites/*/services.yml
+/web/sites/*/settings*.php
+/web/sites/*/files/
+/web/sites/*/private/
+/web/sites/*/files/.htaccess
+/web/sites/*/settings.local.php
+
+# Ignorar archivos de configuración locales
+/.env
+/web/sites/default/settings.local.php
+
+# Ignorar directorio de dependencias de Composer
+/vendor/
+
+# Ignorar archivos generados por Composer
+/composer.lock
+
+# Ignorar directorio temporal de PHPStorm
+/.idea/
+
+# Ignorar directorio temporal de Visual Studio Code
+/.vscode/
+
+# Ignorar cachés y archivos temporales generados por Drupal
+/web/sites/*/files/styles/
+/web/sites/*/files/css/
+/web/sites/*/files/js/
+/web/sites/*/files/php/
+
+# Ignorar archivos y carpetas de prueba
+/tests/
+/phpunit.xml
+
