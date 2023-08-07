@@ -1,0 +1,7 @@
+language_switcher_menu.configure:
+  path: '/admin/config/regional/language_switcher_menu'
+  defaults:
+    _form: '\Drupal\language_switcher_menu\Form\SettingsForm'
+    _title: 'Language Switcher Menu'
+  requirements:
+    _permission: 'configure language_switcher_menu'

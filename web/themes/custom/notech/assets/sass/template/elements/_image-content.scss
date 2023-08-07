@@ -1,0 +1,141 @@
+.image-content-one{
+	&__single{
+		margin-bottom: 30px;
+	 	margin-left: auto;
+	 	margin-right: auto;
+	 	padding-right: 90px;
+	 	position: relative;
+	}
+	&__image{
+		position: relative;
+	}
+	&__link-overlay{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
+	&__content{
+		padding: 30px 20px 30px;
+		z-index: 11;
+		width: 200px;
+		position: absolute;
+		top: 50px;
+		right: 0;
+		background: $theme-color;
+	}
+	&__title{
+	  	font-size: 18px;
+	  	margin: 0;
+	  	font-weight: 400;
+	  	line-height: 32px;
+	  	color: $white;
+  		a{
+	 		color: $white;
+  		}
+	}
+	&__read-more{
+  		margin-top: 15px;
+  		a{
+  			color: $white!important;
+  			&:hover{ 
+  				text-decoration: underline;
+  			}
+  		}
+ 	}
+}
+
+.image-content-two{
+	&__single{
+		margin-bottom: 30px;
+	 	margin-left: auto;
+	 	margin-right: auto;
+	 	position: relative;
+	}
+	&__image{
+		position: relative;
+	}
+	&__link-overlay{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
+	&__content{
+		padding: 35px 50px 40px;
+		z-index: 11;
+		width: 385px;
+		max-width: 90%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		background: $theme-color-second;
+		@media(max-width: 1024px){
+			padding: 30px 20px 35px;
+		}
+	}
+	&__title{
+	  	font-size: 20px;
+	  	margin: 0;
+	  	font-weight: 400;
+	  	line-height: 32px;
+		font-weight: 700;
+	  	color: $white;
+  		a{
+	 		color: $white;
+  		}
+	}
+	&__read-more{
+  		margin-top: 15px;
+  		a{
+  			color: $white!important;
+  			&:hover{ 
+  				text-decoration: underline;
+  			}
+  		}
+ 	}
+}
+
+.image-content-three{
+	&__single{
+		margin: 0 auto 30px;
+	 	position: relative;
+	 	text-align: center;
+		padding: 30px 30px 20px;
+		border: 1px solid $border-color;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	}
+	&__image{
+		position: relative;
+		margin-bottom: 20px;
+	}
+	&__link-overlay{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
+	&__title{
+	  	font-size: 20px;
+	  	line-height: 32px;
+	  	margin: 0 0 10px;
+	}
+	&__read-more{
+  		margin-top: 15px;
+  		a{
+  			color: $white!important;
+  			&:hover{ 
+  				text-decoration: underline;
+  			}
+  		}
+ 	}
+}

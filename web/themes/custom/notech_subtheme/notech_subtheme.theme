@@ -1,0 +1,6 @@
+<?php
+
+function notech_subtheme_preprocess_html(&$variables) {
+  $variables['#attached']['library'][] = 'notech_subtheme/notech_subtheme.skin.default';
+
+}

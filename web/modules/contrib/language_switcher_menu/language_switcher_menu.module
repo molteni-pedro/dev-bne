@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations by Language Switcher Menu module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ *
+ * @phpstan-param string $route_name
+ * @phpstan-return array<mixed>
+ */
+function language_switcher_menu_help($route_name, RouteMatchInterface $route_match) {
+  if ($route_name !== 'help.page.language_switcher_menu') {
+    return [];
+  }
+
+  $build = [];
+  $build['about_heading'] = [
+    '#type' => 'html_tag',
+    '#tag' => 'h3',
+    '#value' => t('About'),
+  ];
+  $build['about_text'] = [
+    '#type' => 'html_tag',
+    '#tag' => 'p',
+    '#value' => t('The %module_name module allows you to add the language switch links to one of your menus.', [
+      '%module_name' => t('Language Switcher Menu'),
+    ]),
+  ];
+  return $build;
+}

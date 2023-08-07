@@ -1,0 +1,126 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('#{$theme-font-path}icons/icomoon.eot?s8kcq0');
+  src:  url('#{$theme-font-path}icons/icomoon.eot?s8kcq0#iefix') format('embedded-opentype'),
+    url('#{$theme-font-path}icons/icomoon.ttf?s8kcq0') format('truetype'),
+    url('#{$theme-font-path}icons/icomoon.woff?s8kcq0') format('woff'),
+    url('#{$theme-font-path}icons/icomoon.svg?s8kcq0#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-t-"], [class*=" icon-t-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-t-application:before {
+  content: "\e91f";
+}
+.icon-t-system:before {
+  content: "\e920";
+}
+.icon-t-pin:before {
+  content: "\e900";
+}
+.icon-t-magnifying-glass:before {
+  content: "\e901";
+}
+.icon-t-email:before {
+  content: "\e902";
+}
+.icon-t-cyber:before {
+  content: "\e903";
+}
+.icon-t-data-analytics:before {
+  content: "\e904";
+}
+.icon-t-check:before {
+  content: "\e905";
+}
+.icon-t-design-thinking:before {
+  content: "\e906";
+}
+.icon-t-coding:before {
+  content: "\e907";
+}
+.icon-t-technology:before {
+  content: "\e908";
+}
+.icon-t-content:before {
+  content: "\e909";
+}
+.icon-t-optimization:before {
+  content: "\e90a";
+}
+.icon-t-work:before {
+  content: "\e90b";
+}
+.icon-t-technical-support:before {
+  content: "\e90c";
+}
+.icon-t-like:before {
+  content: "\e90d";
+}
+.icon-t-user:before {
+  content: "\e90e";
+}
+.icon-t-data-protection:before {
+  content: "\e90f";
+}
+.icon-t-backup-copy:before {
+  content: "\e910";
+}
+.icon-t-artificial-intelligence:before {
+  content: "\e911";
+}
+.icon-t-telephone:before {
+  content: "\e912";
+}
+.icon-t-mobile-banking:before {
+  content: "\e913";
+}
+.icon-t-tick:before {
+  content: "\e914";
+}
+.icon-t-mental-health:before {
+  content: "\e915";
+}
+.icon-t-education:before {
+  content: "\e916";
+}
+.icon-t-manufacturing:before {
+  content: "\e917";
+}
+.icon-t-stock-market:before {
+  content: "\e918";
+}
+.icon-t-innovation:before {
+  content: "\e919";
+}
+.icon-t-social-media:before {
+  content: "\e91a";
+}
+.icon-t-cloud-storage:before {
+  content: "\e91b";
+}
+.icon-t-customer-service:before {
+  content: "\e91c";
+}
+.icon-t-plus-symbol:before {
+  content: "\e91d";
+}
+.icon-t-market-analysis:before {
+  content: "\e91e";
+}

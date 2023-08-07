@@ -1,0 +1,6 @@
+configure language_switcher_menu:
+  title: 'Configure Language Switcher Menu'
+  description: 'Allows access to the module configuration page.'
+view language_switcher_menu links:
+  title: 'View Language Switcher Menu links'
+  description: 'Allows to view the language switcher menu links.<br><em>Note: This permission has been added as part of a woraround for <a href="https://www.drupal.org/project/drupal/issues/3008889">Drupal Core issue 3008889</a> and will be removed with that workaround in a future release.</em>'

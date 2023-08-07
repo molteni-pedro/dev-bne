@@ -1,0 +1,360 @@
+.service-one{
+	&__single{
+		border: 1px solid rgba(0, 0, 0, 0.05);
+		background: #fff;
+		min-height: 265px;
+		padding: 30px;
+		margin-bottom: 30px;
+		margin-top: 10px;
+		@include transition(all 0.35s);
+		box-shadow: 6px 5px 15px 0px rgba(0, 0, 0, 0.06);
+		@include media-breakpoint-down(md){
+			padding: 30px 20px;
+		}
+	}
+	&__icon{
+		margin: 30px 0;
+		font-size: 56px;
+		color: $theme-color;
+		line-height: 56px;
+	}
+	&__title{
+		font-size: 18px;
+		@include media-breakpoint-down(md){
+			font-size: 16px;
+		}
+	}
+	&__desc{
+		font-size: 14px;
+		font-family: $headings-font-family;
+		position: relative;
+		padding-top: 15px;
+		&:after{
+			content: '';
+			@include size(20px, 2px);
+			background: $black;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			transition: all 0.35s;
+		}
+	}
+	&__link{
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		@include size(100%, 100%);
+	}
+
+	&__single{
+		&:hover, &:focus, &:active{
+			box-shadow: 0px 6px 21px 3px rgba(0, 0, 0, 0.1); 
+			background: $theme-color;
+			border-color: $theme-color;
+			.service-one{
+				&__icon{
+					color: $white;
+				}
+				&__title{
+					color: $white;
+				}
+				&__desc{
+					color: $white;
+					&:after{
+						background: $white;
+						width: 45px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.service-two{
+	&__single{
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		background: none;
+		min-height: 170px;
+		padding: 30px;
+		margin-bottom: 30px;
+		margin-top: 10px;
+		@include transition(all 0.35s);
+		box-shadow: 6px 5px 15px 0px rgba(0, 0, 0, 0.06);
+		@include media-breakpoint-down(md){
+			padding: 30px 20px;
+		}
+	}
+	&__icon{
+		margin: 30px 0;
+		font-size: 56px;
+		color: $theme-color;
+		line-height: 56px;
+	}
+	&__title{
+		font-size: 18px;
+		color: $white;
+		@include media-breakpoint-down(md){
+			font-size: 16px;
+		}
+	}
+	&__desc{
+		font-size: 14px;
+		position: relative;
+		padding-top: 15px;
+		color: rgba(255, 255, 255, 0.6);
+		&:after{
+			content: '';
+			@include size(20px, 2px);
+			background: rgba(255, 255, 255, 0.8);
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			transition: all 0.35s;
+		}
+	}
+	&__link{
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		@include size(100%, 100%);
+	}
+	&__single{
+		&:hover, &:focus, &:active{
+			box-shadow: 0px 6px 21px 3px rgba(0, 0, 0, 0.1); 
+			background: $white;
+			border-color: $white;
+			.service-two{
+				&__title{
+					color: $headings-color;
+				}
+				&__desc{
+					color: $body-color;
+					&:after{
+						background: $theme-color;
+						width: 45px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.service-three{
+	&__single{
+		background: $white;
+		padding: 30px;
+		margin-bottom: 30px;
+		margin-top: 15px;
+		@include transition(all 0.35s);
+		box-shadow: 1px 5px 15px 0px rgba(0, 0, 0, 0.06);
+		text-align: center;
+		position: relative;
+		z-index: 1;
+		@include media-breakpoint-down(md){
+			padding: 30px 20px;
+		}
+		&:after{
+			position: absolute;
+    		content: "";
+    		top: 0;
+    		left: 0;
+    		right: 0;
+		 	height: 100%;
+		 	background-color: $theme-color;
+		 	transition: all 500ms ease;
+		 	opacity: 1;
+		 	transform-origin: bottom;
+		 	transform-style: preserve-3d;
+		 	transform: scaleY(0);
+		 	z-index: -1;
+		}
+	}
+	&__icon{
+		margin: 0 auto;
+		font-size: 62px;
+		color: $theme-color;
+		line-height: 62px;
+		width: 122px;
+		height: 122px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: $bg-gray;
+		border-radius: 50%;
+		position: relative;
+		z-index: 1;
+		transition: all 500ms ease;
+	   overflow: hidden;
+	}
+	&__title{
+		font-size: 20px;
+		color: $headings-color;
+		margin: 15px 0 10px;
+		transition: all 500ms ease;
+		@include media-breakpoint-down(md){
+			font-size: 18px;
+		}
+	}
+	&__desc{
+		font-size: 14px;
+		position: relative;
+		color: $body-color;
+		transition: all 500ms ease;
+	}
+	&__link{
+		font-size: 14px;
+		font-weight: 700;
+		padding: 8px 10px;
+		text-align: center;
+		background: $bg-gray;
+		width: 100%;
+		display: inline-block;
+		margin-top: 15px;
+	}
+	&__link-overlay{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 11;
+	}
+	&__single{
+		&:hover, &:focus, &:active{
+			box-shadow: 0px 6px 21px 3px rgba(0, 0, 0, 0.1); 
+			&:after{
+				opacity: 1;
+		    	transform: scaleY(1);
+			}
+			.service-three{
+				&__title{
+					color: $white;
+				}
+				&__icon{
+		    		transform: scale(0.86);
+		    		opacity: 0.9;
+					
+				}
+				&__desc{
+					color: rgba(255, 255, 255, 0.8);
+				}
+			}
+		}
+	}
+}
+
+.service-four{
+	&__single{
+		background: #100D17;
+		min-height: 190px;
+		padding: 40px 15px;
+		margin-bottom: 30px;
+		text-align: center;
+		@include transition(all 0.35s);
+		@include media-breakpoint-down(md){
+			padding: 30px 15px;
+		}
+	}
+	&__icon{
+		margin: 0 0 30px;
+		font-size: 62px;
+		color: $theme-color;
+		line-height: 1; 
+	}
+	&__title{
+		font-size: 16px;
+		color: $white;
+	}
+	&__desc{
+		font-size: 14px;
+		position: relative;
+		padding-top: 10px;
+		color: rgba(255, 255, 255, 0.6);
+	}
+	&__link{
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		@include size(100%, 100%);
+	}
+	&__single{
+		&:hover, &:focus, &:active{
+			box-shadow: 0px 6px 21px 3px rgba(0, 0, 0, 0.1); 
+			background: $theme-color;
+			.service-four{
+				&__icon{
+					color: $white;
+				}
+				
+				&__desc{
+					color: rgba(255, 255, 255, 0.8);
+				}
+			}
+		}
+	}
+}
+
+//Carousel Center
+.owl-carousel .owl-item.center{
+	.service-one{
+		&__single{
+			box-shadow: 0px 6px 21px 3px rgba(0, 0, 0, 0.1); 
+			background: $theme-color;
+			border-color: transparent;
+		}
+		&__icon{
+			color: $white;
+		}
+		&__title{
+			color: $white;
+		}
+		&__desc{
+			color: rgba(255, 255, 255, 0.8);
+			&:after{
+				background: $white;
+				width: 45px;
+			}
+		}
+	}
+	.service-two{
+		&__single{
+			box-shadow: 0px 6px 21px 3px rgba(0, 0, 0, 0.1); 
+			background: $white;
+			border-color: $white;
+			.service-two{
+				&__title{
+					color: $headings-color;
+				}
+				&__desc{
+					color: $body-color;
+					&:after{
+						background: $theme-color;
+						width: 45px;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+//Carousel Center
+.owl-carousel .owl-item.center{
+	.service-four{
+		&__single{
+			box-shadow: 0px 6px 21px 3px rgba(0, 0, 0, 0.1); 
+			background: $theme-color;
+		}
+		&__icon{
+			color: $white;
+		}
+		&__desc{
+			color: rgba(255, 255, 255, 0.8);
+		}
+	}
+}

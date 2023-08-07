@@ -1,0 +1,35 @@
+name: 'Notech Features'
+description: 'Notech Features - Import content type, field, view ... for Notech theme.'
+type: module
+core_version_requirement: '^9.4 || ^10'
+dependencies:
+  - block
+  - block_content
+  - comment
+  - contact
+  - datetime
+  - field
+  - file
+  - gavias_hook_themer
+  - gavias_view
+  - image
+  - imce
+  - language
+  - mailchimp_signup
+  - menu_ui
+  - node
+  - options
+  - path
+  - pathauto
+  - system
+  - taxonomy
+  - text
+  - user
+  - views
+  - views_infinite_scroll
+  - webform
+  - config_update
+  - features
+  - admin_toolbar
+  - ludwig
+version: '1.0.1'

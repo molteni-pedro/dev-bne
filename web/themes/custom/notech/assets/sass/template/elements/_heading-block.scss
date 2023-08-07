@@ -1,0 +1,144 @@
+.gsc-heading{
+	padding: 0 0 35px;
+	display: block;
+	width: 100%;
+	@include clearfix();
+	@media(max-width: 768.9px){
+	  padding: 0 0 30px;
+	}
+	&__title{
+	  	position: relative;
+	  	margin: 0;
+	  	letter-spacing: -0.5px;
+	  	font-size: 40px;
+	  	@include media-breakpoint-down(lg){
+		  	font-size: 36px;
+		}
+		@include media-breakpoint-down(md){
+		  	font-size: 32px;
+		}
+		@media(max-width: 768.9px){
+		  	font-size: 28px;
+		}
+	}
+	&__sub-title{
+		color: $theme-color;
+		font-size: 16px;
+		font-weight: 700;
+		margin-bottom: 5px;
+		font-family: $headings-font-family;
+		@include media-breakpoint-down(md){
+		  font-size: 14px;
+		}
+		> span{
+		  	padding: 0 0 0 15px;
+		  	position: relative;
+		  	&:after{
+			 	content: '';
+			 	@include size(5px, 5px);
+			 	background: $theme-color-second;
+			 	position: absolute;
+			 	border-radius: 50%;
+			 	top: 3px;
+			 	left: 0;
+			 	z-index: 1;
+		  	}
+		  	&:before{
+			 	content: '';
+			 	@include size(5px, 5px);
+			 	background: $theme-color-second;
+			 	position: absolute;
+			 	border-radius: 50%;
+			 	top: 11px;
+			 	left: 0;
+			 	z-index: 1;
+		  	}
+		}
+	}
+	&__desc{
+		margin: 25px 0 0;
+	}
+	&__action{
+	 	margin-top: 30px;
+	 	@include media-breakpoint-down(md){
+			margin-top: 15px;
+	 	}
+	}
+	&__align-center{
+	  	text-align: center;
+	  	margin: 0 auto;
+	  	.gsc-heading__desc{
+	  		margin: 15px 0 0;
+	  	}
+	}
+  	&__align-left{
+	 	text-align: left;
+	 	.gsc-heading__desc{
+			float: left; 
+	 	}
+ 	}
+  	&__align-right{
+	 	text-align: right;
+	 	float: right;
+	 	@include clearfix();
+	 	.gsc-heading__desc{
+			float: right;
+	 	}
+  	}
+}
+
+.style-2{
+	&.gsc-heading{
+		padding-bottom: 30px;
+	}
+	.gsc-heading{
+		&__sub-title{
+			color: $body-color;
+			margin: 0;
+			span{
+				padding: 0;
+				font-weight: 400;
+				font-size: 16px;
+				&:after, &:before{
+					display: none;
+				}
+			}
+		}
+		&__title{
+		  	position: relative;
+		  	margin: 0;
+		  	font-size: 18px;
+		  	line-height: 30px;
+		}
+		&__desc{
+			font-size: 16px;
+			margin-top: 28px;
+		}
+	}
+}
+
+.style-3{
+	&.gsc-heading{
+		padding-bottom: 30px;
+	}
+	.gsc-heading{
+		&__title{
+		  	position: relative;
+		  	margin: 0;
+		  	font-size: 68px;
+		  	line-height: 70px;
+		  	@media(max-width: 1024px){
+		  		font-size: 50px;
+		  		line-height: 55px;
+		  	}
+		  	@media(max-width: 992px){
+		  		font-size: 40px;
+		  		line-height: 45px;
+		  	}
+		}
+		&__desc{
+			font-size: 18px;
+			margin-top: 32px;
+		}
+	}
+}

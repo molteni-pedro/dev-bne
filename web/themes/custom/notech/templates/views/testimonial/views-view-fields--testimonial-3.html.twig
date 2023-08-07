@@ -1,0 +1,16 @@
+<article class="testimonial-three__single">      
+   <div class="testimonial-three__content">
+      <div class="testimonial-three__avatar">
+         {{ fields.field_testimonial_avatar.content }}
+         <span class="testimonial-three__quote-icon">&quot;</span>
+      </div>
+      <div class="testimonial-three__content-inner">
+         <div class="testimonial-three__quote">{{ fields.body.content|striptags|trim }}</div>  
+         <div class="testimonial-three__info">
+            <h3 class="testimonial-three__name">{{ fields.field_testimonial_name.content }}</h3>
+            <div class="testimonial-three__job">{{ fields.field_testimonial_job.content }}</div>   
+         </div>
+      </div>
+   </div>
+</article>
+  

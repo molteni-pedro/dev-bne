@@ -1,0 +1,14 @@
+# General settings.
+language_switcher_menu.settings:
+  type: config_object
+  label: 'Language Switcher Menu settings'
+  mapping:
+    type:
+      type: string
+      label: 'Language type'
+    parent:
+      type: string
+      label: 'Parent link'
+    weight:
+      type: integer
+      label: 'Weight'
