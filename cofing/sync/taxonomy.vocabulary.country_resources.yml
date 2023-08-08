@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 name: 'País Recursos'
 vid: country_resources
-description: ''
+description: 'Taxonomía relacionada a los recursos'
 weight: 0

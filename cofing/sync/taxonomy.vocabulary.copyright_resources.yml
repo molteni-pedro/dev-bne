@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 name: 'Derechos de autor Recursos'
 vid: copyright_resources
-description: ''
+description: 'Taxonomía relacionada a los recursos'
 weight: 0

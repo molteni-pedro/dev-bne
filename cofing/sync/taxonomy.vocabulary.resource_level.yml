@@ -1,8 +1,8 @@
-uuid: dd7a5744-7ec6-4114-9421-76bebea8e4bc
+uuid: f4fac688-08a5-4e59-80c1-dfe3160b0e21
 langcode: zxx
 status: true
 dependencies: {  }
-name: 'Colección recursos'
-vid: resource_collection
+name: 'Nivel Recursos'
+vid: resource_level
 description: 'Taxonomía relacionada a los recursos'
 weight: 0

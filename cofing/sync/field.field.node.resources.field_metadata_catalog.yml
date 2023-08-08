@@ -1,0 +1,29 @@
+uuid: 4b89579e-4637-4433-b9ba-58ab6f71cad9
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metadata_catalog
+    - node.type.resources
+    - taxonomy.vocabulary.metadatos_catalogo_recursos
+id: node.resources.field_metadata_catalog
+field_name: field_metadata_catalog
+entity_type: node
+bundle: resources
+label: 'Metadatos Catálogo'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      metadatos_catalogo_recursos: metadatos_catalogo_recursos
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

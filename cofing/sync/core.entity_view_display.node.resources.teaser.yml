@@ -6,14 +6,23 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.resources.body
     - field.field.node.resources.field_access_type
+    - field.field.node.resources.field_aggregation_level
     - field.field.node.resources.field_authors_resources
+    - field.field.node.resources.field_content_block
     - field.field.node.resources.field_copyright_resources
     - field.field.node.resources.field_country
+    - field.field.node.resources.field_language
+    - field.field.node.resources.field_metadata_catalog
     - field.field.node.resources.field_physical_description
     - field.field.node.resources.field_publication_1_year
     - field.field.node.resources.field_publication_2_year
     - field.field.node.resources.field_resource_collection
+    - field.field.node.resources.field_resource_level
+    - field.field.node.resources.field_resource_types
     - field.field.node.resources.field_restriction
+    - field.field.node.resources.field_subject_resources
+    - field.field.node.resources.field_topic
+    - field.field.node.resources.field_traceability
     - field.field.node.resources.field_url_bdh
     - field.field.node.resources.field_url_img_resources
     - field.field.node.resources.field_url_img_resources_h
@@ -42,14 +51,23 @@ content:
     region: content
 hidden:
   field_access_type: true
+  field_aggregation_level: true
   field_authors_resources: true
+  field_content_block: true
   field_copyright_resources: true
   field_country: true
+  field_language: true
+  field_metadata_catalog: true
   field_physical_description: true
   field_publication_1_year: true
   field_publication_2_year: true
   field_resource_collection: true
+  field_resource_level: true
+  field_resource_types: true
   field_restriction: true
+  field_subject_resources: true
+  field_topic: true
+  field_traceability: true
   field_url_bdh: true
   field_url_img_resources: true
   field_url_img_resources_h: true

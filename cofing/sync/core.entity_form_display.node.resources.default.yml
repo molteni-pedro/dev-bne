@@ -5,14 +5,23 @@ dependencies:
   config:
     - field.field.node.resources.body
     - field.field.node.resources.field_access_type
+    - field.field.node.resources.field_aggregation_level
     - field.field.node.resources.field_authors_resources
+    - field.field.node.resources.field_content_block
     - field.field.node.resources.field_copyright_resources
     - field.field.node.resources.field_country
+    - field.field.node.resources.field_language
+    - field.field.node.resources.field_metadata_catalog
     - field.field.node.resources.field_physical_description
     - field.field.node.resources.field_publication_1_year
     - field.field.node.resources.field_publication_2_year
     - field.field.node.resources.field_resource_collection
+    - field.field.node.resources.field_resource_level
+    - field.field.node.resources.field_resource_types
     - field.field.node.resources.field_restriction
+    - field.field.node.resources.field_subject_resources
+    - field.field.node.resources.field_topic
+    - field.field.node.resources.field_traceability
     - field.field.node.resources.field_url_bdh
     - field.field.node.resources.field_url_img_resources
     - field.field.node.resources.field_url_img_resources_h
@@ -49,9 +58,29 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_aggregation_level:
+    type: entity_reference_autocomplete
+    weight: 139
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_authors_resources:
     type: entity_reference_autocomplete
     weight: 123
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_content_block:
+    type: entity_reference_autocomplete
+    weight: 137
     region: content
     settings:
       match_operator: CONTAINS
@@ -72,6 +101,26 @@ content:
   field_country:
     type: entity_reference_autocomplete
     weight: 127
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_language:
+    type: entity_reference_autocomplete
+    weight: 141
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_metadata_catalog:
+    type: entity_reference_autocomplete
+    weight: 140
     region: content
     settings:
       match_operator: CONTAINS
@@ -113,9 +162,57 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_resource_level:
+    type: entity_reference_autocomplete
+    weight: 135
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_resource_types:
+    type: entity_reference_autocomplete
+    weight: 143
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_restriction:
     type: entity_reference_autocomplete
     weight: 132
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_subject_resources:
+    type: entity_reference_autocomplete
+    weight: 136
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_topic:
+    type: text_textarea
+    weight: 142
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_traceability:
+    type: entity_reference_autocomplete
+    weight: 138
     region: content
     settings:
       match_operator: CONTAINS

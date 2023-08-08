@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 name: 'Autores Recursos'
 vid: authors_resources
-description: ''
+description: 'Taxonomía relacionada a los recursos'
 weight: 0

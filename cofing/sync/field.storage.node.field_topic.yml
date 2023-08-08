@@ -1,0 +1,19 @@
+uuid: eda1258e-4292-4cc7-9021-44ac2c065ef1
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_topic
+field_name: field_topic
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

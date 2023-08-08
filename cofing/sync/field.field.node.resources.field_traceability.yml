@@ -1,0 +1,28 @@
+uuid: 5f2d17f0-1f10-4953-98a6-d742c818fc3f
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_traceability
+    - node.type.resources
+id: node.resources.field_traceability
+field_name: field_traceability
+entity_type: node
+bundle: resources
+label: Trazabilidad
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      resources: resources
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,11 @@
+uuid: c11e594e-ab80-4433-8436-ce702c41d24c
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.content_block_resources
+id: taxonomy_term.content_block_resources
+target_entity_type_id: taxonomy_term
+target_bundle: content_block_resources
+default_langcode: site_default
+language_alterable: false

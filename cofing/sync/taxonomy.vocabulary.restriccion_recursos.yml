@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 name: 'Restricción Recursos'
 vid: restriccion_recursos
-description: constraint_resources
+description: 'Taxonomía relacionada a los recursos'
 weight: 0

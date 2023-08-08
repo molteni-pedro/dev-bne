@@ -1,0 +1,11 @@
+uuid: f7f9aab8-bae0-4501-b4f2-eb67c0cdd45a
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.metadatos_catalogo_recursos
+id: taxonomy_term.metadatos_catalogo_recursos
+target_entity_type_id: taxonomy_term
+target_bundle: metadatos_catalogo_recursos
+default_langcode: site_default
+language_alterable: false

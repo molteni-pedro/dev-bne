@@ -5,14 +5,23 @@ dependencies:
   config:
     - field.field.node.resources.body
     - field.field.node.resources.field_access_type
+    - field.field.node.resources.field_aggregation_level
     - field.field.node.resources.field_authors_resources
+    - field.field.node.resources.field_content_block
     - field.field.node.resources.field_copyright_resources
     - field.field.node.resources.field_country
+    - field.field.node.resources.field_language
+    - field.field.node.resources.field_metadata_catalog
     - field.field.node.resources.field_physical_description
     - field.field.node.resources.field_publication_1_year
     - field.field.node.resources.field_publication_2_year
     - field.field.node.resources.field_resource_collection
+    - field.field.node.resources.field_resource_level
+    - field.field.node.resources.field_resource_types
     - field.field.node.resources.field_restriction
+    - field.field.node.resources.field_subject_resources
+    - field.field.node.resources.field_topic
+    - field.field.node.resources.field_traceability
     - field.field.node.resources.field_url_bdh
     - field.field.node.resources.field_url_img_resources
     - field.field.node.resources.field_url_img_resources_h
@@ -42,6 +51,14 @@ content:
     third_party_settings: {  }
     weight: 109
     region: content
+  field_aggregation_level:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 119
+    region: content
   field_authors_resources:
     type: entity_reference_label
     label: above
@@ -49,6 +66,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 103
+    region: content
+  field_content_block:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 117
     region: content
   field_copyright_resources:
     type: entity_reference_label
@@ -65,6 +90,22 @@ content:
       link: true
     third_party_settings: {  }
     weight: 107
+    region: content
+  field_language:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 121
+    region: content
+  field_metadata_catalog:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 120
     region: content
   field_physical_description:
     type: string
@@ -98,6 +139,22 @@ content:
     third_party_settings: {  }
     weight: 110
     region: content
+  field_resource_level:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 115
+    region: content
+  field_resource_types:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 123
+    region: content
   field_restriction:
     type: entity_reference_label
     label: above
@@ -105,6 +162,29 @@ content:
       link: true
     third_party_settings: {  }
     weight: 112
+    region: content
+  field_subject_resources:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 116
+    region: content
+  field_topic:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 122
+    region: content
+  field_traceability:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 118
     region: content
   field_url_bdh:
     type: link
