@@ -1,0 +1,16 @@
+node_types:
+  page: page
+  portfolio: portfolio
+  article: 0
+  course: 0
+  courses_landing_page: 0
+  courses_page: 0
+  event: 0
+  gallery: 0
+  location: 0
+  module_assessment: 0
+  module_lesson: 0
+  service: 0
+  team: 0
+  testimonial: 0
+gva_edit_save: disable

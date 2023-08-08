@@ -1,0 +1,60 @@
+uuid: 49f30881-964e-4eaf-93d7-d98acd51563a
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - anu_lms_assessments.assessment_question_result_type.short_answer
+    - field.field.assessment_question_result.short_answer.field_question_response
+  module:
+    - entity_reference_revisions
+    - options
+    - user
+_core:
+  default_config_hash: Wr2yEWRl-a7z3U7824RHUcpruB0BbX9oTEW1m8Dgyno
+id: assessment_question_result.short_answer.default
+targetEntityType: assessment_question_result
+bundle: short_answer
+mode: default
+content:
+  aqid:
+    label: hidden
+    type: entity_reference_revisions_entity_view
+    weight: 3
+    region: content
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  field_question_response:
+    weight: 4
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  is_correct:
+    type: list_default
+    weight: 1
+    region: content
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    label: hidden
+    type: string
+    weight: 0
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  user_id:
+    label: inline
+    type: author
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  arid: true
+  langcode: true

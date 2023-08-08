@@ -1,0 +1,122 @@
+label: 'Quiz results (individual)'
+description: 'Displays an individual user''s quiz submission results. Embedded programmatically.'
+display:
+  default:
+    display_title: Master
+    display_options:
+      fields:
+        user_id:
+          label: User
+          separator: ', '
+        aqid__target_revision_id:
+          label: Question
+          separator: ', '
+        rendered_entity:
+          label: Response
+        is_correct:
+          label: 'Is correct?'
+          separator: ', '
+        created:
+          label: Created
+          separator: ', '
+        operations:
+          label: 'Operations links'
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      empty:
+        area_text_custom:
+          content: 'There are no responses for this user yet.'
+  assessment_results_download:
+    display_title: 'Quiz reponses export per user'
+    display_options:
+      fields:
+        user_id:
+          label: User
+          separator: ', '
+        aqid__target_revision_id:
+          label: Question
+          separator: ', '
+        rendered_entity:
+          label: Response
+        is_correct:
+          label: 'Is correct?'
+          separator: ', '
+        created:
+          label: Created
+          separator: ', '
+      arguments:
+        aid:
+          exception:
+            title: All
+        arid:
+          exception:
+            title: All
+  assessment_results_embed:
+    display_title: 'Quiz responses'
+    display_options:
+      fields:
+        aid:
+          separator: ', '
+        arid:
+          separator: ', '
+        user_id:
+          label: User
+          separator: ', '
+        aqid__target_revision_id:
+          label: Question
+          separator: ', '
+        rendered_entity:
+          label: Response
+        is_correct:
+          label: 'Is correct?'
+          separator: ', '
+        created:
+          label: Created
+          separator: ', '
+        operations:
+          label: 'Operations links'
+      arguments:
+        arid:
+          exception:
+            title: All
+      header:
+        area_text_custom:
+          content: "<ul class=\"action-links\">\r\n  <li>\r\n    <a href=\"/node/{{ aid|striptags }}/assessment_results_download/{{ arid|striptags }}\" class=\"button button--primary\" data-drupal-link-system-path=\"/node/{{ aid|striptags }}/assessment_results_download/{{ arid|striptags }}\">Download results</a>\r\n  </li>\r\n</ul>"
+  assessments_results_download:
+    display_title: 'Quiz reponses export all'
+    display_options:
+      fields:
+        user_id:
+          label: User
+          separator: ', '
+        aqid__target_revision_id:
+          label: Question
+          separator: ', '
+        rendered_entity:
+          label: Response
+        is_correct:
+          label: 'Is correct?'
+          separator: ', '
+        created:
+          label: Created
+          separator: ', '
+      arguments:
+        aid:
+          exception:
+            title: All

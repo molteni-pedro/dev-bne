@@ -1,0 +1,22 @@
+uuid: 0967800f-8b37-4e4f-adc9-b718d23dc935
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.lesson_image_wide
+id: paragraph.lesson_image_wide.status
+field_name: status
+entity_type: paragraph
+bundle: lesson_image_wide
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

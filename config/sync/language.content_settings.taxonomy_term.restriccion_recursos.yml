@@ -1,0 +1,11 @@
+uuid: 7e96bae6-a7df-41b0-8596-cb2c4497538f
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.restriccion_recursos
+id: taxonomy_term.restriccion_recursos
+target_entity_type_id: taxonomy_term
+target_bundle: restriccion_recursos
+default_langcode: site_default
+language_alterable: false

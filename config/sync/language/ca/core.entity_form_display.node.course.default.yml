@@ -1,0 +1,15 @@
+third_party_settings:
+  field_group:
+    group_course_info:
+      label: Info
+    group_course_modules:
+      label: Mòduls
+    group_settings:
+      label: Paràmetres
+content:
+  field_course_finish_button:
+    settings:
+      placeholder_title: Acaba
+  field_course_module:
+    settings:
+      title: mòdul

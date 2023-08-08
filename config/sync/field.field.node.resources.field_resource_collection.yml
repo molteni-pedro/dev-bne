@@ -1,0 +1,29 @@
+uuid: bd5b520d-c965-465d-b1af-a35aebf75076
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resource_collection
+    - node.type.resources
+    - taxonomy.vocabulary.resource_collection
+id: node.resources.field_resource_collection
+field_name: field_resource_collection
+entity_type: node
+bundle: resources
+label: Colección
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      resource_collection: resource_collection
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

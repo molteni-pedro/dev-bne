@@ -1,0 +1,11 @@
+uuid: 4c3cf7c9-c0c9-4ed7-8864-0cf5c951d06a
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.resource_types
+id: taxonomy_term.resource_types
+target_entity_type_id: taxonomy_term
+target_bundle: resource_types
+default_langcode: zxx
+language_alterable: false

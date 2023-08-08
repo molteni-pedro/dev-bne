@@ -1,0 +1,24 @@
+uuid: 9d430631-7fed-4733-8fd1-f97d43574d33
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_access_type
+field_name: field_access_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: universal
+      label: Universal
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

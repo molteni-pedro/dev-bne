@@ -1,0 +1,20 @@
+uuid: 71f7f05f-9e85-45bc-9b1a-33e0d806e5c1
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.portfolio_tags
+  module:
+    - path
+id: taxonomy_term.portfolio_tags.path
+field_name: path
+entity_type: taxonomy_term
+bundle: portfolio_tags
+label: 'Alias de URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

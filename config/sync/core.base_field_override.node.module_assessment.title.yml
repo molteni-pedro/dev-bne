@@ -1,0 +1,18 @@
+uuid: 64a52608-8fa4-484f-b48d-226639f47395
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.module_assessment
+id: node.module_assessment.title
+field_name: title
+entity_type: node
+bundle: module_assessment
+label: Título
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,23 @@
+uuid: 26455be2-9985-4aaa-a441-3283b76fe182
+langcode: es
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: UDAe283Fuj0zTTv6kL_MVNcGfxj5FYXd7fdYMGLabaw
+id: node.field_testimonial_video
+field_name: field_testimonial_video
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

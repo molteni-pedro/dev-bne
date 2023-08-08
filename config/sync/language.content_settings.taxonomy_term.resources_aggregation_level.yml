@@ -1,0 +1,11 @@
+uuid: 9b007e36-50c4-4cf9-8691-5744454cd759
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.resources_aggregation_level
+id: taxonomy_term.resources_aggregation_level
+target_entity_type_id: taxonomy_term
+target_bundle: resources_aggregation_level
+default_langcode: site_default
+language_alterable: false

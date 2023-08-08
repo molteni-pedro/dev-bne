@@ -1,0 +1,25 @@
+uuid: 111428e2-c0fc-4d00-876b-e00b1ce0242a
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_lesson_img_list_highlight
+    - paragraphs.paragraphs_type.lesson_img_list
+_core:
+  default_config_hash: xP0T5Qxs7aJl4OHMBPVSNhyauL7Zh0CZmioklKWIJs4
+id: paragraph.lesson_img_list.field_lesson_img_list_highlight
+field_name: field_lesson_img_list_highlight
+entity_type: paragraph
+bundle: lesson_img_list
+label: 'Is highlighted?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

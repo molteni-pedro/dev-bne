@@ -1,0 +1,46 @@
+label: Event
+display:
+  default:
+    display_title: Master
+    display_options:
+      title: Event
+      fields:
+        title:
+          separator: ', '
+        body:
+          separator: ', '
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+  block_4:
+    display_title: 'Block List Events'
+    display_options:
+      pager:
+        options:
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Load More'
+  page_1:
+    display_title: 'Page All Events'
+    display_options:
+      pager:
+        options:
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset

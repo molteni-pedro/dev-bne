@@ -1,0 +1,28 @@
+uuid: bd0c9848-5134-4791-83ea-087e31ab4ee5
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_lesson_highlight_text
+    - paragraphs.paragraphs_type.lesson_highlight
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - minimal_html
+_core:
+  default_config_hash: WE1ErRuMEASFR2wb3RQa4Iam73tnxxM4wSbvXGIo0uc
+id: paragraph.lesson_highlight.field_lesson_highlight_text
+field_name: field_lesson_highlight_text
+entity_type: paragraph
+bundle: lesson_highlight
+label: Texto
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

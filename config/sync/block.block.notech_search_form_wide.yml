@@ -1,0 +1,23 @@
+uuid: 83b11983-f07f-447c-8e5d-024856f9643b
+langcode: es
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - notech
+_core:
+  default_config_hash: imMyHD6LYci0gtXq56qr9ZKGHzbEG9uFydrN5EhKtSU
+id: notech_search_form_wide
+theme: notech
+region: offcanvas
+weight: -5
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Formulario de búsqueda (ancho)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

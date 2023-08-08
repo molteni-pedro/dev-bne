@@ -1,0 +1,53 @@
+display:
+  default:
+    display_title: Master
+    display_options:
+      fields:
+        name:
+          separator: ', '
+        bundle:
+          label: Paquete
+          separator: ', '
+        status:
+          label: Estado
+          separator: ', '
+        uid:
+          separator: ', '
+        dropbutton:
+          label: Operacións
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Elementos por páxina'
+            items_per_page_options_all_label: '- Todo -'
+            offset_label: Desprazamento
+      exposed_form:
+        options:
+          submit_button: Aplicar
+          reset_button_label: Reiniciar
+          exposed_sorts_label: 'Ordenar por'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      arguments:
+        gid:
+          exception:
+            title: Todo
+      filters:
+        status:
+          expose:
+            label: Estado
+          group_info:
+            label: Estado
+            group_items:
+              1:
+                title: Publicado
+              2:
+                title: 'Non publicado'
+  page_1:
+    display_title: Páxina
+    display_options:
+      menu:
+        title: Medios

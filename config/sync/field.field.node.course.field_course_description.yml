@@ -1,0 +1,28 @@
+uuid: 9b39127c-fb1a-4761-945d-4848de7657da
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_course_description
+    - node.type.course
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - minimal_html
+_core:
+  default_config_hash: Cbo-KsVsuSXFuzzxdVC2lmIp-y6WjwFYVM1-B_IcEjA
+id: node.course.field_course_description
+field_name: field_course_description
+entity_type: node
+bundle: course
+label: Descripción
+description: 'High level overview of the course''s content.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

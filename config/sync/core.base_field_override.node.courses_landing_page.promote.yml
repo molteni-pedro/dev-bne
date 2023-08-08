@@ -1,0 +1,24 @@
+uuid: 489e4587-a61d-4044-b062-2dbeaea8e0ba
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.courses_landing_page
+_core:
+  default_config_hash: ffibrkhvgBkooRoN6po-CMxj9UG_RTEEOWP80e_IKhY
+id: node.courses_landing_page.promote
+field_name: promote
+entity_type: node
+bundle: courses_landing_page
+label: 'Promocionado a la página principal'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: 942091b3-f849-43b0-b796-9e54bc61e991
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.question_single_choice
+id: paragraph.question_single_choice.created
+field_name: created
+entity_type: paragraph
+bundle: question_single_choice
+label: 'Fecha de autoría'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

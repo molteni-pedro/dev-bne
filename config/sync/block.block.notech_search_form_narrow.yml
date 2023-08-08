@@ -1,0 +1,23 @@
+uuid: fe984b8d-81d4-46a3-8139-e4551cc067fb
+langcode: es
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - notech
+_core:
+  default_config_hash: yEBET0cqDbk8dkWzaJw-8CKft0961VBflsISoSR6Lj8
+id: notech_search_form_narrow
+theme: notech
+region: offcanvas
+weight: -4
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Formulario de búsqueda (estrecho)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

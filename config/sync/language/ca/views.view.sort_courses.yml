@@ -1,0 +1,21 @@
+display:
+  default:
+    display_title: Mestre
+    display_options:
+      fields:
+        title:
+          label: Títol
+          separator: ', '
+      exposed_form:
+        options:
+          submit_button: Aplica
+          reset_button_label: Reinicialitza
+          exposed_sorts_label: 'Ordena per'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      arguments:
+        field_course_category_target_id:
+          exception:
+            title: Tot
+  sort_page:
+    display_title: Pàgina

@@ -1,0 +1,18 @@
+uuid: 82838bb1-1615-4347-b385-0ad9f81e2e31
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.courses_page
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.courses_page
+target_entity_type_id: node
+target_bundle: courses_page
+default_langcode: site_default
+language_alterable: false

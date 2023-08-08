@@ -1,0 +1,13 @@
+uuid: a5d10f0c-c178-4876-b962-eadddcbc1741
+langcode: es
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Ja3tIOT-cnXApc9k_SSHfAlFCodVuvXAThQ8DzsNCAk
+name: 'Courses page [DEPRECATED]'
+type: courses_page
+description: 'Content page that aggregates and displays courses.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

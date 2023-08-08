@@ -1,0 +1,21 @@
+uuid: ff74914d-e84f-4c73-a436-ab8b8d8c246a
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_team_quote
+    - node.type.team
+_core:
+  default_config_hash: 5dx-787SbkCQh-O-AZ4rF6crB1spSDJfsj_-FrLsr-4
+id: node.team.field_team_quote
+field_name: field_team_quote
+entity_type: node
+bundle: team
+label: 'Team Quote'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

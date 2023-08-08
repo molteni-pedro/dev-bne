@@ -1,0 +1,8 @@
+uuid: afb95b3c-d65f-432c-921f-8e686d1b93c3
+langcode: zxx
+status: true
+dependencies: {  }
+name: 'Restricción Recursos'
+vid: restriccion_recursos
+description: 'Taxonomía relacionada a los recursos'
+weight: 0

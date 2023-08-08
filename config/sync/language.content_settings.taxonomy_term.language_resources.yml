@@ -1,0 +1,11 @@
+uuid: b1c720a8-4f1e-4d27-91a9-a369758db426
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.language_resources
+id: taxonomy_term.language_resources
+target_entity_type_id: taxonomy_term
+target_bundle: language_resources
+default_langcode: zxx
+language_alterable: false

@@ -1,0 +1,18 @@
+uuid: 1e97c8be-72a5-4fd4-a64e-e19ccc89ec9d
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.course_label
+id: taxonomy_term.course_label.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: course_label
+label: Modificado
+description: 'La fecha en que el término fue creado por última vez.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

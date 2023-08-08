@@ -1,0 +1,20 @@
+uuid: 5a139dea-ed2a-40b6-b542-47be99994203
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.courses_page
+id: node.courses_page.gva_pagebuilder_enable
+field_name: gva_pagebuilder_enable
+entity_type: node
+bundle: courses_page
+label: 'Enable/Display Page Builder'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: enable
+default_value_callback: ''
+settings: {  }
+field_type: string

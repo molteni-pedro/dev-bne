@@ -1,0 +1,22 @@
+uuid: 0bd3cef2-9257-43ec-bc50-aaf43c753eed
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.question_scale
+id: paragraph.question_scale.status
+field_name: status
+entity_type: paragraph
+bundle: question_scale
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

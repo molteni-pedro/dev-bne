@@ -1,0 +1,22 @@
+uuid: ce6ed579-a114-4a7c-b76c-2d7f11c6b705
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.courses_page
+id: node.courses_page.status
+field_name: status
+entity_type: node
+bundle: courses_page
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

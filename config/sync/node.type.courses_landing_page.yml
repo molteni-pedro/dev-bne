@@ -1,0 +1,13 @@
+uuid: 31b64488-d2ab-46ed-baeb-c6f0921181ff
+langcode: es
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: W2MbMgxAOXvaPBCYIWZqd0rvqCvyFbtlxHTTG0zOfuQ
+name: 'Courses page'
+type: courses_landing_page
+description: 'The page for displaying and filtering courses.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

@@ -1,0 +1,26 @@
+display:
+  default:
+    display_title: Master
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        body:
+          separator: ', '
+        field_location_image:
+          separator: ', '
+        field_location_map:
+          separator: ', '
+        nid:
+          separator: ', '
+        field_location_address:
+          separator: ', '
+        field_location_link:
+          separator: ', '
+      exposed_form:
+        options:
+          submit_button: Aplicar
+          reset_button_label: Reiniciar
+          exposed_sorts_label: 'Ordenar por'
+          sort_asc_label: Asc
+          sort_desc_label: Desc

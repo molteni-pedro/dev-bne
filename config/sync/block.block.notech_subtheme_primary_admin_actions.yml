@@ -1,0 +1,20 @@
+uuid: 7d5ac1e7-bb9b-4664-a97d-325b0de156d9
+langcode: es
+status: true
+dependencies:
+  theme:
+    - notech_subtheme
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: notech_subtheme_primary_admin_actions
+theme: notech_subtheme
+region: other
+weight: -8
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Acciones principales de administración'
+  label_display: '0'
+  provider: core
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: c7aeb52d-0759-4ead-b26c-7e1025055ccd
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.portfolio_tags
+id: taxonomy_term.portfolio_tags.status
+field_name: status
+entity_type: taxonomy_term
+bundle: portfolio_tags
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

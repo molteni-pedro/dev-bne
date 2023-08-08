@@ -1,0 +1,8 @@
+uuid: dd7a5744-7ec6-4114-9421-76bebea8e4bc
+langcode: zxx
+status: true
+dependencies: {  }
+name: 'Colección recursos'
+vid: resource_collection
+description: 'Taxonomía relacionada a los recursos'
+weight: 0

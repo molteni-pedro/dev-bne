@@ -1,0 +1,23 @@
+uuid: c2da7f8f-9e9e-4d78-a616-1e96046d4ef4
+langcode: es
+status: true
+dependencies:
+  module:
+    - paragraphs_browser
+    - paragraphs_selection
+third_party_settings:
+  paragraphs_selection:
+    fields:
+      -
+        id: paragraph.lesson_section.field_lesson_section_content
+        weight: -53
+  paragraphs_browser:
+    image_path: 'anu-lms://assets/highlight-marker.png'
+_core:
+  default_config_hash: Rnv34r9bGZLxfF97fUhHK57zypwQj9hMy1fZLcUxsa8
+id: lesson_highlight_marker
+label: 'Block: Highlighted text'
+icon_uuid: null
+icon_default: null
+description: 'Block with highlighted text.'
+behavior_plugins: {  }

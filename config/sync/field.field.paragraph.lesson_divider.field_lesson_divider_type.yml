@@ -1,0 +1,25 @@
+uuid: 2b4ab4f9-84b1-4d4b-8e52-47a3de04dcb6
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_lesson_divider_type
+    - paragraphs.paragraphs_type.lesson_divider
+  module:
+    - options
+_core:
+  default_config_hash: k78xDtX_5Kr_1ocA_9aAkcV1PLRNVido2dO_UiGmYlo
+id: paragraph.lesson_divider.field_lesson_divider_type
+field_name: field_lesson_divider_type
+entity_type: paragraph
+bundle: lesson_divider
+label: Tipo
+description: "Simple: a simple line visually dividing blocks.\r\nNumeric: a line with unique number of this divider, which visually divides blocks from each other."
+required: true
+translatable: false
+default_value:
+  -
+    value: simple
+default_value_callback: ''
+settings: {  }
+field_type: list_string

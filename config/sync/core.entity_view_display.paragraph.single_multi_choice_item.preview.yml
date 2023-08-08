@@ -1,0 +1,25 @@
+uuid: c2d9d92a-2635-4aaf-a87a-f65a3ba532db
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.single_multi_choice_item.field_single_multi_choice_right
+    - field.field.paragraph.single_multi_choice_item.field_single_multi_choice_value
+    - paragraphs.paragraphs_type.single_multi_choice_item
+_core:
+  default_config_hash: euDOhZ9URtvaIiBCz1654CieD1Z2ApHsLpJPi0Ck2bg
+id: paragraph.single_multi_choice_item.preview
+targetEntityType: paragraph
+bundle: single_multi_choice_item
+mode: preview
+content:
+  field_single_multi_choice_value:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+hidden:
+  field_single_multi_choice_right: true

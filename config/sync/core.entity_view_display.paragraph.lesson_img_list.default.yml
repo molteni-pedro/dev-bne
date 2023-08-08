@@ -1,0 +1,40 @@
+uuid: b650669a-b759-41f3-acbd-360f2b9bc40e
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.lesson_img_list.field_lesson_highlight_color
+    - field.field.paragraph.lesson_img_list.field_lesson_img_list_heading
+    - field.field.paragraph.lesson_img_list.field_lesson_img_list_highlight
+    - field.field.paragraph.lesson_img_list.field_lesson_img_list_items
+    - paragraphs.paragraphs_type.lesson_img_list
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: GYSh6vSMPRh4pa2i51vIy5-kgbkJYVo9TqyEkY0YcVM
+id: paragraph.lesson_img_list.default
+targetEntityType: paragraph
+bundle: lesson_img_list
+mode: default
+content:
+  field_lesson_img_list_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_lesson_img_list_items:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_lesson_highlight_color: true
+  field_lesson_img_list_highlight: true
+  search_api_excerpt: true

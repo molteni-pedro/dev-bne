@@ -1,0 +1,22 @@
+uuid: 1f606841-a365-4a1e-b81b-3700e848dc40
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.course_category
+  module:
+    - path
+_core:
+  default_config_hash: '-pese2ErqM-FAC0FW1K4aAUYLif-1qS8QDtgCVWF_Aw'
+id: taxonomy_term.course_category.path
+field_name: path
+entity_type: taxonomy_term
+bundle: course_category
+label: 'Alias de URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

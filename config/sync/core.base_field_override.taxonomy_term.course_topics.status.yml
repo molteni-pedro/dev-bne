@@ -1,0 +1,22 @@
+uuid: 3be81e21-fd71-45ad-a6d1-c4a5bab08329
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.course_topics
+id: taxonomy_term.course_topics.status
+field_name: status
+entity_type: taxonomy_term
+bundle: course_topics
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

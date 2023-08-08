@@ -1,0 +1,18 @@
+uuid: 8c743487-1cc9-497b-8fad-dc37d05c9b66
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.question_short_answer
+id: paragraph.question_short_answer.created
+field_name: created
+entity_type: paragraph
+bundle: question_short_answer
+label: 'Fecha de autoría'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

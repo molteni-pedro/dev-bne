@@ -1,0 +1,93 @@
+display:
+  default:
+    display_options:
+      fields:
+        user_id:
+          label: Erabiltzailea
+          separator: ', '
+        aqid__target_revision_id:
+          label: Galdera
+          separator: ', '
+        is_correct:
+          separator: ', '
+        created:
+          label: Sortua
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« Lehenengoa'
+            last: 'Azkena »'
+          expose:
+            items_per_page_label: 'Elementuak orriak'
+            items_per_page_options_all_label: '- Dena -'
+            offset_label: Desplazamendua
+      exposed_form:
+        options:
+          submit_button: Ezarri
+          reset_button_label: Garbitu
+          sort_asc_label: Goraka
+          sort_desc_label: Beheraka
+  assessment_results_download:
+    display_options:
+      fields:
+        user_id:
+          label: Erabiltzailea
+          separator: ', '
+        aqid__target_revision_id:
+          label: Galdera
+          separator: ', '
+        is_correct:
+          separator: ', '
+        created:
+          label: Sortua
+          separator: ', '
+      arguments:
+        aid:
+          exception:
+            title: Guztiak
+        arid:
+          exception:
+            title: Guztiak
+  assessment_results_embed:
+    display_options:
+      fields:
+        aid:
+          separator: ', '
+        arid:
+          separator: ', '
+        user_id:
+          label: Erabiltzailea
+          separator: ', '
+        aqid__target_revision_id:
+          label: Galdera
+          separator: ', '
+        is_correct:
+          separator: ', '
+        created:
+          label: Sortua
+          separator: ', '
+      arguments:
+        arid:
+          exception:
+            title: Guztiak
+  assessments_results_download:
+    display_options:
+      fields:
+        user_id:
+          label: Erabiltzailea
+          separator: ', '
+        aqid__target_revision_id:
+          label: Galdera
+          separator: ', '
+        is_correct:
+          separator: ', '
+        created:
+          label: Sortua
+          separator: ', '
+      arguments:
+        aid:
+          exception:
+            title: Guztiak

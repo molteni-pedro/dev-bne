@@ -1,0 +1,20 @@
+uuid: 2ec49d51-12dc-46f1-b9ad-679de82d6728
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.portfolio_tags
+  module:
+    - text
+id: taxonomy_term.portfolio_tags.description
+field_name: description
+entity_type: taxonomy_term
+bundle: portfolio_tags
+label: Descripción
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

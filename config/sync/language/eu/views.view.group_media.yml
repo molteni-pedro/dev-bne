@@ -1,0 +1,50 @@
+display:
+  default:
+    display_options:
+      fields:
+        name:
+          separator: ', '
+        bundle:
+          separator: ', '
+        status:
+          label: Egoera
+          separator: ', '
+        uid:
+          separator: ', '
+        dropbutton:
+          label: Eragiketak
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Elementuak orriak'
+            items_per_page_options_all_label: '- Dena -'
+            offset_label: Desplazamendua
+      exposed_form:
+        options:
+          submit_button: Ezarri
+          reset_button_label: Garbitu
+          sort_asc_label: Goraka
+          sort_desc_label: Beheraka
+      arguments:
+        gid:
+          exception:
+            title: Guztiak
+      filters:
+        status:
+          expose:
+            label: Egoera
+          group_info:
+            label: Egoera
+            group_items:
+              1:
+                title: Argitaratua
+              2:
+                title: 'Argitaratu gabe'
+  page_1:
+    display_title: Orria
+    display_options:
+      menu:
+        title: Media

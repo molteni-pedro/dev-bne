@@ -1,0 +1,116 @@
+display:
+  default:
+    display_title: Mestre
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_image:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '
+      exposed_form:
+        options:
+          submit_button: Aplica
+          reset_button_label: Reinicialitza
+          exposed_sorts_label: 'Ordena per'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+  block_1:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '
+  block_2:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '
+  block_3:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '
+  block_4:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: 'Següent ›'
+            previous: '‹ Anterior'
+          expose:
+            items_per_page_label: 'Elements per pàgina'
+            items_per_page_options_all_label: '- Tot -'
+            offset_label: Desplaçament
+  block_5:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: 'Següent ›'
+            previous: '‹ Anterior'
+          expose:
+            items_per_page_label: 'Elements per pàgina'
+            items_per_page_options_all_label: '- Tot -'
+            offset_label: Desplaçament
+  block_6:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_images:
+          separator: ', '
+        body:
+          separator: ', '
+        view_node:
+          text: mostra
+      arguments:
+        nid:
+          exception:
+            title: Tot
+  portfolio_carousel_filter:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '
+  portfolio_sildeset:
+    display_options:
+      fields:
+        title:
+          separator: ', '
+        field_portfolio_tags:
+          separator: ', '
+        body:
+          separator: ', '

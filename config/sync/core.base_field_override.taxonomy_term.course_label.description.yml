@@ -1,0 +1,22 @@
+uuid: c7c5980c-7202-4e68-b343-7d2752ea94c2
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.course_label
+  module:
+    - text
+_core:
+  default_config_hash: 1O-a1-7br0Y1Ocr0EGaqcOZNHyeK9N3VOoUMtJV9Las
+id: taxonomy_term.course_label.description
+field_name: description
+entity_type: taxonomy_term
+bundle: course_label
+label: Descripción
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

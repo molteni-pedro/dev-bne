@@ -1,0 +1,22 @@
+uuid: 2deafb5f-4551-457d-b3f5-6811f9b5005c
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.question_long_answer
+id: paragraph.question_long_answer.status
+field_name: status
+entity_type: paragraph
+bundle: question_long_answer
+label: Publicado
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Activado
+  off_label: Desactivado
+field_type: boolean

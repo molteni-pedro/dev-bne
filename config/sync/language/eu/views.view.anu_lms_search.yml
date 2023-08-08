@@ -1,0 +1,27 @@
+display:
+  default:
+    display_title: Lehenetsia
+    display_options:
+      title: Bilatu
+      fields:
+        title:
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« Lehenengoa'
+            last: 'Azkena »'
+          expose:
+            items_per_page_label: 'Elementuak orriak'
+            items_per_page_options_all_label: '- Dena -'
+            offset_label: Desplazamendua
+      exposed_form:
+        options:
+          submit_button: Ezarri
+          reset_button_label: Garbitu
+          sort_asc_label: Goraka
+          sort_desc_label: Beheraka
+  search_results_page:
+    display_title: Orria

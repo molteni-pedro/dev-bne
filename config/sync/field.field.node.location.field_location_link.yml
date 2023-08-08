@@ -1,0 +1,21 @@
+uuid: 81888495-0b91-449b-afdf-6a1e85f97b3f
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location_link
+    - node.type.location
+_core:
+  default_config_hash: rlHQkz0eoy5nVGLUuuD59YEPpdIZktKlu_Ocm03JAoY
+id: node.location.field_location_link
+field_name: field_location_link
+entity_type: node
+bundle: location
+label: 'Location Link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

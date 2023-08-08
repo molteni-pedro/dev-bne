@@ -1,0 +1,20 @@
+uuid: 3f588e37-e993-4855-81ea-02b8245baf17
+langcode: es
+status: true
+dependencies:
+  config:
+    - node.type.module_assessment
+  module:
+    - path
+id: node.module_assessment.path
+field_name: path
+entity_type: node
+bundle: module_assessment
+label: 'Alias de URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

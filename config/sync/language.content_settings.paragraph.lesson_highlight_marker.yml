@@ -1,0 +1,18 @@
+uuid: ce96982b-d053-4f73-b092-d365b3728a14
+langcode: es
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.lesson_highlight_marker
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.lesson_highlight_marker
+target_entity_type_id: paragraph
+target_bundle: lesson_highlight_marker
+default_langcode: site_default
+language_alterable: false

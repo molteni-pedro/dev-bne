@@ -1,0 +1,23 @@
+uuid: 2c33862e-3c4f-461c-89b5-c1858ab756af
+langcode: es
+status: true
+dependencies:
+  module:
+    - eck
+    - entity_reference_revisions
+    - paragraphs
+_core:
+  default_config_hash: ANBRIAqxc5_PQOiiJgaAprIQrm9hiyv1j3ELr5APHXI
+id: lesson_checklist_result.field_checklist_selected_options
+field_name: field_checklist_selected_options
+entity_type: lesson_checklist_result
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

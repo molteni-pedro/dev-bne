@@ -1,0 +1,23 @@
+uuid: b2bfdcff-8ced-4a2f-b55d-a92f4bb5f249
+langcode: es
+status: true
+dependencies:
+  module:
+    - paragraphs_browser
+    - paragraphs_selection
+third_party_settings:
+  paragraphs_selection:
+    fields:
+      -
+        id: paragraph.lesson_section.field_lesson_section_content
+        weight: -48
+  paragraphs_browser:
+    image_path: 'anu-lms://assets/list.png'
+_core:
+  default_config_hash: DwjBTpbpLJom9_QPSjF8KR78Koi9lL7yZx0zhkEFp2w
+id: lesson_list
+label: 'Block: List (bullets or numbers)'
+icon_uuid: null
+icon_default: null
+description: 'Block with bulleted or numbered list items.'
+behavior_plugins: {  }

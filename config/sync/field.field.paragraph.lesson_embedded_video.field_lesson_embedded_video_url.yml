@@ -1,0 +1,25 @@
+uuid: 11beb612-0840-47c1-a98b-9bbf2c3178fb
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_lesson_embedded_video_url
+    - paragraphs.paragraphs_type.lesson_embedded_video
+  module:
+    - link
+_core:
+  default_config_hash: YywIk8TspuERgW4Em83L6_hMn13GAzRaFWz4iyIfiPg
+id: paragraph.lesson_embedded_video.field_lesson_embedded_video_url
+field_name: field_lesson_embedded_video_url
+entity_type: paragraph
+bundle: lesson_embedded_video
+label: URL
+description: 'Youtube or Vimeo URL to the video.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

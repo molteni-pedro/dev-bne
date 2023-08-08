@@ -1,0 +1,21 @@
+uuid: dd2e71d3-6561-4a70-85b2-29d359ae4c2b
+langcode: es
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+_core:
+  default_config_hash: v6IxBoM2h4iV5y13ej7W6Zl7Yfxqg3U-l0hQt6Dk3xI
+id: paragraph.field_checkbox_option
+field_name: field_checkbox_option
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,8 @@
+uuid: 92a5d3fc-d63b-4a69-b6ce-ad3a50520fe7
+langcode: en-gb
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ED4WADNKaIYoyzGqLWMUp0iSWDHW9Ef9gCJSYgLcP3Q
+id: single_choice
+label: 'Single choice'

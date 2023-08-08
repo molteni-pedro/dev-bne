@@ -1,0 +1,58 @@
+label: 'Lesson questions responses'
+description: 'Displays a table with responses to questions of a lesson. Embedded programmatically.'
+display:
+  default:
+    display_title: Master
+    display_options:
+      fields:
+        aqid__target_id:
+          label: Question
+          separator: ', '
+        user_id:
+          label: 'Authored by'
+          separator: ', '
+        field_question_response:
+          label: Response
+          separator: ', '
+        field_question_response_long:
+          label: Response
+          separator: ', '
+        field_question_response_scale:
+          label: Response
+          separator: ', '
+        field_single_multi_choice:
+          label: Responses
+          separator: ', '
+        nothing:
+          label: Response
+          alter:
+            text: '{{ field_question_response }}{{ field_question_response_long }}{{ field_question_response_scale }}{{ field_single_multi_choice }}'
+        is_correct:
+          label: 'Is correct?'
+          separator: ', '
+        created:
+          label: 'Submitted on'
+          separator: ', '
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: 'Reset filters'
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      empty:
+        area:
+          content:
+            value: 'No responses to the questions yet.'
+      arguments:
+        aqid__target_id:
+          exception:
+            title: All
+        'null':
+          exception:
+            title: All
+      header:
+        area_text_custom:
+          content: "<ul class=\"action-links\">\r\n  <li>\r\n    <a href=\"/node/{{ raw_arguments.null }}/questions_results_download\" class=\"button button--primary\" data-drupal-link-system-path=\"/node/{{ raw_arguments.null }}/questions_results_download\">Download results</a>\r\n  </li>\r\n</ul>"
+  lesson_questions_responses_embed:
+    display_title: Embed

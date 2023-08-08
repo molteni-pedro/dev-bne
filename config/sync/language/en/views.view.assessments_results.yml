@@ -1,0 +1,60 @@
+label: 'Quiz results'
+description: 'Displays a table with users who submitted responses to an individual quiz. Embedded programmatically.'
+display:
+  default:
+    display_title: Master
+    display_options:
+      fields:
+        id:
+          separator: ', '
+        aid:
+          label: Assessment
+          separator: ', '
+        user_id:
+          label: User
+          separator: ', '
+        created:
+          label: 'Submitted on'
+          separator: ', '
+        nothing:
+          admin_label: 'Link to view'
+          alter:
+            text: '<a href="/node/{{ aid }}/assessment_results/{{ id }}">View results</a>'
+        nothing_1:
+          admin_label: 'Link to download'
+          alter:
+            text: '<a href="/node/{{ aid }}/assessment_results_download/{{ id }}">Download results</a>'
+        dropbutton:
+          admin_label: Links
+          label: Links
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      empty:
+        area_text_custom:
+          content: 'The current quiz does not have any submissions yet.'
+      arguments:
+        aid:
+          exception:
+            title: All
+      header:
+        area_text_custom:
+          admin_label: 'Download results button'
+          content: "<ul class=\"action-links\">\r\n  <li>\r\n    <a href=\"/node/{{ aid|striptags }}/assessment_results_download\" class=\"button button--primary\" data-drupal-link-system-path=\"/node/{{ aid|striptags }}/assessment_results_download\">Download results</a>\r\n  </li>\r\n</ul>"
+  assessments_results_embed:
+    display_title: Embed

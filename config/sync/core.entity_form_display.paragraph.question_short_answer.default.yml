@@ -1,0 +1,32 @@
+uuid: ddf36d8d-91dd-411d-b1ed-7a54b1b6286c
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.question_short_answer.field_question
+    - paragraphs.paragraphs_type.question_short_answer
+  module:
+    - inline_entity_form
+_core:
+  default_config_hash: 5tdlbl593ws2pNbB5on66WYpy_AA2mbLq_nBi5o7oq8
+id: paragraph.question_short_answer.default
+targetEntityType: paragraph
+bundle: question_short_answer
+mode: default
+content:
+  field_question:
+    type: inline_entity_form_simple
+    weight: 0
+    region: content
+    settings:
+      form_mode: default
+      label_singular: ''
+      label_plural: ''
+      revision: false
+      override_labels: false
+      collapsible: false
+      collapsed: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

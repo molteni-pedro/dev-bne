@@ -1,0 +1,22 @@
+uuid: 27809133-eac8-442d-973a-ba1f050cd518
+langcode: es
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - notech
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: notech_content
+theme: notech
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Contenido principal de la página'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,46 @@
+uuid: 19f2b18f-4b32-4d03-b983-d461bbe49fa7
+langcode: en-gb
+status: true
+dependencies:
+  config:
+    - anu_lms_assessments.assessment_question_type.scale
+    - field.field.assessment_question.scale.field_scale
+    - field.field.assessment_question.scale.field_scale_correct
+  module:
+    - range
+_core:
+  default_config_hash: odwyo0sqBKe216iH6IlP6yivKbb40wA0YlA1y0r7d3A
+id: assessment_question.scale.default
+targetEntityType: assessment_question
+bundle: scale
+mode: default
+content:
+  field_scale:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: range
+    region: content
+  field_scale_correct:
+    weight: 4
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

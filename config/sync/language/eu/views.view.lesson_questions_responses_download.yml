@@ -1,0 +1,41 @@
+display:
+  default:
+    display_options:
+      fields:
+        aqid__target_id:
+          label: Galdera
+          separator: ', '
+        user_id:
+          label: 'Honek egina:'
+          separator: ', '
+        field_question_response:
+          separator: ', '
+        field_question_response_long:
+          separator: ', '
+        field_question_response_scale:
+          separator: ', '
+        field_single_multi_choice:
+          separator: ', '
+        is_correct:
+          separator: ', '
+        created:
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Elementuak orriak'
+            items_per_page_options_all_label: '- Dena -'
+            offset_label: Desplazamendua
+      exposed_form:
+        options:
+          submit_button: Ezarri
+          reset_button_label: Garbitu
+          sort_asc_label: Goraka
+          sort_desc_label: Beheraka
+      arguments:
+        nid:
+          exception:
+            title: Guztiak

@@ -1,0 +1,25 @@
+uuid: bce0a4a2-02fe-423b-9c6e-5eb236f87ff8
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.gallery
+  module:
+    - text
+_core:
+  default_config_hash: ksf32FFMEWACrRl9hqZfVqbBVe7VrcqrQHc00ndx2U4
+id: node.gallery.body
+field_name: body
+entity_type: node
+bundle: gallery
+label: Cuerpo
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

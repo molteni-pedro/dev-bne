@@ -1,0 +1,99 @@
+display:
+  default:
+    display_title: Mestre
+    display_options:
+      fields:
+        user_id:
+          label: Usuari
+          separator: ', '
+        aqid__target_revision_id:
+          label: Pregunta
+          separator: ', '
+        is_correct:
+          separator: ', '
+        created:
+          label: Creat
+          separator: ', '
+        operations:
+          label: 'Enllaços d''operacions'
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« Primer'
+            last: 'Últim »'
+          expose:
+            items_per_page_label: 'Elements per pàgina'
+            items_per_page_options_all_label: '- Tot -'
+            offset_label: Desplaçament
+      exposed_form:
+        options:
+          submit_button: Aplica
+          reset_button_label: Reinicialitza
+          exposed_sorts_label: 'Ordena per'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+  assessment_results_download:
+    display_options:
+      fields:
+        user_id:
+          label: Usuari
+          separator: ', '
+        aqid__target_revision_id:
+          label: Pregunta
+          separator: ', '
+        is_correct:
+          separator: ', '
+        created:
+          label: Creat
+          separator: ', '
+      arguments:
+        aid:
+          exception:
+            title: Tot
+        arid:
+          exception:
+            title: Tot
+  assessment_results_embed:
+    display_options:
+      fields:
+        aid:
+          separator: ', '
+        arid:
+          separator: ', '
+        user_id:
+          label: Usuari
+          separator: ', '
+        aqid__target_revision_id:
+          label: Pregunta
+          separator: ', '
+        is_correct:
+          separator: ', '
+        created:
+          label: Creat
+          separator: ', '
+        operations:
+          label: 'Enllaços d''operacions'
+      arguments:
+        arid:
+          exception:
+            title: Tot
+  assessments_results_download:
+    display_options:
+      fields:
+        user_id:
+          label: Usuari
+          separator: ', '
+        aqid__target_revision_id:
+          label: Pregunta
+          separator: ', '
+        is_correct:
+          separator: ', '
+        created:
+          label: Creat
+          separator: ', '
+      arguments:
+        aid:
+          exception:
+            title: Tot
