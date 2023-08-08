@@ -1,0 +1,257 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+    font-family: 'learning_curveregular';
+    src: url('learningcurve-webfont.woff2') format('woff2'),
+         url('learningcurve-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+	font-family: 'Gotham';
+	src: url('Gotham-Medium.eot');
+	src: url('Gotham-Medium.eot?#iefix') format('embedded-opentype'),
+		url('Gotham-Medium.woff') format('woff'),
+		url('Gotham-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+@font-face {
+    font-family: 'walburnregular';
+    src: url('walburn-webfont.woff2') format('woff2'),
+         url('walburn-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body{
+	font-family: 'Gotham';
+	color:#555;
+	background-color:#fff;
+	overflow-y: scroll;
+	}
+header	{
+	width:100%;
+	height:150px;
+	background-color:#f1f2f4;
+	}
+a, a:hover, a:active, a:focus {
+  outline: 0;
+}
+.menulateral{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	top: 0;
+	border-right:solid #aaa thin;
+	width:20%;
+	min-height:800px;
+	background-color:#fff;
+}
+
+.menulateral img{
+	height: 140px;
+	width: auto;
+}
+
+.cont_global{
+	float: left;;
+	width:80%;
+	min-height:600px;
+	margin-left: 20%;
+	}
+
+.container.gris{
+	background-color:#f1f2f4;
+	text-align:center;
+	width:100%;
+	border-bottom:solid #aaa thin;
+	padding: 0;
+}
+.cambios{
+	border:none;
+	width:100%;
+	margin:0 auto;
+	padding:20px 50px;
+	display:flex;
+	align-items: center;
+	}
+.cambios h1{
+	font-family: 'walburnregular';
+	font-size:31px;
+	line-height:31px;
+	color:#000;
+	width: calc(100% - 200px);
+	text-align:left;
+	}
+.cambios img{
+	width: 200px;
+	height: auto;
+}
+.editor{
+	border:none;
+	width:80%;
+	margin:0 auto;
+	padding:0px;
+	border-style:ridge;
+	border:none;
+	padding:40px 50px;
+}
+
+.editor h4{
+	border-bottom: 1px dotted #aaa;
+	font-size: 18px;
+	margin-bottom: 25px;
+}
+ul.bloque_menu{
+	padding:50px;
+	}
+ul.bloque_menu li{
+	padding-bottom:20px;
+	list-style:none;
+	}
+ul.bloque_menu li a{
+	font-family: 'Gotham';
+	color:#afafaf;
+	text-decoration:none;
+	font-size:16px;
+	display:flex;
+	}
+ul.bloque_menu li a:hover{
+	color:#067dba;
+	}
+.grande{
+	font-size:30px;
+	padding-right:19px;
+	}
+.azul{
+	color:#067dba;
+	padding:10px 30px;
+	font-size:35px;
+	}
+.azul:hover{
+	color:#ccc !important;
+	}
+.indice{
+	color:#067dba;
+	font-size:20px;
+	width: 70px;
+	}
+.centrar{
+	text-align:center;
+	margin:0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	}
+footer{
+	margin:0 auto;
+	padding:0px;
+	position: fixed;
+	bottom: 0;
+	left: calc(20% + 1px);
+	right: 0;
+	background-color: #FFF;
+	border-top: 1px solid #ddd;
+	}
+
+.recurso-datos{
+	margin-top: 40px;
+	padding: 20px 20px 20px 30px;
+}
+
+.recurso-datos > img{
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	margin-bottom: 20px;
+}
+
+.recurso-datos > a{
+	display: block;
+	font-size: 15px;
+	margin-bottom: 5px;
+	padding:5px 0;
+	text-align: left;
+	border-bottom: 1px solid #cfcfcf;
+	color:#069ed0;
+	font-weight: bold;
+}
+
+.recurso-datos > a:hover{
+	color:#069ed0;
+	border-bottom: 1px solid #069ed0;
+}
+
+.recurso-datos > a i{
+	margin-right: 5px;
+}
+
+.recurso-datos ul{
+	margin-top: 30px;
+	margin-left: 0;
+	padding: 0;
+}
+
+.recurso-datos li{
+	border:none !important;
+	padding: 2px 0 !important;
+	text-align: left;
+	font-size: 13px;
+	margin-bottom: 10px;
+	list-style: none;
+}
+
+.recurso-datos li span{
+	color:#605b55;
+	font-weight: bold;
+}
+
+.nav-pills li{
+	border:none;
+}
+.nav-pills li a{
+	color: #0688c5;
+	border:1px solid #0688c5;
+}
+.nav-pills li.active a{
+	color: #fff;
+	background-color: #0688c5;
+}
+.tab-pane{
+	padding: 20px;
+}
+.nivel-detalle{
+	color: #50c4fa;
+	font-weight: bold;
+	margin-bottom: 10px;
+	text-align: left;
+	font-size: 14px;
+}
+
+.nivel-detalle div{
+	margin-left: 25px;
+	text-align: justify;
+}
+
+.asig-detalle{
+	font-weight: normal;
+	color: #4a4a4a;
+}
+.asig-detalle > div{
+	color: #4a4a4a;
+	margin-bottom: 5px;
+	border:1px solid transparent;
+	padding: 5px;
+	border-radius: 4px;
+}
+
+.asig-detalle > div:hover{
+	border:1px solid #ddd;
+}
+
+.asig-detalle > div > div{
+	color: #777;
+}

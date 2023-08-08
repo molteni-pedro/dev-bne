@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This is a Reload version 2.5.5 SCORM 1.2 Content Package document-->
+<!--Spawned from the Reload Content Package Generator - http://www.reload.ac.uk-->
+<manifest xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" identifier="MANIFEST-057FDFF938215D4CBC5009A2DBA5DE1F" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <organizations default="ORG-EF60788A6D806ABC02EEB547B3F21653">
+    <organization identifier="ORG-EF60788A6D806ABC02EEB547B3F21653" structure="hierarchical">
+      <title>Guía Didáctica</title>
+      <item identifier="ITEM-1" identifierref="RES-index" isvisible="true">
+        <title>Vista Principal</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="RES-index" type="webcontent" href="index.html" adlcp:scormtype="sco">
+      <file href="index.html" />
+      <file href="css/estilo.css" />
+    </resource>
+  </resources>
+</manifest>
+

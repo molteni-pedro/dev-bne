@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="fontawesome/css/fontawesome.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/estilo.css" />
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>	
+
+	<title>Recurso - BNEscolar</title>
+
+</head>
+
+<body>
+
+	<div class="menulateral"> 
+		<img src="imgs/logo_secuencia.png" class="center-block img-responsive">
+		$$datosizquierda$$
+	</div>
+
+	<div class="cont_global"> 
+		<div class="container gris" >
+			<div class="cambios">
+				<h1>$$nombrerecurso$$</h1>
+				<img src="imgs/logobiblioteca-03-03.svg">
+			</div>
+		</div>
+
+		<div class="container editor" >
+			$$datosrecurso$$
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			/*
+			$('.container.editor').eq(0).css("display","block");
+			var index = 0;
+			var total = $('.container.editor').length;
+
+			$('.indice').html((index + 1) + " - " + total);
+
+			$('.fa-chevron-right').click(function(){
+				if(index < (total-1)){
+					$('.container.editor').css("display","none");
+					index = index + 1;
+					$('.container.editor').eq(index).css("display","block");
+					$('.indice').html((index + 1) + " - " + total);
+					window.scrollTo(0, 0);
+				}
+			});
+
+			$('.fa-chevron-left').click(function(){
+				if(index > 0){
+					$('.container.editor').css("display","none");
+					index = index - 1;
+					$('.container.editor').eq(index).css("display","block");
+					$('.indice').html((index + 1) + " - " + total);
+					window.scrollTo(0, 0);
+				}
+			});
+			*/
+
+		});
+	</script>
+
+</body>
+</html>
