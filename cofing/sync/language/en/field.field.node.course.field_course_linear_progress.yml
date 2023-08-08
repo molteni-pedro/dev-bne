@@ -1,5 +1,0 @@
-label: 'Enable linear progress'
-description: 'Users will be able to see the next lesson only once they''ve completed the previous lesson.'
-settings:
-  on_label: 'On'
-  off_label: 'Off'

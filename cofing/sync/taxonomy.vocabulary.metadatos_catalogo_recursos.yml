@@ -1,8 +1,0 @@
-uuid: a5ec4dbb-7b4f-426d-9464-825316d80257
-langcode: zxx
-status: true
-dependencies: {  }
-name: 'Metadatos Catálogo Recursos'
-vid: metadatos_catalogo_recursos
-description: 'Taxonomía relacionada a los recursos'
-weight: 0

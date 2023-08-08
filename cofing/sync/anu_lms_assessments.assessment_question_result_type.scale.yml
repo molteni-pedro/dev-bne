@@ -1,8 +1,0 @@
-uuid: 624cfff5-e039-45f2-a09c-f8524091ed5e
-langcode: en-gb
-status: true
-dependencies: {  }
-_core:
-  default_config_hash: NiyfJFKvE1BQZSociyM3yCXBR15sEgrKTABMmgqU8C0
-id: scale
-label: Scale

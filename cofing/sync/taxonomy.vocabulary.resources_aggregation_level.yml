@@ -1,8 +1,0 @@
-uuid: e2d9aed8-13bf-4855-905d-5fb74c57c1f6
-langcode: zxx
-status: true
-dependencies: {  }
-name: 'Nivel agregación Recursos'
-vid: resources_aggregation_level
-description: 'Taxonomía relacionada a los recursos'
-weight: 0

@@ -1,8 +1,0 @@
-uuid: ad18d360-c080-4df3-a9cb-080ba26fd5ae
-langcode: en-gb
-status: true
-dependencies: {  }
-_core:
-  default_config_hash: ED4WADNKaIYoyzGqLWMUp0iSWDHW9Ef9gCJSYgLcP3Q
-id: single_choice
-label: 'Single choice'

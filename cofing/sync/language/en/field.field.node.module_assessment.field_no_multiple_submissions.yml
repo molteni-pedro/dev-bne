@@ -1,5 +1,0 @@
-label: 'Prevent multiple submissions'
-description: 'Select to prevent users from submitting the quiz more than once.'
-settings:
-  on_label: 'On'
-  off_label: 'Off'

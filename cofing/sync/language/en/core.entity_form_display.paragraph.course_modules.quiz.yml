@@ -1,9 +1,0 @@
-content:
-  field_module_assessment:
-    settings:
-      label_singular: quiz
-      label_plural: quizzes
-  field_module_lessons:
-    settings:
-      label_singular: lesson
-      label_plural: lessons

@@ -1,8 +1,0 @@
-uuid: f4fac688-08a5-4e59-80c1-dfe3160b0e21
-langcode: zxx
-status: true
-dependencies: {  }
-name: 'Nivel Recursos'
-vid: resource_level
-description: 'Taxonomía relacionada a los recursos'
-weight: 0

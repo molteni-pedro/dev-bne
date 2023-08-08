@@ -1,6 +1,0 @@
-settings:
-  allowed_values:
-    2:
-      label: Video
-    3:
-      label: Audio

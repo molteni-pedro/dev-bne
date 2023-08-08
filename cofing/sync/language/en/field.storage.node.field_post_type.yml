@@ -1,8 +1,0 @@
-settings:
-  allowed_values:
-    -
-      label: Featured
-    -
-      label: Hot
-    -
-      label: Recommended

@@ -1,8 +1,0 @@
-uuid: b5b02e68-7700-4cc7-a295-191d46f421dd
-langcode: en-gb
-status: true
-dependencies: {  }
-_core:
-  default_config_hash: EgYfUO1LVNo21jfIYGgb1efkMFwwTBhLVWtwxe5OevM
-id: multiple_choice
-label: 'Multiple choice'

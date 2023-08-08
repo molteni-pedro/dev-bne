@@ -1,8 +1,0 @@
-uuid: 80a6c153-371a-48e6-8465-0b5537e3ca65
-langcode: zxx
-status: true
-dependencies: {  }
-name: 'Asignatura Recursos'
-vid: subject_resources
-description: 'Taxonomía relacionada a los recursos'
-weight: 0

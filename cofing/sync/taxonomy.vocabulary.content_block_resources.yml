@@ -1,8 +1,0 @@
-uuid: f71282a1-c6c3-4e3b-af4f-71cb646b5f0b
-langcode: zxx
-status: true
-dependencies: {  }
-name: 'Bloque de Contenido Recursos'
-vid: content_block_resources
-description: 'Taxonomía relacionada a los recursos'
-weight: 0

@@ -1,8 +1,0 @@
-uuid: 3023f222-cfaa-4381-a596-675e9dfcfd15
-langcode: zxx
-status: true
-dependencies: {  }
-name: 'Derechos de autor Recursos'
-vid: copyright_resources
-description: 'Taxonomía relacionada a los recursos'
-weight: 0

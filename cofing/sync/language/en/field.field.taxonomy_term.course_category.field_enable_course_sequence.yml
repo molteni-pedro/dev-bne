@@ -1,4 +1,0 @@
-label: 'Courses should be completed sequentially in order of weight'
-settings:
-  on_label: 'On'
-  off_label: 'Off'

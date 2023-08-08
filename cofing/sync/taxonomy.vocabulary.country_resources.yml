@@ -1,8 +1,0 @@
-uuid: e56de31f-990a-43cd-97bc-829e82db3f1c
-langcode: zxx
-status: true
-dependencies: {  }
-name: 'País Recursos'
-vid: country_resources
-description: 'Taxonomía relacionada a los recursos'
-weight: 0

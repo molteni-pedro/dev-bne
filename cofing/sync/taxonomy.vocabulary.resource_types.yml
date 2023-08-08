@@ -1,8 +1,0 @@
-uuid: 3e37ff7d-1170-449d-aee6-06a66b2a9927
-langcode: zxx
-status: true
-dependencies: {  }
-name: 'Tipos de recursos'
-vid: resource_types
-description: ''
-weight: 0
