@@ -1,0 +1,11 @@
+uuid: 983fbc9a-298f-4823-9c5b-9a88a7a5a361
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.country_resources
+id: taxonomy_term.country_resources
+target_entity_type_id: taxonomy_term
+target_bundle: country_resources
+default_langcode: site_default
+language_alterable: false

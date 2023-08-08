@@ -6,12 +6,17 @@ dependencies:
     - field.storage.node.body
     - node.type.resources
   module:
+    - allowed_formats
     - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - full_html
 id: node.resources.body
 field_name: body
 entity_type: node
 bundle: resources
-label: Body
+label: Descripción
 description: ''
 required: false
 translatable: true

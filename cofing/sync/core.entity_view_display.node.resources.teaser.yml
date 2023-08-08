@@ -5,6 +5,19 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.resources.body
+    - field.field.node.resources.field_access_type
+    - field.field.node.resources.field_authors_resources
+    - field.field.node.resources.field_copyright_resources
+    - field.field.node.resources.field_country
+    - field.field.node.resources.field_physical_description
+    - field.field.node.resources.field_publication_1_year
+    - field.field.node.resources.field_publication_2_year
+    - field.field.node.resources.field_resource_collection
+    - field.field.node.resources.field_restriction
+    - field.field.node.resources.field_url_bdh
+    - field.field.node.resources.field_url_img_resources
+    - field.field.node.resources.field_url_img_resources_h
+    - field.field.node.resources.field_url_resources
     - node.type.resources
   module:
     - text
@@ -28,5 +41,18 @@ content:
     weight: 100
     region: content
 hidden:
+  field_access_type: true
+  field_authors_resources: true
+  field_copyright_resources: true
+  field_country: true
+  field_physical_description: true
+  field_publication_1_year: true
+  field_publication_2_year: true
+  field_resource_collection: true
+  field_restriction: true
+  field_url_bdh: true
+  field_url_img_resources: true
+  field_url_img_resources_h: true
+  field_url_resources: true
   langcode: true
   search_api_excerpt: true

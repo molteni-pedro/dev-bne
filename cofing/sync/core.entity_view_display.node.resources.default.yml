@@ -4,8 +4,23 @@ status: true
 dependencies:
   config:
     - field.field.node.resources.body
+    - field.field.node.resources.field_access_type
+    - field.field.node.resources.field_authors_resources
+    - field.field.node.resources.field_copyright_resources
+    - field.field.node.resources.field_country
+    - field.field.node.resources.field_physical_description
+    - field.field.node.resources.field_publication_1_year
+    - field.field.node.resources.field_publication_2_year
+    - field.field.node.resources.field_resource_collection
+    - field.field.node.resources.field_restriction
+    - field.field.node.resources.field_url_bdh
+    - field.field.node.resources.field_url_img_resources
+    - field.field.node.resources.field_url_img_resources_h
+    - field.field.node.resources.field_url_resources
     - node.type.resources
   module:
+    - link
+    - options
     - text
     - user
 id: node.resources.default
@@ -19,6 +34,125 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_access_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_authors_resources:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_copyright_resources:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 111
+    region: content
+  field_country:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_physical_description:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_publication_1_year:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_publication_2_year:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_resource_collection:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  field_restriction:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 112
+    region: content
+  field_url_bdh:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_url_img_resources:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 113
+    region: content
+  field_url_img_resources_h:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 114
+    region: content
+  field_url_resources:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 108
     region: content
   links:
     settings: {  }

@@ -4,8 +4,22 @@ status: true
 dependencies:
   config:
     - field.field.node.resources.body
+    - field.field.node.resources.field_access_type
+    - field.field.node.resources.field_authors_resources
+    - field.field.node.resources.field_copyright_resources
+    - field.field.node.resources.field_country
+    - field.field.node.resources.field_physical_description
+    - field.field.node.resources.field_publication_1_year
+    - field.field.node.resources.field_publication_2_year
+    - field.field.node.resources.field_resource_collection
+    - field.field.node.resources.field_restriction
+    - field.field.node.resources.field_url_bdh
+    - field.field.node.resources.field_url_img_resources
+    - field.field.node.resources.field_url_img_resources_h
+    - field.field.node.resources.field_url_resources
     - node.type.resources
   module:
+    - link
     - path
     - text
 id: node.resources.default
@@ -28,6 +42,118 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_access_type:
+    type: options_select
+    weight: 129
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_authors_resources:
+    type: entity_reference_autocomplete
+    weight: 123
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_copyright_resources:
+    type: entity_reference_autocomplete
+    weight: 131
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_country:
+    type: entity_reference_autocomplete
+    weight: 127
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_physical_description:
+    type: string_textfield
+    weight: 122
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_publication_1_year:
+    type: string_textfield
+    weight: 125
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_publication_2_year:
+    type: string_textfield
+    weight: 126
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_resource_collection:
+    type: entity_reference_autocomplete
+    weight: 130
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_restriction:
+    type: entity_reference_autocomplete
+    weight: 132
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_url_bdh:
+    type: link_default
+    weight: 124
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_url_img_resources:
+    type: link_default
+    weight: 133
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_url_img_resources_h:
+    type: link_default
+    weight: 134
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_url_resources:
+    type: link_default
+    weight: 128
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   gva_box_layout:
     type: options_select
