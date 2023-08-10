@@ -1,6 +1,82 @@
 <?php
 
+use GuzzleHttp\Client;
+use Symfony\Component\DomCrawler\Crawler;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\AlertCommand;
+use Drupal\Core\Ajax\HtmlCommand;
+use Drupal\Core\Form\FormBase;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+
+
 /**
- * @file
- * Primary module hooks for resources module.
+ * Implements hook_form_BASE_FORM_ID_alter() for resource node forms.
  */
+function resources_form_node_resources_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  $form['field_url_bdh']['widget'][0]['uri']['#ajax'] = [
+    'callback' => 'resources_url_ajax_callback',
+    'event' => 'change', // Ejecutar la función cuando el valor cambie.
+    'wrapper' => 'scraping-results', // ID del contenedor para resultados de scraping.
+  ];
+
+  // Dentro de mymodule_form_node_resource_form_alter():
+  $form['image_preview_small'] = [
+    '#markup' => '<img src="" alt="Preview">',
+    '#weight' => -5, // Ajusta el peso para mostrarlo en la parte superior del formulario.
+  ];
+
+  // Dentro de mymodule_form_node_resource_form_alter():
+  $form['image_preview_big'] = [
+    '#markup' => '<img src="" alt="Preview">',
+    '#weight' => -6, // Ajusta el peso para mostrarlo en la parte superior del formulario.
+  ];
+
+  // Agregar un contenedor para los resultados de scraping.
+  $form['scraping_results'] = [
+    '#type' => 'textarea',
+    '#weight' => -11,
+    '#attributes' => ['id' => 'scrapping-results'],
+  ];
+}
+
+function resources_url_ajax_callback(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  $response = new AjaxResponse();
+  $url = $form_state->getValue('field_url_bdh')[0]['uri'];
+
+  if(!empty($url)){
+    try{
+      $scrapped_data = resources_scrape_url($url);
+      //$response->AddCommand(new AlertCommand($scrapped_data));
+      $response->AddCommand(new HtmlCommand(null, [
+          '#scrapping-results' => [
+            '#value' => $scrapped_data['dato1'],
+          ]
+        ]));
+    } catch (\Exception $e) {
+      // Registrar el error en el archivo de registro.
+      $logger = \Drupal::logger('resources');
+      $logger->error('Error al realizar el scraping: @error_message', ['@error_message' => $e->getMessage()]);
+    }
+  }
+
+  return $response;
+}
+
+function resources_scrape_url($url) {
+
+  $client = new Client();
+  $response = $client->get($url);
+  $content = $response->getBody()->getContents();
+  $crawler = new Crawler($content);
+  $crawler = new Crawler(null, $uri, useHtml5Parser: true);
+
+  // Extraer los datos requeridos del HTML utilizando el Crawler.
+  $dato1 = $crawler->filter('h1.valor')->text();
+  //$dato2 = $crawler->filter('.dato2-class')->text();
+  //$dato3 = $crawler->filter('.dato3-class')->text();
+
+  return ['dato1' => $dato1];
+}
