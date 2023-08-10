@@ -2,9 +2,9 @@
 
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\CssSelector\CssSelector;
 use Drupal\Core\Ajax\AjaxResponse;
-use Drupal\Core\Ajax\AlertCommand;
-use Drupal\Core\Ajax\HtmlCommand;
+use Drupal\Core\Ajax\InvokeCommand;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
@@ -18,7 +18,10 @@ function resources_form_node_resources_form_alter(&$form, \Drupal\Core\Form\Form
   $form['field_url_bdh']['widget'][0]['uri']['#ajax'] = [
     'callback' => 'resources_url_ajax_callback',
     'event' => 'change', // Ejecutar la función cuando el valor cambie.
-    'wrapper' => 'scraping-results', // ID del contenedor para resultados de scraping.
+    'progress' => [
+      'type' => 'throbber',
+      'message' => t('Scrapping Database...'),
+    ],
   ];
 
   // Dentro de mymodule_form_node_resource_form_alter():
@@ -32,13 +35,7 @@ function resources_form_node_resources_form_alter(&$form, \Drupal\Core\Form\Form
     '#markup' => '<img src="" alt="Preview">',
     '#weight' => -6, // Ajusta el peso para mostrarlo en la parte superior del formulario.
   ];
-
-  // Agregar un contenedor para los resultados de scraping.
-  $form['scraping_results'] = [
-    '#type' => 'textarea',
-    '#weight' => -11,
-    '#attributes' => ['id' => 'scrapping-results'],
-  ];
+  $form['#attached']['library'][] = 'resources/adminresources';
 }
 
 function resources_url_ajax_callback(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
@@ -48,13 +45,11 @@ function resources_url_ajax_callback(array &$form, \Drupal\Core\Form\FormStateIn
 
   if(!empty($url)){
     try{
+
       $scrapped_data = resources_scrape_url($url);
-      //$response->AddCommand(new AlertCommand($scrapped_data));
-      $response->AddCommand(new HtmlCommand(null, [
-          '#scrapping-results' => [
-            '#value' => $scrapped_data['dato1'],
-          ]
-        ]));
+      //$response->AddCommand(new AlertCommand($scrapped_data['title']));
+      $response->AddCommand(new InvokeCommand(null, 'resourcesUpdateData', [$scrapped_data]));
+
     } catch (\Exception $e) {
       // Registrar el error en el archivo de registro.
       $logger = \Drupal::logger('resources');
@@ -71,12 +66,12 @@ function resources_scrape_url($url) {
   $response = $client->get($url);
   $content = $response->getBody()->getContents();
   $crawler = new Crawler($content);
-  $crawler = new Crawler(null, $uri, useHtml5Parser: true);
+  //$crawler = new Crawler(null, $uri, useHtml5Parser: true);
 
   // Extraer los datos requeridos del HTML utilizando el Crawler.
-  $dato1 = $crawler->filter('h1.valor')->text();
-  //$dato2 = $crawler->filter('.dato2-class')->text();
+  //$dato1 = $crawler->filterXPath('//*[@id="results"]/div[1]/div/div[2]/h1')->text();
+  $title = $crawler->filter('h1.valor')->text();
   //$dato3 = $crawler->filter('.dato3-class')->text();
 
-  return ['dato1' => $dato1];
+  return ['title' => $title];
 }

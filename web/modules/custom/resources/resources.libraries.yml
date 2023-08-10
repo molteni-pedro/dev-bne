@@ -1,4 +1,10 @@
 # Custom module library for general purposes.
+adminresources:
+  js:
+    js/resources.js: {}
+  dependencies:
+    - core/jquery
+
 resources:
   js:
     js/resources.js: {}
