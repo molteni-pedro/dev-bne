@@ -14,32 +14,41 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 /**
  * Implements hook_form_BASE_FORM_ID_alter() for resource node forms.
  */
-function resources_form_node_resources_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function resources_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
-  $form['field_url_bdh']['widget'][0]['uri']['#ajax'] = [
-    'callback' => 'resources_url_ajax_callback',
-    'event' => 'change', // Ejecutar la función cuando el valor cambie.
-    'progress' => [
-      'type' => 'throbber',
-      'message' => t('Scrapping Database...'),
-    ],
-  ];
+  switch($form_id){
+    case 'node_resources_form':
+    case 'node_resources_edit_form':
 
-  // Dentro de mymodule_form_node_resource_form_alter():
-  $form['image_preview_small'] = [
-    '#markup' => '<img id="small_image" src="" alt="Preview Small"/>',
-    '#weight' => -5, // Ajusta el peso para mostrarlo en la parte superior del formulario.
-  ];
+      $form['field_url_bdh']['widget'][0]['uri']['#ajax'] = [
+        'callback' => 'resources_url_ajax_callback',
+        'event' => 'change', // Ejecutar la función cuando el valor cambie.
+        'progress' => [
+          'type' => 'throbber',
+          'message' => t('Scrapping Database...'),
+        ],
+      ];
 
-  // Dentro de mymodule_form_node_resource_form_alter():
-  $form['image_preview_big'] = [
-    '#markup' => '<img src="" id="big_image" alt="Preview Big" />',
-    '#weight' => -6, // Ajusta el peso para mostrarlo en la parte superior del formulario.
-  ];
-  $form['#attached']['library'][] = 'resources/adminresources';
+      // Dentro de mymodule_form_node_resource_form_alter():
+      $form['image_preview_small'] = [
+        '#markup' => '<img id="small_image" src="" alt="Preview Small"/>',
+        '#weight' => -5, // Ajusta el peso para mostrarlo en la parte superior del formulario.
+      ];
+
+      // Dentro de mymodule_form_node_resource_form_alter():
+      $form['image_preview_big'] = [
+        '#markup' => '<img src="" id="big_image" alt="Preview Big" />',
+        '#weight' => -6, // Ajusta el peso para mostrarlo en la parte superior del formulario.
+      ];
+      $form['#attached']['library'][] = 'resources/adminresources';
+
+    break;
+
+  }
+
 }
 
-function resources_url_ajax_callback(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function resources_url_ajax_callback(array &$form, FormStateInterface $form_state, $form_id) {
 
   $response = new AjaxResponse();
   $url = $form_state->getValue('field_url_bdh')[0]['uri'];
@@ -49,6 +58,7 @@ function resources_url_ajax_callback(array &$form, \Drupal\Core\Form\FormStateIn
 
       $scrapped_data = resources_scrape_url($url);
       $response->AddCommand(new InvokeCommand(null, 'resourcesUpdateData', [$scrapped_data]));
+      $response->AddCommand(new InvokeCommand(null, 'updateCKEditorContent', [$scrapped_data['description_notes']]));
       // Agregar un comando personalizado para actualizar CKEditor.
 
     } catch (\Exception $e) {

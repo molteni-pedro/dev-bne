@@ -1,4 +1,4 @@
-(function($) {
+(function ($, Drupal) {
   // Argument passed from InvokeCommand.
   $.fn.resourcesUpdateData = function(arguments) {
     console.log('resourcesUpdateData is called.');
@@ -13,4 +13,18 @@
     $('input#edit-field-publication-1-year-0-value').attr('value', arguments['date_1']);
     $('input#edit-field-publication-2-year-0-value').attr('value', arguments['date_2']);
   };
-})(jQuery);
+
+  Drupal.behaviors.resourcesUpdateCKEditor = {
+    attach: function (context, settings) {
+      // Función para actualizar CKEditor con el contenido HTML.
+      window.updateCKEditorContent = function (content) {
+        const editorElement = document.querySelector('[data-ckeditor-editable]');
+        console.log(editorElement);
+        if (editorElement && editorElement.editor) {
+          editorElement.editor.setData(content);
+        }
+      };
+    }
+  };
+
+})(jQuery, Drupal);
