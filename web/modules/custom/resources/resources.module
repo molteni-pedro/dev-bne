@@ -5,6 +5,7 @@ use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\CssSelector\CssSelector;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\InvokeCommand;
+
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
@@ -48,6 +49,8 @@ function resources_url_ajax_callback(array &$form, \Drupal\Core\Form\FormStateIn
 
       $scrapped_data = resources_scrape_url($url);
       $response->AddCommand(new InvokeCommand(null, 'resourcesUpdateData', [$scrapped_data]));
+      // Agregar un comando personalizado para actualizar CKEditor.
+
     } catch (\Exception $e) {
       // Registrar el error en el archivo de registro.
       $logger = \Drupal::logger('resources');
