@@ -47,9 +47,7 @@ function resources_url_ajax_callback(array &$form, \Drupal\Core\Form\FormStateIn
     try{
 
       $scrapped_data = resources_scrape_url($url);
-      //$response->AddCommand(new AlertCommand($scrapped_data['title']));
       $response->AddCommand(new InvokeCommand(null, 'resourcesUpdateData', [$scrapped_data]));
-
     } catch (\Exception $e) {
       // Registrar el error en el archivo de registro.
       $logger = \Drupal::logger('resources');
@@ -71,17 +69,48 @@ function resources_scrape_url($url) {
   $title = $crawler->filter('.entrada h1.valor')->text();
   $doc_id = str_replace('bdh', '', $crawler->filter('.entrada span.rrr')->text());
 
-  //$physcal_description = $crawler->filter('$( "div:contains('Physical description')" ).next();')->text();
+  $physical_description = $crawler->filterXpath("//div[@class='dato'][contains(text(), 'Descripción física')]/following-sibling::div[1]")->text('');
+  $description_notes = $crawler->filterXpath("//div[@class='dato'][contains(text(), 'Descripción y notas')]/following-sibling::div[1]")->text('');
+  $fechas = $crawler->filterXpath("//div[@class='dato'][contains(text(), 'Fecha')]/following-sibling::div[1]")->text('');
+  $dates = getFecha($fechas);
 
   $small_image_id = "http://bdh-rd.bne.es/low.raw?id=$doc_id&name=00000001.jpg";
   $big_image_id = "http://bdh-rd.bne.es/pdf.raw?query=id:$doc_id&name=00000001.jpg&jpeg=true";
   $viewer_url = "http://bdh-rd.bne.es/viewer.vm?id=bdh$doc_id&page=1";
-
 
   return [
   'title' => $title,
   'small_image_id' => $small_image_id,
   'big_image_id' => $big_image_id,
   'viewer_url' => $viewer_url,
+  'physical_description' => $physical_description,
+  'description_notes' => $description_notes,
+  'date_1' => $dates[0],
+  'date_2' => $dates[1],
   ];
+}
+
+
+function getFecha($text){
+
+  if(strlen($text) > 0){
+
+    $text = str_replace("\t", "", $text);
+    $text = str_replace("\r\n", "", $text);
+    $text = str_replace("<br/>", "\n\r", $text);
+    $text = str_replace("</div>", "", $text);
+    $text = str_replace("  ", "", $text);
+
+  }
+  $text = str_replace("?", "", $text);
+  if(strpos($text, "entre") !== false && strpos($text, "y") !== false ){
+    $text = str_replace("entre", "", $text);
+    $aFecha = explode("y", $text);
+  }else{
+    $aFecha[0] = $text;
+    $aFecha[1] = "";
+  }
+
+
+  return $aFecha;
 }
