@@ -1,4 +1,0 @@
-administer resources configuration:
-  title: 'Administer resources configuration'
-  description: 'Optional description.'
-  restrict access: true

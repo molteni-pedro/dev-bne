@@ -6,8 +6,6 @@ adminresources:
     - core/jquery
 
 resources:
-  js:
-    js/resources.js: {}
   css:
     component:
       css/resources.css: {}

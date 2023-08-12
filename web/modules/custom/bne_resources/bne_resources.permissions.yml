@@ -1,0 +1,4 @@
+administer bne_resources configuration:
+  title: 'Administer BNE Resources configuration'
+  description: 'Optional description.'
+  restrict access: true

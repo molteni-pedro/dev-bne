@@ -8,22 +8,22 @@
 /**
  * Implements hook_install().
  */
-function resources_install() {
+function bne_resources_install() {
   \Drupal::messenger()->addStatus(__FUNCTION__);
 }
 
 /**
  * Implements hook_uninstall().
  */
-function resources_uninstall() {
+function bne_resources_uninstall() {
   \Drupal::messenger()->addStatus(__FUNCTION__);
 }
 
 /**
  * Implements hook_schema().
  */
-function resources_schema() {
-  $schema['resources_example'] = [
+function bne_resources_schema() {
+  $schema['bne_resources_example'] = [
     'description' => 'Table description.',
     'fields' => [
       'id' => [
@@ -80,14 +80,14 @@ function resources_schema() {
 /**
  * Implements hook_requirements().
  */
-function resources_requirements($phase) {
+function bne_resources_requirements($phase) {
   $requirements = [];
 
   if ($phase == 'runtime') {
     $value = mt_rand(0, 100);
-    $requirements['resources_status'] = [
-      'title' => t('resources status'),
-      'value' => t('resources value: @value', ['@value' => $value]),
+    $requirements['bne_resources_status'] = [
+      'title' => t('bne_resources status'),
+      'value' => t('bne_resources value: @value', ['@value' => $value]),
       'severity' => $value > 50 ? REQUIREMENT_INFO : REQUIREMENT_WARNING,
     ];
   }

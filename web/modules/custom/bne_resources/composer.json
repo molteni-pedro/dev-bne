@@ -1,0 +1,17 @@
+{
+  "name": "drupal/bne_resources",
+  "type": "drupal-module",
+  "description": "Custom resources module for BDE.",
+  "version": "1.0.0",
+  "core": "9.x",
+  "require": {
+    "drupal/core": "^9.0",
+    "symfony/css-selector": "^6.3",
+    "symfony/dom-crawler": "^6.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Drupal\\bde_resources\\": "src/"
+    }
+  }
+}

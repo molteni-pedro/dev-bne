@@ -14,14 +14,14 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 /**
  * Implements hook_form_BASE_FORM_ID_alter() for resource node forms.
  */
-function resources_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+function bne_resources_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
   switch($form_id){
     case 'node_resources_form':
     case 'node_resources_edit_form':
 
       $form['field_url_bdh']['widget'][0]['uri']['#ajax'] = [
-        'callback' => 'resources_url_ajax_callback',
+        'callback' => 'bne_resources_url_ajax_callback',
         'event' => 'change', // Ejecutar la función cuando el valor cambie.
         'progress' => [
           'type' => 'throbber',
@@ -48,7 +48,7 @@ function resources_form_alter(&$form, FormStateInterface $form_state, $form_id) 
 
 }
 
-function resources_url_ajax_callback(array &$form, FormStateInterface $form_state, $form_id) {
+function bne_resources_url_ajax_callback(array &$form, FormStateInterface $form_state, $form_id) {
 
   $response = new AjaxResponse();
   $url = $form_state->getValue('field_url_bdh')[0]['uri'];
@@ -56,7 +56,7 @@ function resources_url_ajax_callback(array &$form, FormStateInterface $form_stat
   if(!empty($url)){
     try{
 
-      $scrapped_data = resources_scrape_url($url);
+      $scrapped_data = bne_resources_scrape_url($url);
       $response->AddCommand(new InvokeCommand(null, 'resourcesUpdateData', [$scrapped_data]));
     } catch (\Exception $e) {
       // Registrar el error en el archivo de registro.
@@ -68,7 +68,7 @@ function resources_url_ajax_callback(array &$form, FormStateInterface $form_stat
   return $response;
 }
 
-function resources_scrape_url($url) {
+function bne_resources_scrape_url($url) {
 
   $client = new Client();
   $response = $client->get($url);
@@ -82,7 +82,7 @@ function resources_scrape_url($url) {
   $physical_description = $crawler->filterXpath("//div[@class='dato'][contains(text(), 'Descripción física')]/following-sibling::div[1]")->text('');
   $description_notes = $crawler->filterXpath("//div[@class='dato'][contains(text(), 'Descripción y notas')]/following-sibling::div[1]")->text('');
   $fechas = $crawler->filterXpath("//div[@class='dato'][contains(text(), 'Fecha')]/following-sibling::div[1]")->text('');
-  $dates = getFecha($fechas);
+  $dates = BNEgetFecha($fechas);
 
   $small_image_id = "http://bdh-rd.bne.es/low.raw?id=$doc_id&name=00000001.jpg";
   $big_image_id = "http://bdh-rd.bne.es/pdf.raw?query=id:$doc_id&name=00000001.jpg&jpeg=true";
@@ -101,7 +101,7 @@ function resources_scrape_url($url) {
 }
 
 
-function getFecha($text){
+function BNEgetFecha($text){
 
   if(strlen($text) > 0){
 
