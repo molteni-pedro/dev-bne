@@ -12,7 +12,11 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        }
+        },
+        {
+            "type": "path",
+            "url": "modules/custom/resources"
+        },
     ],
     "require": {
         "composer/installers": "^1.9",
