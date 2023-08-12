@@ -58,9 +58,6 @@ function resources_url_ajax_callback(array &$form, FormStateInterface $form_stat
 
       $scrapped_data = resources_scrape_url($url);
       $response->AddCommand(new InvokeCommand(null, 'resourcesUpdateData', [$scrapped_data]));
-      $response->AddCommand(new InvokeCommand(null, 'updateCKEditorContent', [$scrapped_data['description_notes']]));
-      // Agregar un comando personalizado para actualizar CKEditor.
-
     } catch (\Exception $e) {
       // Registrar el error en el archivo de registro.
       $logger = \Drupal::logger('resources');
