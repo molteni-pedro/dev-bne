@@ -33,37 +33,3 @@
   };
 
 })(jQuery, Drupal);
-
-
-(function ($, Drupal, CKEditorInspector) {
-  Drupal.behaviors.mymoduleUpdateCKEditor = {
-    attach: function (context, settings) {
-      // Función para actualizar CKEditor 5 con el contenido HTML.
-      function updateCKEditorContent(content) {
-        const editorContainer = document.querySelector('.ck-editor__main'); // Selector para el contenedor del editor CKEditor 5
-        if (editorContainer && CKEditorInspector.getFromElement) {
-          const editorInstance = CKEditorInspector.getFromElement(editorContainer);
-          if (editorInstance && editorInstance.model && editorInstance.model.document) {
-            const document = editorInstance.model.document;
-            document.setData(content);
-          }
-        }
-      }
-
-      // Verificar si el campo "body" tiene un editor CKEditor.
-      const bodyTextarea = document.querySelector('textarea[name="body[0][value]"]');
-      if (!bodyTextarea || !bodyTextarea.getAttribute('data-ckeditor5-id')) {
-        // El campo "body" no tiene un editor asociado, llenarlo con el contenido.
-        const scrapedData = '<p>Contenido de scrapping por AJAX</p>';
-        if (bodyTextarea) {
-          bodyTextarea.value = scrapedData;
-        }
-      }
-
-      // Escuchar el evento personalizado para actualizar CKEditor.
-      $(document).on('mymoduleUpdateCKEditorEvent', function (event, content) {
-        updateCKEditorContent(content);
-      });
-    }
-  };
-})(jQuery, Drupal, CKEditorInspector);
