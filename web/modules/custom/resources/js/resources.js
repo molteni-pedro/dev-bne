@@ -1,7 +1,6 @@
 (function ($, Drupal) {
   // Argument passed from InvokeCommand.
   $.fn.resourcesUpdateData = function(arguments) {
-    console.log('resourcesUpdateData is called.');
     // Set textfield's value to the passed arguments.
     $('input#edit-title-0-value').val(arguments['title']);
     $('input#edit-field-url-img-resources-0-uri').attr('value', arguments['small_image_id']);
@@ -13,9 +12,9 @@
     $('input#edit-field-publication-1-year-0-value').attr('value', arguments['date_1']);
     $('input#edit-field-publication-2-year-0-value').attr('value', arguments['date_2']);
 
-    const editorContainer = document.querySelector('#edit-body-wrapper .ck-editor__editable');
+    let editorContainer = document.querySelector('#edit-body-wrapper .ck-editor__editable');
     if (editorContainer) {
-      const editorInstance = editorContainer.ckeditorInstance
+      let editorInstance = editorContainer.ckeditorInstance
       if (editorInstance && editorInstance.model && editorInstance.model.document) {
         editorInstance.setData(arguments['description_notes']);
       }
