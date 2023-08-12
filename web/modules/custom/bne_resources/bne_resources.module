@@ -40,7 +40,7 @@ function bne_resources_form_alter(&$form, FormStateInterface $form_state, $form_
         '#markup' => '<img src="" id="big_image" alt="Preview Big" />',
         '#weight' => -6, // Ajusta el peso para mostrarlo en la parte superior del formulario.
       ];
-      $form['#attached']['library'][] = 'resources/adminresources';
+      $form['#attached']['library'][] = 'bne_resources/adminresources';
 
     break;
 

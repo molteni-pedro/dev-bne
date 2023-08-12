@@ -85,9 +85,9 @@ function bne_resources_requirements($phase) {
 
   if ($phase == 'runtime') {
     $value = mt_rand(0, 100);
-    $requirements['bne_resources_status'] = [
-      'title' => t('bne_resources status'),
-      'value' => t('bne_resources value: @value', ['@value' => $value]),
+    $requirements['resources_status'] = [
+      'title' => t('resources status'),
+      'value' => t('resources value: @value', ['@value' => $value]),
       'severity' => $value > 50 ? REQUIREMENT_INFO : REQUIREMENT_WARNING,
     ];
   }
