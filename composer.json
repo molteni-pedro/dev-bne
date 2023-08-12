@@ -16,7 +16,7 @@
         {
             "type": "path",
             "url": "modules/custom/resources"
-        },
+        }
     ],
     "require": {
         "composer/installers": "^1.9",
