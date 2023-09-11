@@ -1,0 +1,28 @@
+uuid: a37b69ec-4b3d-4c1c-8f76-a4ae1ed31b6b
+langcode: es
+status: true
+dependencies:
+  config:
+    - facets.facet.nivel
+  module:
+    - facets
+    - gavias_hook_themer
+  theme:
+    - notech_subtheme
+third_party_settings:
+  gavias_hook_themer:
+    classes: ''
+id: nivel
+theme: notech_subtheme
+region: sidebar_left
+weight: -11
+provider: null
+plugin: 'facet_block:nivel'
+settings:
+  id: 'facet_block:nivel'
+  label: 'Nivel educativo'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: nivel
+visibility: {  }

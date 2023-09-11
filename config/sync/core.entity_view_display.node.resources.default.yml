@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.resources.field_access_type
     - field.field.node.resources.field_aggregation_level
     - field.field.node.resources.field_authors_resources
+    - field.field.node.resources.field_basic_knowledge
     - field.field.node.resources.field_content_block
     - field.field.node.resources.field_copyright_resources
     - field.field.node.resources.field_country
@@ -19,6 +20,7 @@ dependencies:
     - field.field.node.resources.field_resource_level
     - field.field.node.resources.field_resource_types
     - field.field.node.resources.field_restriction
+    - field.field.node.resources.field_specific_competencies
     - field.field.node.resources.field_subject_resources
     - field.field.node.resources.field_topic
     - field.field.node.resources.field_traceability
@@ -66,6 +68,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 103
+    region: content
+  field_basic_knowledge:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 124
     region: content
   field_content_block:
     type: entity_reference_label
@@ -162,6 +172,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 112
+    region: content
+  field_specific_competencies:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 125
     region: content
   field_subject_resources:
     type: entity_reference_label

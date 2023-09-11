@@ -1,12 +1,12 @@
-uuid: 241111d6-52a7-4447-9104-63eefb63bdd2
+uuid: c7015680-3491-4f8a-a364-61d0cde5c34f
 langcode: es
 status: true
 dependencies:
   module:
     - node
     - taxonomy
-id: node.field_subject_resources
-field_name: field_subject_resources
+id: node.field_specific_competencies
+field_name: field_specific_competencies
 entity_type: node
 type: entity_reference
 settings:

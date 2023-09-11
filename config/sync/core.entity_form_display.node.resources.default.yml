@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.resources.field_access_type
     - field.field.node.resources.field_aggregation_level
     - field.field.node.resources.field_authors_resources
+    - field.field.node.resources.field_basic_knowledge
     - field.field.node.resources.field_content_block
     - field.field.node.resources.field_copyright_resources
     - field.field.node.resources.field_country
@@ -19,6 +20,7 @@ dependencies:
     - field.field.node.resources.field_resource_level
     - field.field.node.resources.field_resource_types
     - field.field.node.resources.field_restriction
+    - field.field.node.resources.field_specific_competencies
     - field.field.node.resources.field_subject_resources
     - field.field.node.resources.field_topic
     - field.field.node.resources.field_traceability
@@ -28,6 +30,7 @@ dependencies:
     - field.field.node.resources.field_url_resources
     - node.type.resources
   module:
+    - cshs
     - field_group
     - link
     - path
@@ -55,11 +58,11 @@ third_party_settings:
         width_breakpoint: 640
     group_datos:
       children:
+        - field_url_bdh
         - title
         - body
         - field_physical_description
         - field_authors_resources
-        - field_url_bdh
         - field_publication_1_year
         - field_publication_2_year
         - field_access_type
@@ -100,7 +103,9 @@ third_party_settings:
         description: ''
         required_fields: true
     group_catalogacion_curricular_2:
-      children: {  }
+      children:
+        - field_basic_knowledge
+        - field_specific_competencies
       label: 'Catalogación curricular II'
       region: content
       parent_name: group_recursos
@@ -168,7 +173,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 22
+    weight: 27
     region: content
     settings:
       rows: 9
@@ -184,7 +189,7 @@ content:
     third_party_settings: {  }
   field_access_type:
     type: options_select
-    weight: 28
+    weight: 32
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -200,7 +205,7 @@ content:
     third_party_settings: {  }
   field_authors_resources:
     type: entity_reference_autocomplete
-    weight: 24
+    weight: 29
     region: content
     settings:
       match_operator: CONTAINS
@@ -208,19 +213,28 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_basic_knowledge:
+    type: options_buttons
+    weight: 40
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_content_block:
-    type: entity_reference_autocomplete
+    type: cshs
     weight: 18
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      save_lineage: false
+      force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   field_copyright_resources:
     type: entity_reference_autocomplete
-    weight: 31
+    weight: 35
     region: content
     settings:
       match_operator: CONTAINS
@@ -230,7 +244,7 @@ content:
     third_party_settings: {  }
   field_country:
     type: entity_reference_autocomplete
-    weight: 30
+    weight: 34
     region: content
     settings:
       match_operator: CONTAINS
@@ -239,14 +253,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_language:
-    type: entity_reference_autocomplete
+    type: options_select
     weight: 22
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_metadata_catalog:
     type: entity_reference_autocomplete
@@ -260,7 +270,7 @@ content:
     third_party_settings: {  }
   field_physical_description:
     type: string_textfield
-    weight: 23
+    weight: 28
     region: content
     settings:
       size: 60
@@ -268,7 +278,7 @@ content:
     third_party_settings: {  }
   field_publication_1_year:
     type: string_textfield
-    weight: 26
+    weight: 30
     region: content
     settings:
       size: 60
@@ -276,7 +286,7 @@ content:
     third_party_settings: {  }
   field_publication_2_year:
     type: string_textfield
-    weight: 27
+    weight: 31
     region: content
     settings:
       size: 60
@@ -284,7 +294,7 @@ content:
     third_party_settings: {  }
   field_resource_collection:
     type: entity_reference_autocomplete
-    weight: 29
+    weight: 33
     region: content
     settings:
       match_operator: CONTAINS
@@ -293,24 +303,34 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_resource_level:
-    type: entity_reference_autocomplete
+    type: cshs
     weight: 16
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      save_lineage: false
+      force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   field_resource_types:
-    type: options_select
+    type: cshs
     weight: 24
     region: content
-    settings: {  }
+    settings:
+      save_lineage: false
+      force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   field_restriction:
     type: entity_reference_autocomplete
-    weight: 32
+    weight: 36
     region: content
     settings:
       match_operator: CONTAINS
@@ -318,15 +338,24 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_specific_competencies:
+    type: options_buttons
+    weight: 41
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_subject_resources:
-    type: entity_reference_autocomplete
+    type: cshs
     weight: 17
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      save_lineage: false
+      force_deepest: false
+      parent: ''
+      level_labels: ''
+      hierarchy_depth: 0
+      required_depth: 0
+      none_label: '- Please select -'
     third_party_settings: {  }
   field_topic:
     type: text_textarea
@@ -356,7 +385,7 @@ content:
     third_party_settings: {  }
   field_url_img_resources:
     type: link_default
-    weight: 34
+    weight: 38
     region: content
     settings:
       placeholder_url: ''
@@ -364,7 +393,7 @@ content:
     third_party_settings: {  }
   field_url_img_resources_h:
     type: link_default
-    weight: 35
+    weight: 39
     region: content
     settings:
       placeholder_url: ''
@@ -372,7 +401,7 @@ content:
     third_party_settings: {  }
   field_url_resources:
     type: link_default
-    weight: 33
+    weight: 37
     region: content
     settings:
       placeholder_url: ''
@@ -439,7 +468,7 @@ content:
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 21
+    weight: 26
     region: content
     settings:
       size: 60

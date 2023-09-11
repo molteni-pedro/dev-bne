@@ -1,0 +1,23 @@
+features:
+  node_user_picture: 1
+  comment_user_picture: 1
+  comment_user_verification: 1
+  favicon: 1
+logo:
+  use_default: 0
+  path: 'public://BNESCOLAR logo-07.png'
+favicon:
+  use_default: 0
+  path: 'public://favicon.png'
+  mimetype: image/png
+enable_customize: '1'
+logo_width: 150px
+logo_padding_top: 20px
+logo_padding_bottom: 85px
+sticky_menu: '0'
+site_layout: wide
+preloader: '0'
+google_key: ''
+default_header: header
+header_info: ''
+customize_css: "body.hidden-body .node--view-mode-full .node__content .field--name-body{\r\ndisplay: none;\r\n}"

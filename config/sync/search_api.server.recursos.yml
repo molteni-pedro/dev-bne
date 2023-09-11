@@ -1,0 +1,14 @@
+uuid: 6251a4a5-469d-4e1b-a3ce-e38909f8f01e
+langcode: es
+status: true
+dependencies:
+  module:
+    - search_api_db
+id: recursos
+name: Recursos
+description: ''
+backend: search_api_db
+backend_config:
+  database: 'default:default'
+  min_chars: 3
+  matching: words

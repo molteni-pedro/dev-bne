@@ -1,0 +1,32 @@
+uuid: d98e958d-78c4-4b7e-926f-037326e9de0e
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.specific_competencies.field_subject_resources
+    - taxonomy.vocabulary.specific_competencies
+  module:
+    - text
+id: taxonomy_term.specific_competencies.default
+targetEntityType: taxonomy_term
+bundle: specific_competencies
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_subject_resources:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

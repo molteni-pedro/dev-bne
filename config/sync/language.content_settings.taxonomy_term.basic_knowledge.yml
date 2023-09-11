@@ -1,0 +1,11 @@
+uuid: 8594ed92-3b13-4d53-96cd-9a353fafd889
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.basic_knowledge
+id: taxonomy_term.basic_knowledge
+target_entity_type_id: taxonomy_term
+target_bundle: basic_knowledge
+default_langcode: site_default
+language_alterable: false

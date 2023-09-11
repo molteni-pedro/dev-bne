@@ -1,0 +1,32 @@
+uuid: 56cdfb75-0cd6-4b93-bfc2-465dda550342
+langcode: es
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.basic_knowledge.field_subject_resources
+    - taxonomy.vocabulary.basic_knowledge
+  module:
+    - text
+id: taxonomy_term.basic_knowledge.default
+targetEntityType: taxonomy_term
+bundle: basic_knowledge
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_subject_resources:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

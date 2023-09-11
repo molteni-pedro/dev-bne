@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.resources.field_access_type
     - field.field.node.resources.field_aggregation_level
     - field.field.node.resources.field_authors_resources
+    - field.field.node.resources.field_basic_knowledge
     - field.field.node.resources.field_content_block
     - field.field.node.resources.field_copyright_resources
     - field.field.node.resources.field_country
@@ -20,6 +21,7 @@ dependencies:
     - field.field.node.resources.field_resource_level
     - field.field.node.resources.field_resource_types
     - field.field.node.resources.field_restriction
+    - field.field.node.resources.field_specific_competencies
     - field.field.node.resources.field_subject_resources
     - field.field.node.resources.field_topic
     - field.field.node.resources.field_traceability
@@ -53,6 +55,7 @@ hidden:
   field_access_type: true
   field_aggregation_level: true
   field_authors_resources: true
+  field_basic_knowledge: true
   field_content_block: true
   field_copyright_resources: true
   field_country: true
@@ -65,6 +68,7 @@ hidden:
   field_resource_level: true
   field_resource_types: true
   field_restriction: true
+  field_specific_competencies: true
   field_subject_resources: true
   field_topic: true
   field_traceability: true

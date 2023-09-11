@@ -1,0 +1,8 @@
+uuid: 5ec41d2a-e28e-4c42-a772-d130730a001c
+langcode: es
+status: true
+dependencies: {  }
+name: 'Saberes básicos (Recursos)'
+vid: basic_knowledge
+description: ''
+weight: 0

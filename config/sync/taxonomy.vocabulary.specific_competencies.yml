@@ -1,0 +1,8 @@
+uuid: c82ad421-2097-488a-a2b1-fb06e71370ba
+langcode: es
+status: true
+dependencies: {  }
+name: 'Competencias específicas (Recursos)'
+vid: specific_competencies
+description: ''
+weight: 0

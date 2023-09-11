@@ -1,0 +1,9 @@
+uuid: b5731655-7bdc-45db-8c6f-5c91be80da8c
+langcode: es
+status: true
+dependencies: {  }
+id: search_api__views_page__buscador_recursos__page_1
+name: 'search_api:views_page__buscador_recursos__page_1'
+filter_key: null
+url_processor: query_string
+breadcrumb: {  }

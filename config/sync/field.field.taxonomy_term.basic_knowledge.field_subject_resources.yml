@@ -1,19 +1,19 @@
-uuid: f4826437-8fef-4564-98b4-d36d8c1d03da
+uuid: 07984fda-3105-4537-93ad-9dd2cd626594
 langcode: es
 status: true
 dependencies:
   config:
-    - field.storage.node.field_subject_resources
-    - node.type.resources
+    - field.storage.taxonomy_term.field_subject_resources
+    - taxonomy.vocabulary.basic_knowledge
     - taxonomy.vocabulary.subject_resources
-id: node.resources.field_subject_resources
+id: taxonomy_term.basic_knowledge.field_subject_resources
 field_name: field_subject_resources
-entity_type: node
-bundle: resources
+entity_type: taxonomy_term
+bundle: basic_knowledge
 label: Área/materia
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

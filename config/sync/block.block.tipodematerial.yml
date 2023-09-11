@@ -1,0 +1,28 @@
+uuid: 4329ae62-2a3a-41ac-af2c-76e963317f3d
+langcode: es
+status: true
+dependencies:
+  config:
+    - facets.facet.tipo_material
+  module:
+    - facets
+    - gavias_hook_themer
+  theme:
+    - notech_subtheme
+third_party_settings:
+  gavias_hook_themer:
+    classes: ''
+id: tipodematerial
+theme: notech_subtheme
+region: sidebar_left
+weight: -9
+provider: null
+plugin: 'facet_block:tipo_material'
+settings:
+  id: 'facet_block:tipo_material'
+  label: 'Tipo de material'
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: tipodematerial
+visibility: {  }

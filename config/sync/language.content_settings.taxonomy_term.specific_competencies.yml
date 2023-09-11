@@ -1,0 +1,11 @@
+uuid: 0a91143e-ab63-44c9-9e11-383f9f45e823
+langcode: es
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.specific_competencies
+id: taxonomy_term.specific_competencies
+target_entity_type_id: taxonomy_term
+target_bundle: specific_competencies
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,34 @@
+uuid: e375d204-d1e9-43b4-bfb5-d03c314ea9d0
+langcode: es
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:3300e5b8-1c76-4e0b-b968-a8cf6fad764f'
+  module:
+    - block_content
+    - gavias_hook_themer
+    - system
+  theme:
+    - notech_subtheme
+third_party_settings:
+  gavias_hook_themer:
+    classes: ''
+id: filtrarpor
+theme: notech_subtheme
+region: sidebar_left
+weight: -12
+provider: null
+plugin: 'block_content:3300e5b8-1c76-4e0b-b968-a8cf6fad764f'
+settings:
+  id: 'block_content:3300e5b8-1c76-4e0b-b968-a8cf6fad764f'
+  label: 'Filtrar por'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/buscador\r\n/buscador/*"
