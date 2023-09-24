@@ -1,0 +1,11 @@
+bne_resources.ajax_update_fields:
+  path: '/bne_resources/ajax/update_taxonomy/{tids}'
+  defaults:
+    _controller: '\Drupal\bne_resources\Controller\BneResourcesController::updateTaxonomy'
+    _format: json
+  requirements:
+    _permission: 'access content'  # Ajusta los permisos según sea necesario.
+  options:
+    parameters:
+      tids:
+        type: string  # Ajusta el tipo según sea necesario (puede ser int o string dependiendo de tus necesidades).

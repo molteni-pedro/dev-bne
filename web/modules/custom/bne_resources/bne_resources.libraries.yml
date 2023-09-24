@@ -2,9 +2,10 @@
 adminresources:
   js:
     js/resources.js: {}
+    js/bne_resources.js: {}
   dependencies:
     - core/jquery
-
+    - core/drupal.ajax
 resources:
   css:
     component:
@@ -28,6 +29,10 @@ jquery-labelauty:
       /libraries/jquery-labelauty/source/jquery-labelauty.css: {}
   dependencies:
     - core/jquery
+auto-save:
+  version: 1.x
+  js:
+    js/bne_resources.js: {}
 
 # Third-party library (CDN).
 vuejs:

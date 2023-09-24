@@ -1,126 +1,377 @@
 <?php
-
-use GuzzleHttp\Client;
-use Symfony\Component\DomCrawler\Crawler;
-use Symfony\Component\CssSelector\CssSelector;
+/**
+ * @file
+ * Contains custom code for the Bne Resources module.
+ */
 use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Ajax\InvokeCommand;
-
+use Drupal\Core\Ajax\ReplaceCommand;
+use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Field\Plugin\Field\FieldWidget\OptionsButtonsWidget;
+use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
-
-
+use Drupal\Core\Render\Element;
+use Drupal\Core\Render\Element\Checkboxes;
+use Drupal\views\ViewExecutable;
+use Drupal\views\Views;
+use GuzzleHttp\Client;
+use Symfony\Component\CssSelector\CssSelector;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\DomCrawler\Crawler;
 /**
  * Implements hook_form_BASE_FORM_ID_alter() for resource node forms.
+ *
+ * This function alters the form for resource node creation and editing.
+ *
+ * @param array &$form
+ *   The form array to be altered.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The current form state.
+ * @param string $form_id
+ *   The form ID being altered.
  */
 function bne_resources_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-
-  switch($form_id){
+  switch ($form_id) {
     case 'node_resources_form':
     case 'node_resources_edit_form':
-
+      // Add AJAX behavior to the 'field_url_bdh' widget.
       $form['field_url_bdh']['widget'][0]['uri']['#ajax'] = [
         'callback' => 'bne_resources_url_ajax_callback',
-        'event' => 'change', // Ejecutar la función cuando el valor cambie.
+        'event' => 'change',
         'progress' => [
           'type' => 'throbber',
           'message' => t('Scrapping Database...'),
         ],
       ];
-
-      // Dentro de mymodule_form_node_resource_form_alter():
-      $form['image_preview_small'] = [
-        '#markup' => '<img id="small_image" src="" alt="Preview Small"/>',
-        '#weight' => -5, // Ajusta el peso para mostrarlo en la parte superior del formulario.
+      // Define the ID attribute for the 'field_basic_knowledge' and 'field_specific_competencies' containers.
+      $form['field_basic_knowledge']['#attributes']['id'] = 'edit-field_basic_knowledge-wrapper';
+      $form['field_specific_competencies']['#attributes']['id'] = 'edit-field_specific_competencies-wrapper';
+      // Add AJAX behavior to the 'field_subject_resources' widget.
+      $form['field_subject_resources']['widget']['#ajax'] = [
+        'callback' => 'bne_resources_ajax_callback',
+        'event' => 'change',
+        'wrapper' => 'edit-field-related-articles-wrapper',
       ];
-
-      // Dentro de mymodule_form_node_resource_form_alter():
-      $form['image_preview_big'] = [
-        '#markup' => '<img src="" id="big_image" alt="Preview Big" />',
-        '#weight' => -6, // Ajusta el peso para mostrarlo en la parte superior del formulario.
-      ];
+      // Attach a library to the form.
       $form['#attached']['library'][] = 'bne_resources/adminresources';
-
-    break;
-
+      break;
   }
-
 }
 
+/**
+ * Ajax callback for updating data based on the URL provided.
+ *
+ * This function is called via Ajax when the URL field is changed.
+ * It scrapes data from the provided URL and updates the form fields accordingly.
+ *
+ * @param array &$form
+ *   The form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The current form state.
+ * @param string $form_id
+ *   The form ID.
+ *
+ * @return \Drupal\Core\Ajax\AjaxResponse
+ *   The Ajax response containing the updated data.
+ */
 function bne_resources_url_ajax_callback(array &$form, FormStateInterface $form_state, $form_id) {
-
   $response = new AjaxResponse();
   $url = $form_state->getValue('field_url_bdh')[0]['uri'];
 
-  if(!empty($url)){
-    try{
-
+  if (!empty($url)) {
+    try {
+      // Scrape data from the provided URL.
       $scrapped_data = bne_resources_scrape_url($url);
+      // Invoke the 'resourcesUpdateData' JavaScript function to update form fields.
       $response->AddCommand(new InvokeCommand(null, 'resourcesUpdateData', [$scrapped_data]));
     } catch (\Exception $e) {
-      // Registrar el error en el archivo de registro.
+      // Log the error in the log file.
       $logger = \Drupal::logger('resources');
-      $logger->error('Error al realizar el scraping: @error_message', ['@error_message' => $e->getMessage()]);
+      $logger->error('Error while performing scraping: @error_message', ['@error_message' => $e->getMessage()]);
     }
   }
 
   return $response;
 }
 
-function bne_resources_scrape_url($url) {
+/**
+ * Ajax handler.
+ *
+ * This function handles AJAX requests for updating the field_basic_knowledge
+ * and field_specific_competencies fields based on selected values in the
+ * field_subject_resources field.
+ *
+ * @param array $form
+ *   The form array.
+ * @param FormStateInterface $form_state
+ *   The form state object.
+ * @param Request $request
+ *   The HTTP request object.
+ *
+ * @return \Drupal\Core\Ajax\AjaxResponse
+ *   An AJAX response object.
+ */
+function bne_resources_ajax_callback(array $form, FormStateInterface $form_state, Request $request) {
+  $response = new AjaxResponse();  
+  // Call the function to load options for field_basic_knowledge.
+  $options = bne_resources_load_taxonomy_basic_knowledge($form_state->getValue('field_subject_resources'));  
+  $options2 = bne_resources_load_taxonomy_specific_competencies($form_state->getValue('field_subject_resources'));  
 
-  $client = new Client();
-  $response = $client->get($url);
-  $content = $response->getBody()->getContents();
-  $crawler = new Crawler($content);
+  // Remove old options before assigning new ones.
+  $form_state->setValue('field_basic_knowledge', []);
+  $form_state->setValue('field_specific_competencies', []);
 
-  // Extraer los datos requeridos del HTML utilizando el Crawler.
-  $title = $crawler->filter('.entrada h1.valor')->text();
-  $doc_id = str_replace('bdh', '', $crawler->filter('.entrada span.rrr')->text());
+  // Assign the options to the field_basic_knowledge field.
+  $form['field_basic_knowledge']['widget']['#options'] = $options;
+  // Assign the options to the field_specific_competencies field.
+  $form['field_specific_competencies']['widget']['#options'] = $options2;
 
-  $physical_description = $crawler->filterXpath("//div[@class='dato'][contains(text(), 'Descripción física')]/following-sibling::div[1]")->text('');
-  $description_notes = $crawler->filterXpath("//div[@class='dato'][contains(text(), 'Descripción y notas')]/following-sibling::div[1]")->text('');
-  $fechas = $crawler->filterXpath("//div[@class='dato'][contains(text(), 'Fecha')]/following-sibling::div[1]")->text('');
-  $dates = BNEgetFecha($fechas);
+  // Process the newly updated checkboxes for field_basic_knowledge.
+  $checkboxes_element = $form['field_basic_knowledge']['widget'];
+  $checkboxes_element['#id'] = 'edit-field_basic_knowledge-wrapper';
+  Checkboxes::processCheckboxes($checkboxes_element, $form_state, $form);
 
-  $small_image_id = "http://bdh-rd.bne.es/low.raw?id=$doc_id&name=00000001.jpg";
-  $big_image_id = "http://bdh-rd.bne.es/pdf.raw?query=id:$doc_id&name=00000001.jpg&jpeg=true";
-  $viewer_url = "http://bdh-rd.bne.es/viewer.vm?id=bdh$doc_id&page=1";
+  // Process the newly updated checkboxes for field_specific_competencies.
+  $checkboxes_element2 = $form['field_specific_competencies']['widget'];
+  $checkboxes_element2['#id'] = 'edit-field_specific_competencies-wrapper';
+  Checkboxes::processCheckboxes($checkboxes_element2, $form_state, $form);
 
-  return [
-  'title' => $title,
-  'small_image_id' => $small_image_id,
-  'big_image_id' => $big_image_id,
-  'viewer_url' => $viewer_url,
-  'physical_description' => $physical_description,
-  'description_notes' => $description_notes,
-  'date_1' => $dates[0],
-  'date_2' => $dates[1],
-  ];
+  // Return an AJAX response to update the field_basic_knowledge field.
+  $response->addCommand(new ReplaceCommand(
+      '#edit-field_basic_knowledge-wrapper',
+      render($checkboxes_element)
+  ));
+
+  // Return an AJAX response to update the field_specific_competencies field.
+  $response->addCommand(new ReplaceCommand(
+      '#edit-field_specific_competencies-wrapper',
+      render($checkboxes_element2)
+  ));
+
+  // Return the AJAX response.
+  return $response;
 }
 
 
-function BNEgetFecha($text){
+  
+/**
+ * Function to load options for the field_basic_knowledge field.
+ *
+ * This function retrieves taxonomy terms related to the selected values and
+ * loads them as options for the field_basic_knowledge field.
+ *
+ * @param array $selected_values
+ *   An array of selected values.
+ *
+ * @return array
+ *   An associative array of options for the field_basic_knowledge field.
+ */
+function bne_resources_load_taxonomy_basic_knowledge(array $selected_values) {
+  $options = [];
 
-  if(strlen($text) > 0){
+  // Extract the selected TIDs into an array.
+  $selected_tids = array_map(function ($value) {
+    return $value['target_id'];
+  }, $selected_values);
 
+  // Query the "Basic Knowledge" taxonomy to find related terms.
+  $query = \Drupal::entityQuery('taxonomy_term');
+  $query->condition('vid', 'basic_knowledge');
+  $query->condition('field_subject_resources', $selected_tids, 'IN');
+  $tids = $query->execute();
+
+  // Check if there are related terms, and if so, load the options.
+  if (!empty($tids)) {
+    $saberesBasicosTids = array_values($tids);
+
+    // Load terms based on the retrieved TIDs.
+    $terms = \Drupal\taxonomy\Entity\Term::loadMultiple($saberesBasicosTids);
+
+    foreach ($terms as $term) {
+      try {
+        // Get the term ID.
+        $term_tid = $term->id();
+
+        // Check if the term ID is numeric.
+        if (is_numeric($term_tid)) {
+          // Build the option text with title and description.
+          $title = $term->get('name')->value;
+          $description = $term->get('description')->value;
+          $option_text = $title;
+
+          if (!empty($description)) {
+            $option_text .= ' <br/>  ' . $description;
+          }
+
+          // Add the option to the array.
+          $options[$term_tid] = $option_text;
+        }
+      } catch (Exception $e) {
+        \Drupal::logger('bne_resources')->error('An exception occurred: @message', ['@message' => $e->getMessage()]);
+      }
+    }
+  }
+
+  return $options;
+}
+
+/**
+ * Function to load options for the field_specific_competencies field.
+ *
+ * This function retrieves taxonomy terms related to the selected values and
+ * loads them as options for the field_specific_competencies field.
+ *
+ * @param array $selected_values
+ *   An array of selected values.
+ *
+ * @return array
+ *   An associative array of options for the field_specific_competencies field.
+ */
+function bne_resources_load_taxonomy_specific_competencies(array $selected_values) {
+  $options = [];
+
+  // Extract the selected TIDs into an array.
+  $selected_tids = array_map(function ($value) {
+    return $value['target_id'];
+  }, $selected_values);
+
+  // Query the "Specific Competencies" taxonomy to find related terms.
+  $query = \Drupal::entityQuery('taxonomy_term');
+  $query->condition('vid', 'specific_competencies');
+  $query->condition('field_subject_resources', $selected_tids, 'IN');
+  $tids = $query->execute();
+
+  if (!empty($tids)) {
+    $competencies = array_values($tids);
+    $terms = \Drupal\taxonomy\Entity\Term::loadMultiple($competencies);
+
+    foreach ($terms as $term) {
+      try {
+        // Get the term ID.
+        // Check if the term ID is numeric.
+        $term_tid = $term->id();
+
+        if (is_numeric($term_tid)) {
+          // Build the option text with title and description.
+          $title = $term->get('name')->value;
+          $description = $term->get('description')->value;
+          $option_text = $title;
+
+          if (!empty($description)) {
+            $option_text .= ' <br/>  ' . $description;
+          }
+
+          // Add the option to the array.
+          $options[$term_tid] = $option_text;
+        }
+      } catch (Exception $e) {
+        \Drupal::logger('bne_resources')->error('An exception occurred: @message', ['@message' => $e->getMessage()]);
+      }
+    }
+  }
+
+  return $options;
+}
+
+
+/**
+ * Scrapes data from a given URL.
+ *
+ * @param string $url
+ *   The URL to scrape.
+ *
+ * @return array
+ *   An array containing scraped data.
+ */
+function bne_resources_scrape_url($url) {
+  // Create a new HTTP client.
+  $client = new Client();
+  
+  // Send an HTTP GET request to the provided URL.
+  $response = $client->get($url);
+  
+  // Get the response content.
+  $content = $response->getBody()->getContents();
+  
+  // Create a new Crawler instance to parse the HTML content.
+  $crawler = new Crawler($content);
+  
+  // Extract the title from the HTML using the Crawler.
+  $title = $crawler->filter('.entrada h1.valor')->text();
+  
+  // Extract the document ID from the HTML and remove 'bdh' prefix.
+  $doc_id = str_replace('bdh', '', $crawler->filter('.entrada span.rrr')->text());
+  
+  // Extract physical description from the HTML.
+  $physical_description = $crawler->filterXpath("//div[@class='dato'][contains(text(), 'Descripción física')]/following-sibling::div[1]")->text('');
+  
+  // Extract description notes from the HTML.
+  $description_notes = $crawler->filterXpath("//div[@class='dato'][contains(text(), 'Descripción y notas')]/following-sibling::div[1]")->text('');
+  
+  // Extract dates from the HTML and parse them.
+  $fechas = $crawler->filterXpath("//div[@class='dato'][contains(text(), 'Fecha')]/following-sibling::div[1]")->text('');
+  $dates = BNEgetFecha($fechas);
+  
+  // Generate URLs for small and big images.
+  $small_image_id = "http://bdh-rd.bne.es/low.raw?id=$doc_id&name=00000001.jpg";
+  $big_image_id = "http://bdh-rd.bne.es/pdf.raw?query=id:$doc_id&name=00000001.jpg&jpeg=true";
+  
+  // Generate a viewer URL.
+  $viewer_url = "http://bdh-rd.bne.es/viewer.vm?id=bdh$doc_id&page=1";
+  
+  // Return an array containing the scraped data.
+  return [
+    'title' => $title,
+    'small_image_id' => $small_image_id,
+    'big_image_id' => $big_image_id,
+    'viewer_url' => $viewer_url,
+    'physical_description' => $physical_description,
+    'description_notes' => $description_notes,
+    'date_1' => $dates[0],
+    'date_2' => $dates[1],
+  ];
+}
+
+/**
+ * Parses and extracts dates from the given text.
+ *
+ * This function processes text containing dates and extracts them for further use.
+ *
+ * @param string $text
+ *   The text containing dates to be parsed.
+ *
+ * @return array
+ *   An array containing the extracted dates.
+ */
+function BNEgetFecha($text) {
+  // Remove unnecessary characters and whitespace from the text.
+  if (strlen($text) > 0) {
     $text = str_replace("\t", "", $text);
     $text = str_replace("\r\n", "", $text);
     $text = str_replace("<br/>", "\n\r", $text);
     $text = str_replace("</div>", "", $text);
     $text = str_replace("  ", "", $text);
-
   }
+
+  // Remove question marks from the text.
   $text = str_replace("?", "", $text);
-  if(strpos($text, "entre") !== false && strpos($text, "y") !== false ){
+
+  // Check if the text contains "entre" and "y" to split dates.
+  if (strpos($text, "entre") !== false && strpos($text, "y") !== false) {
     $text = str_replace("entre", "", $text);
     $aFecha = explode("y", $text);
-  }else{
+  } else {
+    // If not, treat the entire text as a single date.
     $aFecha[0] = $text;
     $aFecha[1] = "";
   }
 
-
+  // Return an array containing the extracted dates.
   return $aFecha;
 }
