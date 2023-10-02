@@ -14,7 +14,10 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Render\Element\Select;
 use Drupal\Core\Render\Element\Checkboxes;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\taxonomy\Entity\Vocabulary;
 use Drupal\views\ViewExecutable;
 use Drupal\views\Views;
 use GuzzleHttp\Client;
@@ -24,17 +27,21 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DomCrawler\Crawler;
+
 /**
- * Implements hook_form_BASE_FORM_ID_alter() for resource node forms.
+ * Implements hook_form_alter() to modify the behavior of specific node forms.
  *
- * This function alters the form for resource node creation and editing.
+ * This function is used to alter the behavior of node edit forms for specific
+ * content types, such as 'node_resources_form' and 'node_resources_edit_form'.
+ * It adds AJAX behavior to certain form elements and custom containers, attaches
+ * a library, and defines ID attributes for specific form elements.
  *
  * @param array &$form
- *   The form array to be altered.
+ *   The form structure to be altered.
  * @param \Drupal\Core\Form\FormStateInterface $form_state
- *   The current form state.
+ *   The current state of the form.
  * @param string $form_id
- *   The form ID being altered.
+ *   The unique identifier for the form.
  */
 function bne_resources_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   switch ($form_id) {
@@ -46,50 +53,69 @@ function bne_resources_form_alter(&$form, FormStateInterface $form_state, $form_
         'event' => 'change',
         'progress' => [
           'type' => 'throbber',
-          'message' => t('Scrapping Database...'),
+          'message' => t('Scraping Database...'),
         ],
       ];
-      // Define the ID attribute for the 'field_basic_knowledge' and 'field_specific_competencies' containers.
-      $form['field_basic_knowledge']['#attributes']['id'] = 'edit-field_basic_knowledge-wrapper';
-      $form['field_specific_competencies']['#attributes']['id'] = 'edit-field_specific_competencies-wrapper';
+      // Add a custom container around 'field_subject_resources'.
+      $form['field_subject_resources']['#prefix'] = '<div id="custom-field-subject-resources-container">';
+      $form['field_subject_resources']['#suffix'] = '</div>';
       // Add AJAX behavior to the 'field_subject_resources' widget.
       $form['field_subject_resources']['widget']['#ajax'] = [
         'callback' => 'bne_resources_ajax_callback',
         'event' => 'change',
-        'wrapper' => 'edit-field-related-articles-wrapper',
+        'wrapper' => 'edit-field-subject-resources-wrapper',
       ];
+      // Add an AJAX callback to the 'field_resource_level' field (CHS).
+      $form['field_resource_level']['widget']['#ajax'] = [
+        'callback' => 'bne_resources_level_ajax_callback',
+        'event' => 'change',
+        'wrapper' => 'edit-field-resource-level-wrapper',
+      ];
+      // Define the ID attribute for the 'field_basic_knowledge' and 'field_specific_competencies' containers.
+      $form['field_basic_knowledge']['#attributes']['id'] = 'edit-field_basic_knowledge-wrapper';
+      $form['field_specific_competencies']['#attributes']['id'] = 'edit-field_specific_competencies-wrapper';
       // Attach a library to the form.
       $form['#attached']['library'][] = 'bne_resources/adminresources';
       break;
   }
 }
 
+
+
 /**
- * Ajax callback for updating data based on the URL provided.
+ * AJAX Callback for updating form fields with scraped data from a URL.
  *
- * This function is called via Ajax when the URL field is changed.
- * It scrapes data from the provided URL and updates the form fields accordingly.
+ * This function handles an AJAX request triggered when a URL is entered in a form
+ * field. It attempts to scrape data from the provided URL and updates relevant
+ * form fields with the scraped information. If an error occurs during scraping,
+ * it logs the error message for debugging purposes.
  *
- * @param array &$form
- *   The form array.
+ * @param array $form
+ *   The form structure.
  * @param \Drupal\Core\Form\FormStateInterface $form_state
- *   The current form state.
+ *   The current state of the form.
  * @param string $form_id
- *   The form ID.
+ *   The unique identifier for the form.
  *
  * @return \Drupal\Core\Ajax\AjaxResponse
- *   The Ajax response containing the updated data.
+ *   An AJAX response object that may contain updated form fields or error messages.
  */
 function bne_resources_url_ajax_callback(array &$form, FormStateInterface $form_state, $form_id) {
   $response = new AjaxResponse();
+
+  // Log a message for debugging purposes.
+  \Drupal::logger('resources')->notice('bne_resources_url_ajax_callback called');
+
+  // Get the URL value from the form field.
   $url = $form_state->getValue('field_url_bdh')[0]['uri'];
 
   if (!empty($url)) {
     try {
       // Scrape data from the provided URL.
       $scrapped_data = bne_resources_scrape_url($url);
+
       // Invoke the 'resourcesUpdateData' JavaScript function to update form fields.
-      $response->AddCommand(new InvokeCommand(null, 'resourcesUpdateData', [$scrapped_data]));
+      $response->addCommand(new InvokeCommand(NULL, 'resourcesUpdateData', [$scrapped_data]));
     } catch (\Exception $e) {
       // Log the error in the log file.
       $logger = \Drupal::logger('resources');
@@ -100,115 +126,260 @@ function bne_resources_url_ajax_callback(array &$form, FormStateInterface $form_
   return $response;
 }
 
+
+
 /**
- * Ajax handler.
+ * AJAX Callback for updating taxonomy term checkboxes based on selected subjects.
  *
- * This function handles AJAX requests for updating the field_basic_knowledge
- * and field_specific_competencies fields based on selected values in the
- * field_subject_resources field.
+ * This function handles AJAX requests to update the options of two taxonomy term
+ * fields, field_basic_knowledge and field_specific_competencies, based on the
+ * selected subject resources. It retrieves the appropriate taxonomy term options
+ * and updates the form elements accordingly.
  *
  * @param array $form
- *   The form array.
- * @param FormStateInterface $form_state
- *   The form state object.
- * @param Request $request
+ *   The form structure.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The current state of the form.
+ * @param \Symfony\Component\HttpFoundation\Request $request
  *   The HTTP request object.
  *
  * @return \Drupal\Core\Ajax\AjaxResponse
- *   An AJAX response object.
+ *   An AJAX response object containing updated form elements.
  */
 function bne_resources_ajax_callback(array $form, FormStateInterface $form_state, Request $request) {
-  $response = new AjaxResponse();  
+  $response = new AjaxResponse();
+  
   // Call the function to load options for field_basic_knowledge.
-  $options = bne_resources_load_taxonomy_basic_knowledge($form_state->getValue('field_subject_resources'));  
-  $options2 = bne_resources_load_taxonomy_specific_competencies($form_state->getValue('field_subject_resources'));  
-
+  $options = bne_resources_load_taxonomy_options($form_state->getValue('field_subject_resources'), 'basic_knowledge');
+  $options2 = bne_resources_load_taxonomy_options($form_state->getValue('field_subject_resources'), 'specific_competencies');
+  
   // Remove old options before assigning new ones.
   $form_state->setValue('field_basic_knowledge', []);
   $form_state->setValue('field_specific_competencies', []);
-
+  
   // Assign the options to the field_basic_knowledge field.
   $form['field_basic_knowledge']['widget']['#options'] = $options;
+  
   // Assign the options to the field_specific_competencies field.
   $form['field_specific_competencies']['widget']['#options'] = $options2;
-
+  
   // Process the newly updated checkboxes for field_basic_knowledge.
   $checkboxes_element = $form['field_basic_knowledge']['widget'];
   $checkboxes_element['#id'] = 'edit-field_basic_knowledge-wrapper';
   Checkboxes::processCheckboxes($checkboxes_element, $form_state, $form);
-
+  
   // Process the newly updated checkboxes for field_specific_competencies.
   $checkboxes_element2 = $form['field_specific_competencies']['widget'];
   $checkboxes_element2['#id'] = 'edit-field_specific_competencies-wrapper';
   Checkboxes::processCheckboxes($checkboxes_element2, $form_state, $form);
-
+  
   // Return an AJAX response to update the field_basic_knowledge field.
   $response->addCommand(new ReplaceCommand(
       '#edit-field_basic_knowledge-wrapper',
       render($checkboxes_element)
   ));
-
+  
   // Return an AJAX response to update the field_specific_competencies field.
   $response->addCommand(new ReplaceCommand(
       '#edit-field_specific_competencies-wrapper',
       render($checkboxes_element2)
   ));
-
-  // Return the AJAX response.
+  
   return $response;
+}
+
+/**
+ * AJAX Callback to update the subject resources field based on the selected resource level.
+ *
+ * This function serves as an AJAX callback to dynamically update the options of
+ * the 'field_subject_resources' field based on the selected value in the
+ * 'field_resource_level' field. It retrieves the appropriate taxonomy terms
+ * based on the selection and updates the form field accordingly.
+ *
+ * @param array &$form
+ *   The form structure to be updated.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The current state of the form.
+ * @param \Symfony\Component\HttpFoundation\Request $request
+ *   The HTTP request object.
+ *
+ * @return \Drupal\Core\Ajax\AjaxResponse
+ *   An AJAX response object containing updated form field options.
+ */
+function bne_resources_level_ajax_callback(array &$form, FormStateInterface $form_state, Request $request) {
+  $response = new AjaxResponse();
+  $vocabulary_machine_name = 'subject_resources';
+  $options = [];
+
+  // Get the taxonomy terms based on the previous selection.
+  $term_id = bne_resources_getTaxonomyTerms($form_state->getValue('field_resource_level'), $vocabulary_machine_name);
+  $terms = bne_resources_ChildrenOfTaxonomy($term_id, $vocabulary_machine_name);
+
+  // Add the terms to the options with their respective IDs.
+  foreach ($terms as $term) {
+    $options[$term->id()] = $term->getName();
+  }
+
+  // Update the options of the 'field_subject_resources' field.
+  $form['field_subject_resources']['widget']['#options'] = $options;
+
+  // Create an AjaxResponse object and use HtmlCommand to replace the content of the container.
+  $response->addCommand(new ReplaceCommand('#edit-field-subject-resources-wrapper', render($form['field_subject_resources']['widget'])));
+
+  return $response;
+}
+
+
+/**
+ * Retrieve child taxonomy terms of a given set of terms within a specified vocabulary.
+ *
+ * This function takes an array of taxonomy terms and a vocabulary machine name as
+ * input and returns an array of child taxonomy terms. It checks the validity of
+ * the input terms, finds the parent term (if any), and retrieves the child terms
+ * associated with the input terms within the specified vocabulary.
+ *
+ * @param array $terms
+ *   An array of taxonomy terms to find child terms for.
+ * @param string $vocabulary_machine_name
+ *   The machine name of the vocabulary in which to search for child terms.
+ *
+ * @return \Drupal\taxonomy\Entity\Term[]
+ *   An array of child taxonomy terms.
+ */
+function bne_resources_ChildrenOfTaxonomy(array $terms, $vocabulary_machine_name) {
+  $child_terms = [];
+  $parent_term = null;
+
+  // Verify that $terms is not empty and that all values are Term objects.
+  $valid_terms = array_filter($terms, function ($term) {
+    return $term instanceof \Drupal\taxonomy\Entity\Term;
+  });
+
+  if (!empty($valid_terms)) {
+    // Find the parent term if it exists and get the IDs of child terms.
+    foreach ($valid_terms as $term) {
+      if ($term->parent->isEmpty()) {
+        $parent_term = $term;
+      } else {
+        $term_ids[] = $term->id();
+      }
+    }
+
+    // Add the parent term to the beginning of the list if found.
+    if ($parent_term !== null) {
+      $child_terms[$parent_term->id()] = $parent_term;
+    }
+
+    // Retrieve the taxonomy terms for the child terms.
+    if (!empty($term_ids)) {
+      $taxonomy_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+      $query = $taxonomy_storage->getQuery()
+        ->condition('vid', $vocabulary_machine_name)
+        ->condition('parent', $term_ids, 'IN');
+      $child_term_ids = $query->execute();
+      $child_terms += $taxonomy_storage->loadMultiple($child_term_ids);
+    }
+  }
+
+  return $child_terms;
+}
+
+
+
+/**
+ * Retrieve taxonomy terms referencing a set of term IDs within a specified vocabulary.
+ *
+ * This function takes an array of term IDs and a vocabulary machine name as input
+ * and returns an array of taxonomy terms that reference the input term IDs within
+ * the specified vocabulary. It checks for the presence of term IDs, creates an
+ * entity query to find referencing terms, and loads the referencing terms.
+ *
+ * @param array $term_ids
+ *   An array of term IDs to find referencing terms for.
+ * @param string $vocabulary_machine_name
+ *   The machine name of the vocabulary in which to search for referencing terms.
+ *
+ * @return \Drupal\taxonomy\Entity\Term[]
+ *   An array of taxonomy terms referencing the input term IDs.
+ */
+function bne_resources_getTaxonomyTerms(array $term_ids, $vocabulary_machine_name) {
+  $referencing_terms = [];
+
+  // Check if there are any term IDs provided.
+  if (!empty($term_ids)) {
+    // Get the taxonomy term storage.
+    $taxonomy_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+
+    // Initialize an array to store referencing term IDs.
+    $referencing_term_ids = [];
+
+    // Iterate through the array of term IDs.
+    foreach ($term_ids as $term_id) {
+      // Create an entity query to find terms referencing each specified term.
+      $query = $taxonomy_storage->getQuery()
+        ->condition('vid', $vocabulary_machine_name)
+        ->condition('field_ref', $term_id);
+
+      // Execute the query and get the TIDs of referencing terms.
+      $term_references = $query->execute();
+      $referencing_term_ids = array_merge($referencing_term_ids, $term_references);
+    }
+
+    // Remove duplicate term IDs, if any.
+    $referencing_term_ids = array_unique($referencing_term_ids);
+
+    // Load the referencing terms.
+    $referencing_terms = $taxonomy_storage->loadMultiple($referencing_term_ids);
+  }
+
+  return $referencing_terms;
 }
 
 
   
 /**
- * Function to load options for the field_basic_knowledge field.
+ * Function to load options for a taxonomy field.
  *
  * This function retrieves taxonomy terms related to the selected values and
- * loads them as options for the field_basic_knowledge field.
+ * loads them as options for the specified taxonomy field.
  *
  * @param array $selected_values
  *   An array of selected values.
+ * @param string $taxonomy_name
+ *   The name of the taxonomy vocabulary.
  *
  * @return array
- *   An associative array of options for the field_basic_knowledge field.
+ *   An associative array of options for the specified taxonomy field.
  */
-function bne_resources_load_taxonomy_basic_knowledge(array $selected_values) {
+function bne_resources_load_taxonomy_options(array $selected_values, $taxonomy_name) {
   $options = [];
-
   // Extract the selected TIDs into an array.
   $selected_tids = array_map(function ($value) {
     return $value['target_id'];
   }, $selected_values);
-
-  // Query the "Basic Knowledge" taxonomy to find related terms.
+  // Query the specified taxonomy to find related terms.
   $query = \Drupal::entityQuery('taxonomy_term');
-  $query->condition('vid', 'basic_knowledge');
+  $query->condition('vid', $taxonomy_name);
   $query->condition('field_subject_resources', $selected_tids, 'IN');
   $tids = $query->execute();
-
   // Check if there are related terms, and if so, load the options.
   if (!empty($tids)) {
-    $saberesBasicosTids = array_values($tids);
-
+    $term_ids = array_values($tids);
     // Load terms based on the retrieved TIDs.
-    $terms = \Drupal\taxonomy\Entity\Term::loadMultiple($saberesBasicosTids);
-
+    $terms = \Drupal\taxonomy\Entity\Term::loadMultiple($term_ids);
     foreach ($terms as $term) {
       try {
         // Get the term ID.
         $term_tid = $term->id();
-
         // Check if the term ID is numeric.
         if (is_numeric($term_tid)) {
           // Build the option text with title and description.
           $title = $term->get('name')->value;
           $description = $term->get('description')->value;
           $option_text = $title;
-
           if (!empty($description)) {
             $option_text .= ' <br/>  ' . $description;
           }
-
           // Add the option to the array.
           $options[$term_tid] = $option_text;
         }
@@ -217,68 +388,8 @@ function bne_resources_load_taxonomy_basic_knowledge(array $selected_values) {
       }
     }
   }
-
   return $options;
 }
-
-/**
- * Function to load options for the field_specific_competencies field.
- *
- * This function retrieves taxonomy terms related to the selected values and
- * loads them as options for the field_specific_competencies field.
- *
- * @param array $selected_values
- *   An array of selected values.
- *
- * @return array
- *   An associative array of options for the field_specific_competencies field.
- */
-function bne_resources_load_taxonomy_specific_competencies(array $selected_values) {
-  $options = [];
-
-  // Extract the selected TIDs into an array.
-  $selected_tids = array_map(function ($value) {
-    return $value['target_id'];
-  }, $selected_values);
-
-  // Query the "Specific Competencies" taxonomy to find related terms.
-  $query = \Drupal::entityQuery('taxonomy_term');
-  $query->condition('vid', 'specific_competencies');
-  $query->condition('field_subject_resources', $selected_tids, 'IN');
-  $tids = $query->execute();
-
-  if (!empty($tids)) {
-    $competencies = array_values($tids);
-    $terms = \Drupal\taxonomy\Entity\Term::loadMultiple($competencies);
-
-    foreach ($terms as $term) {
-      try {
-        // Get the term ID.
-        // Check if the term ID is numeric.
-        $term_tid = $term->id();
-
-        if (is_numeric($term_tid)) {
-          // Build the option text with title and description.
-          $title = $term->get('name')->value;
-          $description = $term->get('description')->value;
-          $option_text = $title;
-
-          if (!empty($description)) {
-            $option_text .= ' <br/>  ' . $description;
-          }
-
-          // Add the option to the array.
-          $options[$term_tid] = $option_text;
-        }
-      } catch (Exception $e) {
-        \Drupal::logger('bne_resources')->error('An exception occurred: @message', ['@message' => $e->getMessage()]);
-      }
-    }
-  }
-
-  return $options;
-}
-
 
 /**
  * Scrapes data from a given URL.
