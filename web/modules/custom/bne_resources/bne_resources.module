@@ -72,8 +72,13 @@ function bne_resources_form_alter(&$form, FormStateInterface $form_state, $form_
         'wrapper' => 'edit-field-resource-level-wrapper',
       ];
       // Define the ID attribute for the 'field_basic_knowledge' and 'field_specific_competencies' containers.
+      $form['field_subject_resources']['#attributes']['id'] = 'edit-field_subject_resources-wrapper';
+      $form['field_basic_knowledge']['#prefix'] = '<div id="custom-field-basic-knowledge-container">';
+      $form['field_basic_knowledge']['#suffix'] = '</div>';
       $form['field_basic_knowledge']['#attributes']['id'] = 'edit-field_basic_knowledge-wrapper';
       $form['field_specific_competencies']['#attributes']['id'] = 'edit-field_specific_competencies-wrapper';
+      $form['field_specific_competencies']['#prefix'] = '<div id="custom-field-specific-competencies-container">';
+      $form['field_specific_competencies']['#suffix'] = '</div>';
       // Attach a library to the form.
       $form['#attached']['library'][] = 'bne_resources/adminresources';
       break;
@@ -166,11 +171,13 @@ function bne_resources_ajax_callback(array $form, FormStateInterface $form_state
   // Process the newly updated checkboxes for field_basic_knowledge.
   $checkboxes_element = $form['field_basic_knowledge']['widget'];
   $checkboxes_element['#id'] = 'edit-field_basic_knowledge-wrapper';
+  $checkboxes_element['#title'] ='';
   Checkboxes::processCheckboxes($checkboxes_element, $form_state, $form);
   
   // Process the newly updated checkboxes for field_specific_competencies.
   $checkboxes_element2 = $form['field_specific_competencies']['widget'];
   $checkboxes_element2['#id'] = 'edit-field_specific_competencies-wrapper';
+  $checkboxes_element2['#title'] ='';
   Checkboxes::processCheckboxes($checkboxes_element2, $form_state, $form);
   
   // Return an AJAX response to update the field_basic_knowledge field.
@@ -222,12 +229,13 @@ function bne_resources_level_ajax_callback(array &$form, FormStateInterface $for
 
   // Update the options of the 'field_subject_resources' field.
   $form['field_subject_resources']['widget']['#options'] = $options;
-
-  // Create an AjaxResponse object and use HtmlCommand to replace the content of the container.
-  $response->addCommand(new ReplaceCommand('#edit-field-subject-resources-wrapper', render($form['field_subject_resources']['widget'])));
+  
+  // Update the content of the 'custom-field-subject-resources-container' container.
+  $response->addCommand(new HtmlCommand('#custom-field-subject-resources-container', $form['field_subject_resources']['widget']));
 
   return $response;
 }
+
 
 
 /**
@@ -248,7 +256,6 @@ function bne_resources_level_ajax_callback(array &$form, FormStateInterface $for
  */
 function bne_resources_ChildrenOfTaxonomy(array $terms, $vocabulary_machine_name) {
   $child_terms = [];
-  $parent_term = null;
 
   // Verify that $terms is not empty and that all values are Term objects.
   $valid_terms = array_filter($terms, function ($term) {
@@ -256,31 +263,26 @@ function bne_resources_ChildrenOfTaxonomy(array $terms, $vocabulary_machine_name
   });
 
   if (!empty($valid_terms)) {
-    // Find the parent term if it exists and get the IDs of child terms.
+    // Separate terms into parents and children.
     foreach ($valid_terms as $term) {
-      if ($term->parent->isEmpty()) {
-        $parent_term = $term;
-      } else {
-        $term_ids[] = $term->id();
+      if (!$term->parent->isEmpty()) {
+        $child_terms[$term->id()] = $term;
       }
     }
 
-    // Add the parent term to the beginning of the list if found.
-    if ($parent_term !== null) {
-      $child_terms[$parent_term->id()] = $parent_term;
-    }
-
-    // Retrieve the taxonomy terms for the child terms.
-    if (!empty($term_ids)) {
+    // Retrieve additional child terms if necessary.
+    if (!empty($child_terms)) {
       $taxonomy_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
       $query = $taxonomy_storage->getQuery()
         ->condition('vid', $vocabulary_machine_name)
-        ->condition('parent', $term_ids, 'IN');
+        ->condition('parent', array_keys($child_terms), 'IN');
       $child_term_ids = $query->execute();
       $child_terms += $taxonomy_storage->loadMultiple($child_term_ids);
     }
   }
 
+  // Sort child terms by ID.
+  ksort($child_terms);
   return $child_terms;
 }
 
@@ -353,10 +355,12 @@ function bne_resources_getTaxonomyTerms(array $term_ids, $vocabulary_machine_nam
  */
 function bne_resources_load_taxonomy_options(array $selected_values, $taxonomy_name) {
   $options = [];
+
   // Extract the selected TIDs into an array.
   $selected_tids = array_map(function ($value) {
     return $value['target_id'];
   }, $selected_values);
+
   // Query the specified taxonomy to find related terms.
   $query = \Drupal::entityQuery('taxonomy_term');
   $query->condition('vid', $taxonomy_name);
@@ -365,22 +369,21 @@ function bne_resources_load_taxonomy_options(array $selected_values, $taxonomy_n
   // Check if there are related terms, and if so, load the options.
   if (!empty($tids)) {
     $term_ids = array_values($tids);
-    // Load terms based on the retrieved TIDs.
     $terms = \Drupal\taxonomy\Entity\Term::loadMultiple($term_ids);
     foreach ($terms as $term) {
       try {
-        // Get the term ID.
         $term_tid = $term->id();
-        // Check if the term ID is numeric.
         if (is_numeric($term_tid)) {
-          // Build the option text with title and description.
           $title = $term->get('name')->value;
           $description = $term->get('description')->value;
+          $children = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadChildren($term_tid);
+          if (!empty($children)) {
+            $title = '<span class="padre">' . htmlspecialchars($title) . '</span>';
+          }
           $option_text = $title;
           if (!empty($description)) {
             $option_text .= ' <br/>  ' . $description;
           }
-          // Add the option to the array.
           $options[$term_tid] = $option_text;
         }
       } catch (Exception $e) {
@@ -388,8 +391,11 @@ function bne_resources_load_taxonomy_options(array $selected_values, $taxonomy_n
       }
     }
   }
+
   return $options;
 }
+
+
 
 /**
  * Scrapes data from a given URL.

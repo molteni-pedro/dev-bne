@@ -1,12 +1,16 @@
-(function ($) {
-  Drupal.behaviors.myCustomCHSBehavior = {
+(function ($, Drupal) {
+  Drupal.behaviors.customBehavior = {
     attach: function (context, settings) {
-      // Escucha cambios en el campo CHS con el evento 'cschierarchyupdate'.
-      $('#field-resource-level', context).once('my-custom-chs-behavior').on('cschierarchyupdate', function () {
-        // Tu código JavaScript personalizado aquí.
-        // Por ejemplo, muestra un mensaje de alerta.
-        alert('Seleccionaste un valor en el campo CHS');
+      var idsToStyle = [68, 90, 131, 114, 102, 75, 64, 159, 82];
+
+      idsToStyle.forEach(function(id) {
+        var optionElement = $('option[value="' + id + '"]', context);
+        optionElement.css({
+          'font-weight': 'bold',
+          'font-size': '20px'
+        });
+        optionElement.attr('disabled', 'disabled');
       });
     }
   };
-})(jQuery);
+})(jQuery, Drupal);
