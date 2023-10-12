@@ -13,10 +13,8 @@
 
 # Ignorar directorio de dependencias de Composer
 /vendor/
-
-# Ignorar directorio de modules
-/web/modules/
-
+# Ignorar directorio de backup
+database/
 # Ignorar archivos generados por Composer
 /composer.lock
 
