@@ -9,7 +9,7 @@
           'font-weight': 'bold',
           'font-size': '20px'
         });
-        optionElement.attr('disabled', 'disabled');
+        //optionElement.attr('disabled', 'disabled');
       });
     }
   };

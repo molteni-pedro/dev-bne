@@ -79,6 +79,8 @@ function bne_resources_form_alter(&$form, FormStateInterface $form_state, $form_
       $form['field_specific_competencies']['#attributes']['id'] = 'edit-field_specific_competencies-wrapper';
       $form['field_specific_competencies']['#prefix'] = '<div id="custom-field-specific-competencies-container">';
       $form['field_specific_competencies']['#suffix'] = '</div>';
+
+      
       // Attach a library to the form.
       $form['#attached']['library'][] = 'bne_resources/adminresources';
       break;
@@ -167,7 +169,8 @@ function bne_resources_ajax_callback(array $form, FormStateInterface $form_state
   
   // Assign the options to the field_specific_competencies field.
   $form['field_specific_competencies']['widget']['#options'] = $options2;
-  
+  $form['field_basic_knowledge']['widget']['#validated'] = TRUE;
+  $form['field_specific_competencies']['widget']['#validated'] = TRUE;
   // Process the newly updated checkboxes for field_basic_knowledge.
   $checkboxes_element = $form['field_basic_knowledge']['widget'];
   $checkboxes_element['#id'] = 'edit-field_basic_knowledge-wrapper';
@@ -193,6 +196,7 @@ function bne_resources_ajax_callback(array $form, FormStateInterface $form_state
   ));
   
   return $response;
+  
 }
 
 /**
@@ -379,10 +383,12 @@ function bne_resources_load_taxonomy_options(array $selected_values, $taxonomy_n
           $children = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadChildren($term_tid);
           if (!empty($children)) {
             $title = '<span class="padre">' . htmlspecialchars($title) . '</span>';
+          }else{
+            $title = '<span class="hijo">' . htmlspecialchars($title) . '</span>';
           }
           $option_text = $title;
           if (!empty($description)) {
-            $option_text .= ' <br/>  ' . $description;
+            $option_text .= '  ' . $description;
           }
           $options[$term_tid] = $option_text;
         }
