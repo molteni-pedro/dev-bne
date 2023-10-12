@@ -1,16 +1,4 @@
-CONTENTS OF THIS FILE
----------------------
-
-* Introduction
-* Requirements
-* Installation
-* Configuration
-* Automatic association to a group
-* Adding media to group in bulk
-* Maintainers
-
-INTRODUCTION
-------------
+# Group Media
 
 This module is designed to associate group specific media  with a group when
 using the [Group](https://www.drupal.org/project/group) module.
@@ -23,48 +11,58 @@ media with relation from Group Operations.
 
 Media item edit form will also contain the list of the groups it belongs to.
 
-* For a full description of the module visit:
-  https://www.drupal.org/project/groupmedia
+- For a full description of the module, visit the
+[project page](https://www.drupal.org/project/groupmedia)
   or
-  https://www.drupal.org/docs/contributed-modules/group-media
+[project page](https://www.drupal.org/docs/contributed-modules/group-media).
 
-* To submit bug reports and feature suggestions, or to track changes visit:
-  https://www.drupal.org/project/issues/groupmedia?categories=All
+- Submit bug reports and feature suggestions, or track changes in the
+[issue queue](https://www.drupal.org/project/issues/groupmedia?categories=All).
 
 
-REQUIREMENTS
-------------
+## Table of contents
 
- - Group module (https://drupal.org/project/group), version greater than
-   3.0.
- - Media module.
+- Requirements
+- Installation
+- Configuration
+- Automatic association to a group
+- Adding media to group in bulk
+- Maintainers
 
-INSTALLATION
-------------
+
+## Requirements
+
+- [Group module](https://drupal.org/project/group)
+   version greater than3.0.
+- Media module.
+
+
+## Installation
 
 Install the Groupmedia module as you would normally install a contributed
-Drupal module. Visit https://www.drupal.org/node/1897420 for further
-information.
+Drupal module. For further information, see
+[Installing Drupal Modules](https://www.drupal.org/docs/extending-drupal/installing-drupal-modules).
 
-CONFIGURATION
--------------
+
+## Configuration
 
 1. First you need to create a group type. Read more about this in Group
    module documentation.
-1. Go to `/admin/group/types`, find group type you want to extend with
+2. Go to `/admin/group/types`, find group type you want to extend with
    support of media relations.
-1. Select "Set available content" in the dropdown button corresponding
+3. Select "Set available content" in the dropdown button corresponding
    to your group type. You will end up on the plugin overview page with
    the list of all relations to the group possible.
-1. Enable the plugins you need. Each Media Type has its own plugin.
-1. At page `/admin/group/types/manage/<your_group_type>/permissions`
+4. Enable the plugins you need. Each Media Type has its own plugin.
+5. At page `/admin/group/types/manage/<your_group_type>/permissions`
    you can set the permissions for each media relation plugin.
 
-Automatic association to a group
---------------------------------
+
+## Automatic association to a group
 
 Since alpha8 release it is possible to automatically add media items from
 group content to the group itself.
+
 
 #### Which media items will be attached?
 
@@ -95,8 +93,7 @@ For further details check `groupmedia.api.php` php comments.
 **IMPORTANT!** Disabled/enabled feature of automatic associating doesn't
 influence the manual group media relation CRUD.
 
-Adding media to group in bulk
---------------------------------
+## Adding media to group in bulk
 
 Media items can be added to group in bulk operations. For this one needs to add
 action "Assign Media to Group" and/or "Remove media from Group" to view that is
@@ -110,17 +107,17 @@ group just before the action is applied.
 
 ### Documentation on-line
 
-Read more about groupmedia module usage
+Read more about groupmedia module usage 
 [here](https://www.drupal.org/docs/contributed-modules/group-media)
-and on [official module page](https://drupal.org/project/groupmedia)
+and on [official module page](https://drupal.org/project/groupmedia).
 
-MAINTAINERS
------------
 
-* Artem Dmitriiev - https://www.drupal.org/u/admitriiev
-* Nikolay Lobachev - https://www.drupal.org/u/LOBsTerr
+## Maintainers
+
+- Artem Dmitriiev - [a.dmitriiev](https://www.drupal.org/u/admitriiev)
+- Nikolay Lobachev - [LOBsTerr](https://www.drupal.org/u/LOBsTerr)
 
 Supporting organization:
 
-* 1xINTERNET GmbH - https://www.drupal.org/1xinternet
-* European Commission - https://www.drupal.org/european-commission
+- 1xINTERNET GmbH - [1xINTERNET](https://www.drupal.org/1xinternet)
+- European Commission - [European Commission](https://www.drupal.org/european-commission)

@@ -19,7 +19,7 @@ services:
   # Specific group relation handlers.
   group.relation_handler.operation_provider.group_media:
     class: 'Drupal\groupmedia\Plugin\Group\RelationHandler\GroupMediaOperationProvider'
-    arguments: [ '@group.relation_handler.operation_provider', '@current_user', '@string_translation' ]
+    arguments: [ '@group.relation_handler.operation_provider', '@current_user', '@string_translation', '@entity_type.manager']
     shared: false
 
   group.relation_handler.permission_provider.group_media:

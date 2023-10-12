@@ -30,6 +30,7 @@
         "drupal/core-recommended": "^9.5",
         "drupal/cshs": "^4.0",
         "drupal/csv_importer": "^1.16",
+        "drupal/devel": "^5.0",
         "drupal/entity_browser": "^2.9",
         "drupal/facets": "^2.0",
         "drupal/features": "^3.13",

@@ -7,7 +7,7 @@ dependencies:
   - groupmedia:groupmedia
   - paragraphs:paragraphs
 
-# Information added by Drupal.org packaging script on 2023-05-04
-version: '4.0.0-alpha7'
+# Information added by Drupal.org packaging script on 2023-09-11
+version: '4.0.2'
 project: 'groupmedia'
-datestamp: 1683239529
+datestamp: 1694467523

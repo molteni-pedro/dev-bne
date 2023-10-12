@@ -2,8 +2,8 @@
 
 namespace Drupal\groupmedia\Plugin\Group\Relation;
 
-use Drupal\group\Plugin\Group\Relation\GroupRelationBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\group\Plugin\Group\Relation\GroupRelationBase;
 
 /**
  * Provides a relation type plugin for media.
