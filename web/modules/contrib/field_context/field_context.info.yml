@@ -1,0 +1,12 @@
+name: Field Context
+type: module
+description: 'Pull views context filter value from current page fields.'
+package: Custom
+dependencies:
+  - drupal:views
+core_version_requirement: '^9 || ^10'
+
+# Information added by Drupal.org packaging script on 2023-09-14
+version: '1.0.2'
+project: 'field_context'
+datestamp: 1694709853

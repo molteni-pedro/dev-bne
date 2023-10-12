@@ -1,0 +1,178 @@
+/*
+* Recursos 
+*/
+
+
+.recursos.row{
+    border: 1px solid;
+    margin: 20px 0px;
+    padding: 15px;
+}
+.recursos.row .tapa.col-md-2{
+  width: 95px; 
+  height: 135px; 
+  overflow: hidden;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
+.recursos.row .tapa.col-md-2 img{
+  width: 100%;
+  height: auto; 
+}
+.recursos.row .detalle.col-md-10 .tipo{
+    font-size: 20px;
+    font-weight: 600;
+    color:#0B5AA0;
+}
+.recursos.row .detalle.col-md-10 .titulo{
+    font-size: 22px;
+    color:#000000;
+}
+.recursos.row .flecha{
+   background-color: #0B5AA0;
+   color: #fff;
+   width: 40px;
+   height: 90px;
+   position: absolute;
+  right:-15px; 
+  margin-top: 4%;
+    
+}
+.recursos.row .flecha i{
+ font-size: 30px;
+margin-top: 25px;
+}
+ul.js-pager__items.pager a {
+    background-color: #0B5AA0;
+    width: 100%;
+}
+.block-facet-blocktipo-material,
+.block-facet-blocknivel {
+    background-color: #fff !important;
+    border: 1px solid;  
+}
+.block-facet-blocknivel li,
+.block-facet-blocktipo-material li,
+.block-facet-blockarea-materia li
+{
+    list-style: none;
+}
+.block-facet-blocktipo-material li span.facet-item__value,
+.block-facet-blocknivel li span.facet-item__value{
+    color: #000;
+    margin-left: 5px;
+     font-weight: 100;
+
+}
+.block-facet-blocktipo-material li span.facet-item__count,
+.block-facet-blocknivel li span.facet-item__count{
+    color: #000;
+    margin-left: 5px;
+     font-weight: 100;
+
+}
+.block-facet-blockarea-materia {
+    background-color: #D3DBE0 !important;
+    border: 1px solid;  
+}
+.block-facet-blockarea-materia  li span.facet-item__value{
+    color: #000;
+    margin-left: 5px;
+    font-weight: 100;
+
+}
+.block-facet-blockarea-materia  li span.facet-item__count{
+    color: #000;
+    margin-left: 5px;
+    font-weight: 100;
+}
+.block-facet-blocknivel .block-title:before,
+.block-facet-blocktipo-material .block-title:before,
+.block-facet-blockarea-materia .block-title:before{
+  height:0px;
+}
+.block-views-exposed-filter-blockbuscador-recursos-page-1
+{
+    background-image: url("../img/header-buscador.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 350px;
+}
+
+.block-views-exposed-filter-blockbuscador-recursos-page-1 h2{
+    text-align: center;
+    color: #0B5AA0 !important;
+    text-transform: uppercase;
+    padding-top: 75px !important;
+    
+}
+.block-views-exposed-filter-blockbuscador-recursos-page-1 h2:before{
+    background: transparent!important;
+}
+.block-views-exposed-filter-blockbuscador-recursos-page-1 h1{
+    text-align: center;
+}
+.block-views-exposed-filter-blockbuscador-recursos-page-1 .form-item-search-api-fulltext{
+    width: 70%;
+   float: left;
+ display: inline;
+}
+.block-views-exposed-filter-blockbuscador-recursos-page-1 .form-item-search-api-fulltext input{
+    width: 100%;
+}
+.block-views-exposed-filter-blockbuscador-recursos-page-1 .form-actions{
+    width: 30%;
+    float: left;
+    display: inline;
+}
+#block-filtrarpor{
+    background-color: #0B5AA0 !important;
+    padding: 5px;
+}
+#block-filtrarpor h2{
+    color: #fff;
+    padding-top:15px;
+    padding-left: 35px;
+}
+#block-filtrarpor h2:before{
+    background: none!important
+}
+ 
+body.path-buscador .region.region__slideshow-content{
+    margin-bottom: 100px
+}
+.block-views-exposed-filter-blockbuscador-recursos-page-1 #edit-submit-buscador-recursos--2{
+    background-color: #0B5AA0 !important;  
+     font-size: 16px;
+     color: #fff;
+     font-weight: 700;
+     padding: 12px 45px 12px 45px;
+     line-height: 20px;
+     position: relative;
+     z-index: 9;
+     display: inline-block;
+     -webkit-transition: all 0.35s;
+     transition: all 0.35s;
+     border: none;
+     border-radius: 0;
+     text-transform: none;
+     margin-left: 30px;
+ }
+ /**
+  * fix
+  * 
+  */
+  body.path-buscador .gva-breadcrumb-content{
+    display: none;
+}
+
+#block-areamateria .facets-widget-checkbox .facet-item.facet-item--expanded input.facets-checkbox {
+  display: none;
+}
+
+
+#block-areamateria .facets-widget-checkbox .facet-item.facet-item--expanded .facets-widget- ul .facet-item input.facets-checkbox {
+  display: inline-block; 
+}
