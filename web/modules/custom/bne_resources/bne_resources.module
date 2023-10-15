@@ -29,61 +29,72 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
- * Implements hook_form_alter() to modify the behavior of specific node forms.
+ * Implements hook_form_alter() for the 'resources' content type.
  *
- * This function is used to alter the behavior of node edit forms for specific
- * content types, such as 'node_resources_form' and 'node_resources_edit_form'.
- * It adds AJAX behavior to certain form elements and custom containers, attaches
- * a library, and defines ID attributes for specific form elements.
- *
- * @param array &$form
- *   The form structure to be altered.
+ * @param array $form
+ *   The form array.
  * @param \Drupal\Core\Form\FormStateInterface $form_state
- *   The current state of the form.
+ *   The form state object.
  * @param string $form_id
- *   The unique identifier for the form.
+ *   The form ID.
  */
 function bne_resources_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   switch ($form_id) {
-    case 'node_resources_form':
-    case 'node_resources_edit_form':
-      // Add AJAX behavior to the 'field_url_bdh' widget.
-      $form['field_url_bdh']['widget'][0]['uri']['#ajax'] = [
-        'callback' => 'bne_resources_url_ajax_callback',
-        'event' => 'change',
-        'progress' => [
-          'type' => 'throbber',
-          'message' => t('Scraping Database...'),
-        ],
-      ];
-      // Add a custom container around 'field_subject_resources'.
-      $form['field_subject_resources']['#prefix'] = '<div id="custom-field-subject-resources-container">';
-      $form['field_subject_resources']['#suffix'] = '</div>';
-      // Add AJAX behavior to the 'field_subject_resources' widget.
-      $form['field_subject_resources']['widget']['#ajax'] = [
-        'callback' => 'bne_resources_ajax_callback',
-        'event' => 'change',
-        'wrapper' => 'edit-field-subject-resources-wrapper',
-      ];
-      // Add an AJAX callback to the 'field_resource_level' field (CHS).
-      $form['field_resource_level']['widget']['#ajax'] = [
-        'callback' => 'bne_resources_level_ajax_callback',
-        'event' => 'change',
-        'wrapper' => 'edit-field-resource-level-wrapper',
-      ];
-      // Define the ID attribute for the 'field_basic_knowledge' and 'field_specific_competencies' containers.
-      $form['field_subject_resources']['#attributes']['id'] = 'edit-field_subject_resources-wrapper';
-      $form['field_basic_knowledge']['#prefix'] = '<div id="custom-field-basic-knowledge-container">';
-      $form['field_basic_knowledge']['#suffix'] = '</div>';
-      $form['field_basic_knowledge']['#attributes']['id'] = 'edit-field_basic_knowledge-wrapper';
-      $form['field_specific_competencies']['#attributes']['id'] = 'edit-field_specific_competencies-wrapper';
-      $form['field_specific_competencies']['#prefix'] = '<div id="custom-field-specific-competencies-container">';
-      $form['field_specific_competencies']['#suffix'] = '</div>';
+      case 'node_resources_form':
+      case 'node_resources_edit_form':
+          // Attach AJAX behavior to the 'field_url_bdh' widget.
+          $form['field_url_bdh']['widget'][0]['uri']['#ajax'] = [
+              'callback' => 'bne_resources_url_ajax_callback',
+              'event' => 'change',
+              'progress' => [
+                  'type' => 'throbber',
+                  'message' => t('Scraping Database...'),
+              ],
+          ];
 
-      
-      // Attach a library to the form.
-      $form['#attached']['library'][] = 'bne_resources/adminresources';
-      break;
+          // Attach AJAX behavior to the 'field_subject_resources' widget.
+          $form['field_subject_resources']['widget']['#ajax'] = [
+              'callback' => 'bne_resources_ajax_callback',
+              'event' => 'change',
+              'wrapper' => 'edit-field-subject-resources-wrapper',
+          ];
+
+          // Attach AJAX behavior to the 'field_resource_level' widget.
+          $form['field_resource_level']['widget']['#ajax'] = [
+              'callback' => 'bne_resources_level_ajax_callback',
+              'event' => 'change',
+              'wrapper' => 'edit-field-resource-level-wrapper',
+          ];
+
+          // Define the container IDs for 'field_basic_knowledge' and 'field_specific_competencies'.
+          $form['field_basic_knowledge']['#prefix'] = '<div id="edit-field_basic_knowledge-wrapper">';
+          $form['field_basic_knowledge']['#suffix'] = '</div>';
+          $form['field_specific_competencies']['#prefix'] = '<div id="edit-field_specific_competencies-wrapper">';
+          $form['field_specific_competencies']['#suffix'] = '</div>';
+
+          // Attach the 'adminresources' library to the form.
+          $form['#attached']['library'][] = 'bne_resources/adminresources';
+
+           // Fetch the current value of 'field_subject_resources'.
+           $current_subject_value = $form_state->getValue('field_subject_resources', []);
+           if (empty($current_subject_value)) {
+               // If there's no current value (e.g., on initial load), use the default value.
+               $current_subject_value = isset($form['field_subject_resources']['widget']['#default_value']) ? (array) $form['field_subject_resources']['widget']['#default_value'] : [];
+           }
+
+           // Ensure the value is an array.
+           if (!is_array($current_subject_value)) {
+               $current_subject_value = [$current_subject_value];
+           }
+
+           // Update the options based on the current or default value.
+           if (!empty($current_subject_value)) {
+               $basic_knowledge_options = bne_resources_load_taxonomy_options($current_subject_value, 'basic_knowledge');
+               $specific_competencies_options = bne_resources_load_taxonomy_options($current_subject_value, 'specific_competencies');
+               $form['field_basic_knowledge']['widget']['#options'] = $basic_knowledge_options;
+               $form['field_specific_competencies']['widget']['#options'] = $specific_competencies_options;
+           }
+           break;
   }
 }
 
@@ -135,69 +146,46 @@ function bne_resources_url_ajax_callback(array &$form, FormStateInterface $form_
 
 
 
-/**
- * AJAX Callback for updating taxonomy term checkboxes based on selected subjects.
- *
- * This function handles AJAX requests to update the options of two taxonomy term
- * fields, field_basic_knowledge and field_specific_competencies, based on the
- * selected subject resources. It retrieves the appropriate taxonomy term options
- * and updates the form elements accordingly.
- *
- * @param array $form
- *   The form structure.
- * @param \Drupal\Core\Form\FormStateInterface $form_state
- *   The current state of the form.
- * @param \Symfony\Component\HttpFoundation\Request $request
- *   The HTTP request object.
- *
- * @return \Drupal\Core\Ajax\AjaxResponse
- *   An AJAX response object containing updated form elements.
- */
 function bne_resources_ajax_callback(array $form, FormStateInterface $form_state, Request $request) {
   $response = new AjaxResponse();
   
-  // Call the function to load options for field_basic_knowledge.
+
+  // Antes de actualizar las opciones, guarda los valores seleccionados por el usuario.
+  $current_basic_knowledge_values = $form_state->getValue('field_basic_knowledge');
+  $current_specific_competencies_values = $form_state->getValue('field_specific_competencies');
+
+  // Llama a la función para cargar opciones para field_basic_knowledge y field_specific_competencies.
   $options = bne_resources_load_taxonomy_options($form_state->getValue('field_subject_resources'), 'basic_knowledge');
   $options2 = bne_resources_load_taxonomy_options($form_state->getValue('field_subject_resources'), 'specific_competencies');
-  
-  // Remove old options before assigning new ones.
-  $form_state->setValue('field_basic_knowledge', []);
-  $form_state->setValue('field_specific_competencies', []);
-  
-  // Assign the options to the field_basic_knowledge field.
+
+  // Asigna las opciones a los campos.
   $form['field_basic_knowledge']['widget']['#options'] = $options;
-  
-  // Assign the options to the field_specific_competencies field.
   $form['field_specific_competencies']['widget']['#options'] = $options2;
-  $form['field_basic_knowledge']['widget']['#validated'] = TRUE;
-  $form['field_specific_competencies']['widget']['#validated'] = TRUE;
-  // Process the newly updated checkboxes for field_basic_knowledge.
-  $checkboxes_element = $form['field_basic_knowledge']['widget'];
-  $checkboxes_element['#id'] = 'edit-field_basic_knowledge-wrapper';
-  $checkboxes_element['#title'] ='';
-  Checkboxes::processCheckboxes($checkboxes_element, $form_state, $form);
-  
-  // Process the newly updated checkboxes for field_specific_competencies.
-  $checkboxes_element2 = $form['field_specific_competencies']['widget'];
-  $checkboxes_element2['#id'] = 'edit-field_specific_competencies-wrapper';
-  $checkboxes_element2['#title'] ='';
-  Checkboxes::processCheckboxes($checkboxes_element2, $form_state, $form);
-  
+
+  // Después de actualizar las opciones, restablece los valores seleccionados por el usuario.
+  $form_state->setValue('field_basic_knowledge', $current_basic_knowledge_values);
+  $form_state->setValue('field_specific_competencies', $current_specific_competencies_values);
+
+  // Procesa los elementos del formulario para adjuntar el JavaScript necesario.
+  $class = get_class($form_state->getFormObject());
+  \Drupal::formBuilder()->doBuildForm($form['#form_id'], $form, $form_state);
+
   // Return an AJAX response to update the field_basic_knowledge field.
   $response->addCommand(new ReplaceCommand(
-      '#edit-field_basic_knowledge-wrapper',
-      render($checkboxes_element)
+    '#edit-field-basic-knowledge',
+    $form['field_basic_knowledge']['widget']
   ));
   
   // Return an AJAX response to update the field_specific_competencies field.
   $response->addCommand(new ReplaceCommand(
-      '#edit-field_specific_competencies-wrapper',
-      render($checkboxes_element2)
+    '#edit-field-specific-competencies',
+    $form['field_specific_competencies']['widget']
   ));
   
   return $response;
   
 }
+
 
 /**
  * AJAX Callback to update the subject resources field based on the selected resource level.
