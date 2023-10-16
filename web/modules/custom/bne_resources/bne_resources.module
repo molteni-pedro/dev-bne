@@ -175,7 +175,8 @@ function bne_resources_ajax_callback(array $form, FormStateInterface $form_state
   // Asigna las opciones a los campos.
   $form['field_basic_knowledge']['widget']['#options'] = $options;
   $form['field_specific_competencies']['widget']['#options'] = $options2;
-
+  $form['field_specific_competencies']['widget']['#id'] = 'edit-field_specific_competencies-wrapper';
+  $form['field_basic_knowledge']['widget']['#id'] =  'edit-field_basic_knowledge-wrapper';
   // Después de actualizar las opciones, restablece los valores seleccionados por el usuario.
   $form_state->setValue('field_basic_knowledge', $current_basic_knowledge_values);
   $form_state->setValue('field_specific_competencies', $current_specific_competencies_values);
@@ -186,13 +187,13 @@ function bne_resources_ajax_callback(array $form, FormStateInterface $form_state
 
   // Return an AJAX response to update the field_basic_knowledge field.
   $response->addCommand(new ReplaceCommand(
-    '#edit-field-basic-knowledge',
+    '#edit-field_basic_knowledge-wrapper',
     $form['field_basic_knowledge']['widget']
   ));
   
   // Return an AJAX response to update the field_specific_competencies field.
   $response->addCommand(new ReplaceCommand(
-    '#edit-field-specific-competencies',
+    '#edit-field_specific_competencies-wrapper',
     $form['field_specific_competencies']['widget']
   ));
   
