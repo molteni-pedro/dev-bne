@@ -42,7 +42,7 @@ function bne_resources_form_alter(&$form, FormStateInterface $form_state, $form_
   switch ($form_id) {
     case 'node_resources_form':
     case 'node_resources_edit_form':
-        // Adjunta el comportamiento AJAX al widget 'field_url_bdh'.
+        // Attach AJAX behavior to the 'field_url_bdh' widget.
         $form['field_url_bdh']['widget'][0]['uri']['#ajax'] = [
             'callback' => 'bne_resources_url_ajax_callback',
             'event' => 'change',
@@ -52,21 +52,21 @@ function bne_resources_form_alter(&$form, FormStateInterface $form_state, $form_
             ],
         ];
 
-        // Adjunta el comportamiento AJAX al widget 'field_subject_resources'.
+        // Attach AJAX behavior to the 'field_subject_resources' widget.
         $form['field_subject_resources']['widget']['#ajax'] = [
             'callback' => 'bne_resources_ajax_callback',
             'event' => 'change',
             'wrapper' => 'edit-field-subject-resources-wrapper',
         ];
 
-        // Adjunta el comportamiento AJAX al widget 'field_resource_level'.
+        // Attach AJAX behavior to the 'field_resource_level' widget.
         $form['field_resource_level']['widget']['#ajax'] = [
             'callback' => 'bne_resources_level_ajax_callback',
             'event' => 'change',
             'wrapper' => 'edit-field-resource-level-wrapper',
         ];
 
-        // Define los IDs de contenedor para 'field_basic_knowledge' y 'field_specific_competencies'.
+        // Define the container IDs for 'field_basic_knowledge' and 'field_specific_competencies'.
         $form['field_subject_resources']['#attributes']['id'] = 'edit-field_subject_resources-wrapper';
         $form['field_basic_knowledge']['#prefix'] = '<div id="edit-field_basic_knowledge-wrapper">';
         $form['field_basic_knowledge']['#suffix'] = '</div>';
@@ -75,40 +75,41 @@ function bne_resources_form_alter(&$form, FormStateInterface $form_state, $form_
         $form['field_subject_resources']['#prefix'] = '<div id="custom-field-subject-resources-container">';
         $form['field_subject_resources']['#suffix'] = '</div>';
 
-        // Adjunta la biblioteca 'adminresources' al formulario.
+        // Attach the 'adminresources' library to the form.
         $form['#attached']['library'][] = 'bne_resources/adminresources';
 
-        // Obtiene el valor actual de 'field_subject_resources'.
-        $current_subject_value = $form_state->getValue('field_subject_resources', []);
+       // Obtiene el valor actual de 'field_subject_resources'.
+      $current_subject_value = $form_state->getValue('field_subject_resources', []);
 
-        // Usa el valor predeterminado si no hay un valor actual.
-        if (empty($current_subject_value)) {
-          $current_subject_value = isset($form['  ']['widget']['#default_value']) ? (array) $form['field_subject_resources']['widget']['#default_value'] : [];
-        }
+      // Usa el valor predeterminado si no hay un valor actual.
+      /*if (empty($current_subject_value)) {
+        $current_subject_value = isset($form['field_subject_resources']['widget']['#default_value']) ? (array) $form['field_subject_resources']['widget']['#default_value'] : [];
+      }
 
-        // Asegura que el valor sea un array.
-        if (!is_array($current_subject_value)) {
-          $current_subject_value = [$current_subject_value];
-        }
+      // Asegura que el valor sea un array.
+      if (!is_array($current_subject_value)) {
+        $current_subject_value = [$current_subject_value];
+      }
+*/
+      // Actualiza las opciones basadas en el valor actual o predeterminado.
+      if (is_array($current_subject_value)) {
+        $basic_knowledge_options = bne_resources_load_taxonomy_options($current_subject_value, 'basic_knowledge');
+        $specific_competencies_options = bne_resources_load_taxonomy_options($current_subject_value, 'specific_competencies');
 
-        // Actualiza las opciones basadas en el valor actual o predeterminado.
-        if (is_array($current_subject_value)) {
-          $basic_knowledge_options = bne_resources_load_taxonomy_options($current_subject_value, 'basic_knowledge');
-          $specific_competencies_options = bne_resources_load_taxonomy_options($current_subject_value, 'specific_competencies');
-
-          // Establece las opciones si son arrays.
-          if (is_array($basic_knowledge_options) && is_array($specific_competencies_options)) {
-            $form['field_basic_knowledge']['widget']['#options'] = $basic_knowledge_options;
-            $form['field_specific_competencies']['widget']['#options'] = $specific_competencies_options;
-          } else {
-            \Drupal::logger('bne_resources')->error('Se esperaba un array pero se obtuvo un valor que no es un array.');
-          }
+        // Establece las opciones si son arrays.
+        if (is_array($basic_knowledge_options) && is_array($specific_competencies_options)) {
+          $form['field_basic_knowledge']['widget']['#options'] = $basic_knowledge_options;
+          $form['field_specific_competencies']['widget']['#options'] = $specific_competencies_options;
         } else {
-          \Drupal::logger('bne_resources')->error('El valor actual de la materia no es un array.');
+          \Drupal::logger('bne_resources')->error('Se esperaba un array pero se obtuvo un valor que no es un array.');
         }
-        break;
-  }
+      } else {
+        \Drupal::logger('bne_resources')->error('El valor actual de la materia no es un array.');
+      }
+      break;
 }
+}
+
 
 
 
@@ -161,39 +162,43 @@ function bne_resources_url_ajax_callback(array &$form, FormStateInterface $form_
 
 function bne_resources_ajax_callback(array $form, FormStateInterface $form_state, Request $request) {
   $response = new AjaxResponse();
+  
 
-
-  // Obtiene el valor actual de field_subject_resources.
-  $subject_values = $form_state->getValue('field_subject_resources');
-
-  // Asegura que el valor sea un array.
-  if (!is_array($subject_values)) {
-    $subject_values = [$subject_values];
-  }
+  // Antes de actualizar las opciones, guarda los valores seleccionados por el usuario.
+  $current_basic_knowledge_values = $form_state->getValue('field_basic_knowledge');
+  $current_specific_competencies_values = $form_state->getValue('field_specific_competencies');
 
   // Llama a la función para cargar opciones para field_basic_knowledge y field_specific_competencies.
-  $basic_knowledge_options = bne_resources_load_taxonomy_options($subject_values, 'basic_knowledge');
-  $specific_competencies_options = bne_resources_load_taxonomy_options($subject_values, 'specific_competencies');
+  $options = bne_resources_load_taxonomy_options($form_state->getValue('field_subject_resources'), 'basic_knowledge');
+  $options2 = bne_resources_load_taxonomy_options($form_state->getValue('field_subject_resources'), 'specific_competencies');
 
-  // Establece las opciones si son arrays.
-  if (is_array($basic_knowledge_options) && is_array($specific_competencies_options)) {
-    // Actualiza los campos con las nuevas opciones.
-    $form['field_basic_knowledge']['widget']['#options'] = $basic_knowledge_options;
-    $form['field_specific_competencies']['widget']['#options'] = $specific_competencies_options;
+  // Asigna las opciones a los campos.
+  $form['field_basic_knowledge']['widget']['#options'] = $options;
+  $form['field_specific_competencies']['widget']['#options'] = $options2;
 
-    // Procesa los elementos del formulario para adjuntar el JavaScript necesario.
-    \Drupal::formBuilder()->doBuildForm($form['#form_id'], $form, $form_state);
+  // Después de actualizar las opciones, restablece los valores seleccionados por el usuario.
+  $form_state->setValue('field_basic_knowledge', $current_basic_knowledge_values);
+  $form_state->setValue('field_specific_competencies', $current_specific_competencies_values);
 
-    // Agrega comandos de reemplazo para los campos actualizados.
-    $response->addCommand(new ReplaceCommand('#edit-field_basic_knowledge-wrapper', $form['field_basic_knowledge']['widget']));
-    $response->addCommand(new ReplaceCommand('#edit-field_specific_competencies-wrapper', $form['field_specific_competencies']['widget']));
-  } else {
-    \Drupal::logger('bne_resources')->error('Se esperaba un array pero se obtuvo un valor que no es un array.');
-  }
+  // Procesa los elementos del formulario para adjuntar el JavaScript necesario.
+  $class = get_class($form_state->getFormObject());
+  \Drupal::formBuilder()->doBuildForm($form['#form_id'], $form, $form_state);
 
+  // Return an AJAX response to update the field_basic_knowledge field.
+  $response->addCommand(new ReplaceCommand(
+    '#edit-field-basic-knowledge',
+    $form['field_basic_knowledge']['widget']
+  ));
+  
+  // Return an AJAX response to update the field_specific_competencies field.
+  $response->addCommand(new ReplaceCommand(
+    '#edit-field-specific-competencies',
+    $form['field_specific_competencies']['widget']
+  ));
+  
   return $response;
+  
 }
-
 
 
 /**
@@ -230,7 +235,6 @@ function bne_resources_level_ajax_callback(array &$form, FormStateInterface $for
 
   // Update the options of the 'field_subject_resources' field.
   $form['field_subject_resources']['widget']['#options'] = $options;
-
   
   // Update the content of the 'custom-field-subject-resources-container' container.
   $response->addCommand(new HtmlCommand('#custom-field-subject-resources-container', $form['field_subject_resources']['widget']));
