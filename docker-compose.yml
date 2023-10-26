@@ -48,6 +48,7 @@ services:
 
   solr:
     image: wodby/solr:$SOLR_TAG
+    hostname: solr.bne.devel
     container_name: "${PROJECT_NAME}_solr"
     environment:
       SOLR_DEFAULT_CONFIG_SET: $SOLR_CONFIG_SET
@@ -55,6 +56,9 @@ services:
       SOLR_HEAP: 1024m
     networks:
       - mariadb_default
+    ports:
+      - 8983:8983
+      - 0:80
     depends_on:
     - zookeeper
     labels:
