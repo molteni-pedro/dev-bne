@@ -1,8 +1,0 @@
-services:
-  menu.default_tree_manipulators:
-    class: Drupal\language_switcher_menu\LanguageLinkAccessMenuTreeManipulator
-    arguments:
-      - '@access_manager'
-      - '@current_user'
-      - '@entity_type.manager'
-      - '@path.validator'

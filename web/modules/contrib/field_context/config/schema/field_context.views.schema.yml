@@ -1,5 +1,0 @@
-views.argument_default.fcmatch:
-  type: sequence
-  label: 'Field from route context'
-  sequence:
-    type: string

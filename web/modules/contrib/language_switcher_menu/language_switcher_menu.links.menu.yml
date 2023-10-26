@@ -1,9 +1,0 @@
-language_switcher_menu.configure:
-  title: 'Language Switcher Menu'
-  description: 'Configure Language Switcher Menu settings.'
-  route_name: language_switcher_menu.configure
-  parent: system.admin_config_regional
-
-language_switcher_menu.language_switcher_link:
-  class: Drupal\language_switcher_menu\Plugin\Menu\LanguageSwitcherLink
-  deriver: Drupal\language_switcher_menu\Plugin\Derivative\LanguageSwitcherLink
