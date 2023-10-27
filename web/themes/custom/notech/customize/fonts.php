@@ -2,7 +2,7 @@
 function notech_font_size(){
     $size = array();
     $size[''] = '-- Default --';
-    for ($i=12; $i <= 50 ; $i = $i+1) { 
+    for ($i=12; $i <= 50 ; $i = $i+1) {
         $size[$i] = $i;
     }
     return $size;
@@ -686,8 +686,8 @@ $tmp = array(
     );
     $fonts = array();
     foreach ($tmp as $key => $value) {
-        $fonts[$value] = $value;   
-    }   
+        $fonts[$value] = $value;
+    }
     return $fonts;
 }
 
@@ -704,7 +704,7 @@ function notech_typography_font_styles($option, $selectors) {
     $output = $selectors . ' {';
     if(isset($option['face']) && $option['face']){
         $output .= 'font-family:' . $option['face'] . '; ';
-    }    
+    }
     if(isset($option['weight']) && $option['weight']){
         $output .= 'font-weight:' . $option['weight'] . '; ';
     }
@@ -717,14 +717,14 @@ function notech_typography_font_styles($option, $selectors) {
 }
 
 function notech_typography_enqueue_google_font($font) {
- 
+
     if($font && $font != "---"){
         if(array_search($font, array_keys(notech_fonts())) > 17){
             $font = str_replace(" ", "+", $font);
             return "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://fonts.googleapis.com/css?family=$font:100,300,400,600,800,900\"/>\n";
         }
-    } 
-    return '';   
+    }
+    return '';
 }
 
 function notech_links_typography_font($json){
@@ -742,13 +742,13 @@ function notech_links_typography_font($json){
 function notech_options_patterns(){
     $output = '';
     $file_path = \Drupal::service('extension.list.theme')->getPath('notech');
-    $list_file = glob($file_path . '/images/patterns/*.{jpg,png,gif}', GLOB_BRACE);
-   
+    $list_file = glob($file_path . '/images/patterns/*.{jpg,png,gif}');
+
     foreach ($list_file as $key => $file) {
       if(basename($file)){
-        $file_url = $file_path . 'images/patterns/' .  basename($file); 
+        $file_url = $file_path . 'images/patterns/' .  basename($file);
         $output .= '<option value = "'.basename($file).'">'.basename($file).'</option>';
-      } 
+      }
     }
     return $output;
 }
