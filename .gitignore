@@ -7,14 +7,17 @@
 /web/sites/*/files/.htaccess
 /web/sites/*/settings.local.php
 
+# Ignorar modulos contrib
+/web/modules/contrib/*
+# Ignorar Themes Contrib
+/web/themes/contrib/*
+
 # Ignorar archivos de configuración locales
 /.env
 /web/sites/default/settings.local.php
 
 # Ignorar directorio de dependencias de Composer
 /vendor/
-# Ignorar directorio de backup
-database/
 # Ignorar archivos generados por Composer
 /composer.lock
 

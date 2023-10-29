@@ -23,6 +23,7 @@
         "drupal/admin_toolbar": "^3.4",
         "drupal/allowed_formats": "^1.5",
         "drupal/anu_lms": "^2.9",
+        "drupal/better_exposed_filters": "^6.0",
         "drupal/bne_resources": "^1.0",
         "drupal/business_rules": "^2.0@beta",
         "drupal/config_update": "^2.0@alpha",
