@@ -4,3 +4,110 @@ function notech_subtheme_preprocess_html(&$variables) {
   $variables['#attached']['library'][] = 'notech_subtheme/notech_subtheme.skin.default';
 
 }
+
+function getTermDepth($term_id) {
+    $depth = 0;
+    $current_term = $term_id;
+    /*foreach (\Drupal::service('entity_type.manager')->getStorage('taxonomy_term')->loadParents($current_term) as $parent) {
+        \Drupal::messenger()->addMessage('Padre: ' . $parent->label());
+    }*/
+    
+    while ($parents = \Drupal::service('entity_type.manager')->getStorage('taxonomy_term')->loadParents($current_term)) {
+        // Tomamos el primer padre (en taxonomías no jerárquicas, solo debería haber uno).
+        $parent = reset($parents);
+        $current_term = $parent->id();
+        $depth++;
+    }
+    
+    return $depth;
+}
+
+function notech_subtheme_preprocess_taxonomy_term(&$variables) {
+  // Obtiene el término actual.
+  $term = $variables['term'];
+  $parents = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadParents($term->id());
+
+  // Si tiene padres, establece la variable 'has_parent' a TRUE. De lo contrario, a FALSE.
+  if(!empty($parents)) $variables['taxonomy_term_level'] = 1; else $variables['taxonomy_term_level'] = 0;
+  
+
+  // Comprueba si el término tiene el campo 'field_subject_resources' y si no está vacío.
+  if ($term->hasField('field_subject_resources') && !$term->get('field_subject_resources')->isEmpty()) {
+    
+    // Obtiene el término referenciado en 'field_subject_resources'.
+    $referenced_term = $term->get('field_subject_resources')->entity;
+
+    if ($referenced_term) {
+      // Obtiene los padres del término referenciado.
+      $parents = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadParents($referenced_term->id());
+
+      // Si tiene padres, toma el primer padre (Drupal permite múltiples padres, pero por simplicidad tomamos el primero).
+      if ($parents) {
+        $parent = reset($parents);
+        $variables['parent_tid'] = $parent->id();
+      }
+      else {
+        $variables['parent_tid'] = NULL;
+      }
+    }
+  }
+}
+/**
+ * Implements hook_preprocess_field().
+ */
+function notech_subtheme_preprocess_field(&$variables) {
+    
+  $element = $variables['element'];
+
+  if (isset($element['#field_name']) && $element['#field_name'] === 'field_subject_resources') {
+
+    foreach ($variables['items'] as $delta => $item) { 
+      if (isset($item['content']['#options']['entity'])) {
+        $term = $item['content']['#options']['entity'];
+        
+        $parents = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadParents($term->id());
+        if (!empty($parents)) {
+          // Get the first parent. If there are multiple parents, this approach takes the first one.
+          $parent = reset($parents);
+          $variables['items'][$delta]['parent_id'] = $parent->id();
+        }
+      }
+    }
+  }
+    
+    
+  // Verifica si estamos en el campo correcto.
+  if ($variables['element']['#field_name'] == 'field_resource_level') {
+
+      
+    $node = $variables['element']['#object'];
+
+
+    // Asegúrate de que los campos existen y no están vacíos.
+    if ($node->hasField('field_subject_resources') && !$node->get('field_subject_resources')->isEmpty()) {
+      $variables['field_subject_resources'] = $node->get('field_subject_resources')->view('full');
+    }
+    if ($node->hasField('field_specific_competencies') && !$node->get('field_specific_competencies')->isEmpty()) {
+      $variables['field_specific_competencies'] = $node->get('field_specific_competencies')->view('full');
+    }
+    if ($node->hasField('field_basic_knowledge') && !$node->get('field_basic_knowledge')->isEmpty()) {
+      $variables['field_basic_knowledge'] = $node->get('field_basic_knowledge')->view('full');
+    }
+  }
+  
+  
+  if ($variables['element']['#field_name'] == 'field_publication_1_year') {
+    $node = $variables['element']['#object'];
+
+
+    // Asegúrate de que los campos existen y no están vacíos.
+if ($node->hasField('field_publication_2_year') && !$node->get('field_publication_2_year')->isEmpty()) {
+    $variables['field_publication_2_year'] = $node->get('field_publication_2_year')->value;
+}
+      
+  }
+
+  
+}
+
+

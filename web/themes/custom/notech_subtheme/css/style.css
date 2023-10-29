@@ -160,6 +160,13 @@ body.path-buscador .region.region__slideshow-content{
      text-transform: none;
      margin-left: 30px;
  }
+select#edit-field-subject-resources,
+select#edit-field-basic-knowledge,
+select#edit-field-specific-competencies{
+    height: 750px;
+    width: 90%;
+
+}
  /**
   * fix
   * 
@@ -175,4 +182,64 @@ body.path-buscador .region.region__slideshow-content{
 
 #block-areamateria .facets-widget-checkbox .facet-item.facet-item--expanded .facets-widget- ul .facet-item input.facets-checkbox {
   display: inline-block; 
+}
+/*oriol*/
+.node--type-resources  {}
+.node--type-resources .col-left {float: left;width: 40%; box-sizing: border-box; padding-right: 2%;}
+.node--type-resources .col-right {float: right;width: 60%; box-sizing: border-box; padding-left: 2%;}
+.node--type-resources .field__label {font-weight: bold;text-transform: uppercase; margin-top: 20px;}
+.node--type-resources .field--name-field-url-resources {display: inline-block;margin-top: 40px;}
+.node--type-resources .field--name-field-url-resources a {display: inline-block; padding: 20px;color: #fff; font-weight: bold; background-color: var(--body-link-color);}
+.node--type-resources .field--name-field-url-bdh {display: inline;}
+.node--type-resources .field--name-field-url-bdh a {display: inline-block; padding: 20px;color: #fff; font-weight: bold; background-color: #009a96;}
+.node--type-resources .field--name-field-subject-resources {display: inline-block; margin-bottom: 5px;}
+.node--type-resources .field--name-field-subject-resources a {display: inline-block; margin-bottom: 5px;}
+.node--type-resources .field--name-field-resource-level {display: inline-block; margin-right: 20px;}
+.node--type-resources .field--name-field-resource-level > .field__item,
+.node--type-resources .field--name-field-resource-level > .subject-resources {display: inline-block;}
+.node--type-resources .field--name-field-resource-level a {display: inline-block; padding: 0 15px;color: #fff; font-weight: bold; background-color: var(--body-link-color);margin-bottom: 5px;}
+.node--type-resources .field--name-field-resource-level .field--name-field-subject-resources a {display: inline-block; padding: 0 15px;color: var(--body-link-color); font-weight: bold; background-color: transparent;margin-bottom: 5px;}
+
+.node--type-resources h3 {color:  var(--body-link-color); margin-top: 40px;}
+.node--type-resources .field--name-field-basic-knowledge {margin-top: 40px; margin-bottom: 80px;}
+.node--type-resources .field--name-field-basic-knowledge .field__label {text-transform: initial;}
+.node--type-resources .field--name-field-basic-knowledge .field--name-field-titulo { color:  var(--body-link-color);margin-top: 15px; font-weight: bold; line-height: 1.3;}
+.node--type-resources .field--name-field-basic-knowledge .field--name-description { margin-left: 20px; margin-top: 15px;line-height: 1.3;}
+.node--type-resources .field--name-field-basic-knowledge .field--name-description:before {content: '- ';float: left; margin-right: 10px;}
+.node--type-resources .field--name-field-specific-competencies .field__items {border: solid 1px #999; background: #f5f5f5; padding: 20px; line-height: 1.3;}
+.node--type-resources .field--name-field-specific-competencies .field__label {text-transform: initial;}
+.node--type-resources .field--name-field-specific-competencies .field__items .nivel0 {color:  var(--body-link-color); font-weight: bold;}
+.node--type-resources .field--name-field-specific-competencies .field__items .nivel1 {margin-left: 20px;}
+.haynivel .hayparent,
+.node--type-resources .field--name-field-subject-resources,
+.field--name-field-specific-competencies,
+.field--name-field-basic-knowledge {display: none;}
+.nivel52 .parent131, /*primero bachillerato*/
+.nivel53 .parent159, /*segundo bachillerato*/
+.nivel41 .parent64, /*Segundo ciclo de infantil*/
+.nivel44 .parent68, /*primer ciclo primaria*/
+.nivel45 .parent75, /*segundo ciclo primaria*/
+.nivel46 .parentxxx, /*tercer ciclo primaria*/
+.nivel48 .parent90, /*primer ciclo secundaria*/
+.nivel50 .parent102, /*segundo ciclo secundaria*/
+.nivel49 .parent114,
+.field--name-field-resource-level .field--name-field-subject-resources,
+.field--name-field-resource-level .field--name-field-specific-competencies,
+.field--name-field-resource-level .field--name-field-basic-knowledge { display: block;} /*tercer ciclo secundaria*/
+
+.recursos.row .detalle.col-md-10 {padding: 15px 0;}
+.sidebar .block#block-filtrarpor,
+.sidebar .block.block-facets-ajax {padding: 20px;}
+.sidebar .block.block-facets-ajax ul.js-facets-widget {padding-left: 0;}
+.sidebar .block.block-facets-ajax ul.js-facets-widget .facet-item[type="checkbox"],
+.sidebar .block.block-facets-ajax ul.js-facets-widget label {display: inline;}
+#block-filtrarpor h2 {padding: 0;   margin: 0;}
+
+.col-md-8 .filtro-expuesto input{
+    width: 100%;
+    height: 50px;
+}
+.col-md-2 #combine-authors-level-select{
+    width: 100%;
+    height: 50px;
 }

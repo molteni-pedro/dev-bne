@@ -1,0 +1,250 @@
+{%
+  	set classes = [
+	 	'node',
+	 	'node--type-' ~ node.bundle|clean_class,
+	 	node.isPromoted() ? 'node--promoted',
+	 	node.isSticky() ? 'node--sticky',
+	 	not node.isPublished() ? 'node--unpublished',
+	 	view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+	 	'clearfix',
+		'portfolio-class'
+  	]
+%}
+
+<!-- Start Display article for detail page -->
+
+{% set xcol = "col-md-12 col-sm-12 col-xs-12"  %}
+{% if informations %}
+  {% set xcol = "col-md-6 col-sm-12 col-xs-12"  %}
+{% endif %} 
+
+
+<article{{ attributes.addClass(classes) }}>
+	
+	<div class="breadcrumb-content-inner">
+		<div class="gva-breadcrumb-content">
+			<div class="text-light block gva-block-breadcrumb block-system block-system-breadcrumb-block no-title">
+			<div class="breadcrumb-style gva-parallax-background" style="{{ 'background-color: #1B1525;background-image: url(\''~ file_url(node.field_imagen_de_cabecera.entity.uri.value) ~' \');background-position: center center;background-repeat: no-repeat;' }}">
+				<div class="breadcrumb-content-main">
+					<div class="">
+						<div class="content block-content" >
+							{{ content.field_portfolio_tags[0]['#title'] }}
+						</div>
+					</div>  
+					<h2 class="page-title">{{ label }} </h2>
+				</div> 
+				<div class="gva-parallax-inner skrollable skrollable-between" data-bottom-top="top: -80%;" data-top-bottom="top: 0%;"></div>    
+			</div> 
+			</div>  
+		</div>  
+	</div>  
+    
+	<div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7 col-sm-12 col-xs-12 col-left">
+					{% if content.field_nivel_educativo[0]['#title'] %}
+					<div class="portfolio-categoria" >
+						{% if content.field_nivel_educativo[0]['#title'] %}
+							<div class="protfolio-nivel">
+								<span class="field__label">{{ content.field_nivel_educativo['#title'] }}:</span> <span class="field__content">{{ content.field_nivel_educativo[0]['#title'] }}</span> 
+							</div>
+						{% endif %}
+						
+							<div class="protfolio-materias">
+								{{ content.field_materias_recomendadas }}
+							</div>
+						
+					</div>
+					{% endif %}
+
+					<div class="portfolio-descripcion">
+					{{ content.body| raw }}
+					</div>
+				</div>
+				<div class="col-md-5 col-sm-12 col-xs-12 col-right">
+
+					{{ drupal_entity('block', 'bookmark') }}
+
+					{% if content.field_guia_del_alumno[0] %}
+						<div class="portfolio-enlace-boton">
+							<img src="/themes/custom/notech_subtheme/images/guias.png"/>
+							<div class="portfolio-enlace-boton-content">
+								<a href="{{ file_url(node.field_guia_del_alumno.entity.uri.value) }}" target="_blank">{{ content.field_guia_del_alumno['#title'] }}</a>
+							</div>
+						</div>
+					{% endif %}
+					{% if content.field_gu[0] %}
+						<div class="portfolio-enlace-boton">
+							<img src="/themes/custom/notech_subtheme/images/guias.png"/>
+							<div class="portfolio-enlace-boton-content">
+								<a href="{{ file_url(node.field_gu.entity.uri.value) }}" target="_blank">{{ content.field_gu['#title'] }}</a>
+							</div>
+						</div>
+					{% endif %}
+					{% if content.field_dercargar_guia_didactica[0] %}
+						<div class="portfolio-enlace-boton">
+							<img src="/themes/custom/notech_subtheme/images/descarga.png"/>
+							<div class="portfolio-enlace-boton-content">
+								<a href="{{ file_url(node.field_dercargar_guia_didactica.entity.uri.value) }}" target="_blank">{{ content.field_dercargar_guia_didactica['#title'] }}</a>
+							</div>
+						</div>
+					{% endif %}
+					{% if content.field_descargar_guia_del_video[0] %}
+						<div class="portfolio-enlace-boton">
+							<img src="/themes/custom/notech_subtheme/images/descarga.png"/>
+							<div class="portfolio-enlace-boton-content">
+								<a href="{{ file_url(node.field_descargar_guia_del_video.entity.uri.value) }}" target="_blank">{{ content.field_descargar_guia_del_video['#title'] }}</a>
+							</div>
+						</div>
+					{% endif %}
+					{% if content.field_descarga_scorm[0] %}
+						<div class="portfolio-enlace-boton">
+							<img src="/themes/custom/notech_subtheme/images/descarga.png"/>
+							<div class="portfolio-enlace-boton-content">
+								<a href="{{ file_url(node.field_descarga_scorm.entity.uri.value) }}" target="_blank">{{ content.field_descarga_scorm['#title'] }}</a>
+							</div>
+						</div>
+					{% endif %}
+					{% for item in node.field_enlaces_url %}
+						<div class="portfolio-enlace-boton">
+							<img src="/themes/custom/notech_subtheme/images/visita.png"/>
+							<div class="portfolio-enlace-boton-content">
+								<a href="{{ file_url(item.uri) }}" target="_blank">{{ item.title }}</a>
+							</div>
+						</div>
+					{% endfor %}
+					
+					
+				</div>
+			</div>
+		</div>
+
+		{% if content.field_titulo_acordeones[0] %}
+		<div class="portfolio-desarrollo">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-7 col-sm-12 col-xs-12 col-left">
+						<div class="portfolio-desarrollo-subtitulo">
+							<h3>{{content.field_subtitulo_acordeones}}</h3>
+						</div>
+						<div class="portfolio-desarrollo-titulo">
+							<h1>{{content.field_titulo_acordeones}}</h1>
+						</div>
+						
+						<div class="gsc-accordion">
+							{% set accordionId = 'accordion-'~random() %}
+            				<div class="panel-group skin-white" id="{{ accordionId }}">
+								
+								{% for item in node.field_texto_en_acordeones %}
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+												<a role="button" data-bs-toggle="collapse" class="collapsed" data-bs-target="#{{ accordionId ~ '-' ~ loop.index }}" aria-expanded="false">
+													{{ item.entity.field_titulo.value }}
+												</a>
+											</h4>
+										</div>
+										<div id="{{ accordionId ~ '-' ~ loop.index }}" class="panel-collapse collapse" data-bs-parent="#{{ accordionId }}" style="">
+											<div class="panel-body">
+												{{ item.entity.field_texto.value | raw }}
+											</div>
+										</div>
+									</div>
+								{% endfor %}
+                                    
+            				</div>
+         				</div>
+					</div>
+					<div class="col-md-5 col-sm-12 col-xs-12 col-right">
+						<div class="portfolio-desarrollo-imagen">
+							{{content.field_imagen_acordeones}}
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		{% endif %}
+
+		{% if content.field_video_destacado[0] %}
+			<div class="portfolio-video_destacado">
+				<div class="container">
+					{{ content.field_video_destacado }}
+				</div>
+			</div>
+		{% endif %}
+
+		{% if content.field_embed_de_genialy[0] %}
+			<div class="portfolio-embed">
+				<div class="container">
+					{{ content.field_embed_de_genialy }}
+				</div>
+			</div>
+		{% endif %}
+
+
+		<!-- common blocks -->
+		<div class="experiencias-compartidas">
+			<div class="experiencias-compartidas-header">
+				<h3>{{ 'ejemplos_puesta_en_practica' | t }}</h3>
+				<h1>{{ 'experiencias_compartidas' | t }}</h1>
+			</div>
+			<div class="experiencias-compartidas-content">
+				<div class="container">
+					{{ drupal_view('post_other', 'block_6') }}
+				</div>
+			</div>
+			<div class="experiencias-compartidas-footer">
+				<p>
+					<a class="btn-theme" href="#">
+						<span class="btn-text">{{ 'ver_mas_ejemplos' | t }}</span>
+					</a>
+				</p>
+			</div>
+		</div>
+
+		<div class="comparte_experiencia">
+			<div class="breadcrumb-content-inner">
+				<div class="gva-breadcrumb-content">
+					<div class="text-light block gva-block-breadcrumb block-system block-system-breadcrumb-block no-title">
+					<div class="breadcrumb-style gva-parallax-background" style="background-color: #1B1525;background-image: url('/themes/custom/notech_subtheme/images/teclado.jpg');background-position: center center;background-repeat: no-repeat;">
+						<div class="breadcrumb-content-main">
+							<div class="">
+								<div class="content block-content" >
+									<h3>{{ 'como_ha_sido_tu_experiencia' | t }}</h3>
+									<h2>{{ 'comparte_tus_experiencias' | t }}</h2>
+									<p>
+										<a class="btn-theme" href="#">
+											<span class="btn-text">{{ 'comparte_tu_experiencia' | t }}</span>
+										</a>
+									</p>
+								</div>
+							</div>  
+						</div> 
+						<div class="gva-parallax-inner skrollable skrollable-between" data-bottom-top="top: -80%;" data-top-bottom="top: 0%;"></div>    
+					</div> 
+					</div>  
+				</div>  
+			</div>  
+			
+		</div>
+
+		<div class="experiencias-aprendizaje">
+			<div class="experiencias-aprendizaje-header">
+				<h3>{{ 'experiencias_aprendizaje' | t }}</h3>
+				<h1>{{ 'otras_secuencias_didacticas' | t }}</h1>
+			</div>
+			<div class="experiencias-aprendizaje-content"></div>
+			<div class="experiencias-aprendizaje-footer">
+				<div class="container">
+					{{ drupal_view('portfolio', 'block_7',node.id, node.field_portfolio_tags.target_id) }}
+				</div>
+			</div>
+		</div>
+	  	
+	</div>
+	
+</article>
+
+<!-- End Display article for detail page -->

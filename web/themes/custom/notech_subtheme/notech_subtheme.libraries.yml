@@ -4,5 +4,6 @@ notech_subtheme.skin.default:
    css:
       theme:
          css/style.css: {}
+         css/portfolio.css: {}
    js:
       js/main.js: {}

@@ -50,9 +50,36 @@
   {% block content %}
     <div class="container">
     <h1>Explora nuestros recursos digitales</h1>
-          <div{{ content_attributes.addClass('content block-content') }}>
-             {{ content }}
+    <div class="row">
+      <div class="col-md-8">
+        <div class="filtro-expuesto ">    
+          <div id="combine-input" class="filtro-input">
+            {{ content.aggregated_field }}
           </div>
+        
+          <div id="authors-input" class="filtro-input" style="display: none;">
+            {{ content.field_authors_resources }}
+          </div>
+        
+          <div id="level-input" class="filtro-input" style="display: none;">
+            {{ content.field_resource_level }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <select id="combine-authors-level-select">
+          <option value="combine">Todo los campos</option>
+          <option value="authors">Autores</option>
+          <option value="level">Nivel</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <div class="form-actions">
+          {{ content|without('aggregated_field', 'field_authors_resources', 'field_resource_level') }}
+        </div>
+      </div>
     </div>
+    </div>
+    {{ content}}
   {% endblock %}
 </div>
