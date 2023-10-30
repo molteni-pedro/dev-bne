@@ -11,7 +11,8 @@
 /web/modules/contrib/*
 # Ignorar Themes Contrib
 /web/themes/contrib/*
-
+# Ignorar libraries
+/web/libraries/*
 # Ignorar archivos de configuración locales
 /.env
 /web/sites/default/settings.local.php
