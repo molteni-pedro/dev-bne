@@ -66,6 +66,8 @@
         "drupal/search_api": "^1.30",
         "drupal/search_api_autocomplete": "^1.8",
         "drupal/search_api_solr": "^4.3",
+        "drupal/search_api_solr_admin": "^4.3",
+        "drupal/search_api_solr_autocomplete": "^4.3",
         "drupal/taxonomy_manager": "^2.0",
         "drupal/term_reference_fancytree": "^2.1",
         "drupal/term_reference_tree": "^2.0",
