@@ -49,38 +49,46 @@
   {{ title_suffix }}
   {% block content %}
     <div class="container">
-    <h1>Explora nuestros recursos digitales</h1>
-    <div class="row">
-      <div class="col-md-8">
-        <div class="filtro-expuesto ">
-          <div id="combine-input" class="filtro-input">
-            {{ content.aggregated_field }}
-          </div>
+      <h1>Explora nuestros recursos digitales</h1>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="filtro-expuesto">
+            <div id="combine-input" class="filtro-input active">
+              {{ content.aggregated_field }}
+            </div>
 
-          <div id="authors-input" class="filtro-input">
-            {{ content.field_authors_resources }}
-          </div>
+            <div id="authors-input" class="filtro-input hidden">
+              {{ content.field_authors_resources }}
+            </div>
 
-          <div id="level-input" class="filtro-input">
-            {{ content.field_resource_level }}
+            <div id="level-input" class="filtro-input hidden">
+              {{ content.field_resource_level }}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-2">
-        <label for="#combine-authors-level-select">&nbsp:</label>
-        <select id="combine-authors-level-select">
-          <option value="combine">Todo los campos</option>
-          <option value="authors">Autores</option>
-          <option value="level">Nivel</option>
-        </select>
-      </div>
-      <div class="col-md-2">
-        <div class="form-actions">
-          <label for="actions">&nbsp:</label>
+        <div class="col-md-2">
+          <label for="#combine-authors-level-select">&nbsp:</label>
+          <select id="combine-authors-level-select">
+            <option value="#combine-input">Todo los campos</option>
+            <option value="#authors-input">Autores</option>
+            <option value="#level-input">Nivel</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label>&nbsp;</label>
           {{ content|without('aggregated_field', 'field_authors_resources', 'field_resource_level') }}
         </div>
       </div>
     </div>
-    </div>
   {% endblock %}
 </div>
+<script>
+jQuery("#combine-authors-level-select").on("change", function() {
+  let opts = document.querySelector('#combine-authors-level-select').options;
+  for(i = 0; i < opts.length; i++){
+    if(document.querySelector(opts[i].value).classList.contains('hidden') && i == opts.selectedIndex) {
+      document.querySelector(opts[i].value).classList.remove('hidden');
+    }else document.querySelector(opts[i].value).classList.add('hidden');
+  }
+});
+</script>
